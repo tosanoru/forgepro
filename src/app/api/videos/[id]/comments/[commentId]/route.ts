@@ -30,6 +30,10 @@ export async function PATCH(req: Request, { params }: { params: Promise<{ id: st
   const body = await req.json();
   const { resolved } = body as { resolved: boolean };
 
+  if (typeof resolved !== "boolean") {
+    return NextResponse.json({ error: "resolved must be a boolean" }, { status: 400 });
+  }
+
   const [updated] = await db
     .update(videoComments)
     .set({ resolved })

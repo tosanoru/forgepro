@@ -48,38 +48,57 @@ export async function POST(req: Request) {
     }
     case "video.asset.ready": {
       const assetId = event.data.id;
+      const uploadId = (event.data as unknown as Record<string, unknown>).source_upload_id as string | undefined;
       const playbackId = event.data.playback_ids?.[0]?.id;
       const duration = event.data.duration ? Math.round(event.data.duration) : null;
+      let existing: { id: string; status: string | null } | undefined;
       if (assetId) {
-        const [existing] = await db
-          .select({ status: videos.status })
+        [existing] = await db
+          .select({ id: videos.id, status: videos.status })
           .from(videos)
           .where(eq(videos.muxAssetId, assetId))
           .limit(1);
-        if (!existing || existing.status === "ready" || existing.status === "errored") break;
-        await db
-          .update(videos)
-          .set({
-            muxPlaybackId: playbackId ?? null,
-            durationSeconds: duration,
-            status: "ready",
-            updatedAt: new Date(),
-          })
-          .where(eq(videos.muxAssetId, assetId));
       }
+      if (!existing && uploadId) {
+        [existing] = await db
+          .select({ id: videos.id, status: videos.status })
+          .from(videos)
+          .where(eq(videos.muxUploadId, uploadId))
+          .limit(1);
+      }
+      if (!existing || existing.status === "ready" || existing.status === "errored") break;
+      await db
+        .update(videos)
+        .set({
+          muxAssetId: assetId ?? undefined,
+          muxPlaybackId: playbackId ?? null,
+          durationSeconds: duration,
+          status: "ready",
+          updatedAt: new Date(),
+        })
+        .where(eq(videos.id, existing.id));
       break;
     }
     case "video.asset.errored": {
       const assetId = event.data.id;
+      const uploadId = (event.data as unknown as Record<string, unknown>).source_upload_id as string | undefined;
+      let existing: { id: string; status: string | null } | undefined;
       if (assetId) {
-        const [existing] = await db
-          .select({ status: videos.status })
+        [existing] = await db
+          .select({ id: videos.id, status: videos.status })
           .from(videos)
           .where(eq(videos.muxAssetId, assetId))
           .limit(1);
-        if (!existing || existing.status === "ready" || existing.status === "errored") break;
-        await db.update(videos).set({ status: "errored", updatedAt: new Date() }).where(eq(videos.muxAssetId, assetId));
       }
+      if (!existing && uploadId) {
+        [existing] = await db
+          .select({ id: videos.id, status: videos.status })
+          .from(videos)
+          .where(eq(videos.muxUploadId, uploadId))
+          .limit(1);
+      }
+      if (!existing || existing.status === "ready" || existing.status === "errored") break;
+      await db.update(videos).set({ status: "errored", updatedAt: new Date() }).where(eq(videos.id, existing.id));
       break;
     }
     case "video.upload.cancelled": {

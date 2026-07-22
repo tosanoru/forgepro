@@ -64,22 +64,18 @@ export async function POST(req: Request) {
     if (!target) return NextResponse.json({ error: "Content card not found" }, { status: 404 });
   }
 
-  // Clear any other card in this workspace currently holding this resource —
-  // keeps the relationship effectively one-card-per-script/video without a
-  // DB-level uniqueness constraint that would be awkward to express (the
-  // column is nullable and shared with plenty of cards that have no
-  // script/video attached at all).
-  await db
-    .update(contentCards)
-    .set({ [field]: null, updatedAt: new Date() })
-    .where(and(eq(contentCards.workspaceId, workspaceId), eq(contentCards[field], resourceId)));
-
-  if (cardId) {
-    await db
+  await db.transaction(async (tx) => {
+    await tx
       .update(contentCards)
-      .set({ [field]: resourceId, updatedAt: new Date() })
-      .where(eq(contentCards.id, cardId));
-  }
+      .set({ [field]: null, updatedAt: new Date() })
+      .where(and(eq(contentCards.workspaceId, workspaceId), eq(contentCards[field], resourceId)));
+    if (cardId) {
+      await tx
+        .update(contentCards)
+        .set({ [field]: resourceId, updatedAt: new Date() })
+        .where(eq(contentCards.id, cardId));
+    }
+  });
 
   return NextResponse.json({ status: cardId ? "attached" : "detached" });
 }

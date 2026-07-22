@@ -29,29 +29,36 @@ export async function GET(req: Request) {
   let pruned = 0;
   let skippedInsufficientHistory = 0;
 
+  const errors: string[] = [];
+
   for (const channel of allChannels) {
-    const [latest] = await db
-      .select()
-      .from(channelSnapshots)
-      .where(eq(channelSnapshots.channelId, channel.id))
-      .orderBy(desc(channelSnapshots.snapshotDate))
-      .limit(1);
+    try {
+      const [latest] = await db
+        .select()
+        .from(channelSnapshots)
+        .where(eq(channelSnapshots.channelId, channel.id))
+        .orderBy(desc(channelSnapshots.snapshotDate))
+        .limit(1);
 
-    const [yearOldSnapshot] = await db
-      .select()
-      .from(channelSnapshots)
-      .where(and(eq(channelSnapshots.channelId, channel.id), lte(channelSnapshots.snapshotDate, yearAgo)))
-      .orderBy(desc(channelSnapshots.snapshotDate))
-      .limit(1);
+      const [yearOldSnapshot] = await db
+        .select()
+        .from(channelSnapshots)
+        .where(and(eq(channelSnapshots.channelId, channel.id), lte(channelSnapshots.snapshotDate, yearAgo)))
+        .orderBy(desc(channelSnapshots.snapshotDate))
+        .limit(1);
 
-    if (!latest || !yearOldSnapshot) {
-      skippedInsufficientHistory++;
+      if (!latest || !yearOldSnapshot) {
+        skippedInsufficientHistory++;
+        continue;
+      }
+
+      if (latest.videoCount <= yearOldSnapshot.videoCount) {
+        await db.delete(channels).where(eq(channels.id, channel.id));
+        pruned++;
+      }
+    } catch (err) {
+      errors.push(`${channel.id}: ${err instanceof Error ? err.message : "Unknown error"}`);
       continue;
-    }
-
-    if (latest.videoCount <= yearOldSnapshot.videoCount) {
-      await db.delete(channels).where(eq(channels.id, channel.id)); // cascades to snapshots/nicheChannels/trackedChannels
-      pruned++;
     }
   }
 

@@ -68,17 +68,19 @@ export async function PATCH(req: Request, { params }: { params: Promise<{ id: st
 
   if (status === "in_review" || status === "approved") {
     const targetStage = status === "in_review" ? "IDEA" : "SCRIPT";
-    const [card] = await db
-      .select({ id: contentCards.id, stage: contentCards.stage })
-      .from(contentCards)
-      .where(eq(contentCards.scriptId, id))
-      .limit(1);
-    if (card && card.stage !== targetStage) {
-      await db
-        .update(contentCards)
-        .set({ stage: targetStage, updatedAt: new Date() })
-        .where(eq(contentCards.id, card.id));
-    }
+    await db.transaction(async (tx) => {
+      const [card] = await tx
+        .select({ id: contentCards.id, stage: contentCards.stage })
+        .from(contentCards)
+        .where(eq(contentCards.scriptId, id))
+        .limit(1);
+      if (card && card.stage !== targetStage) {
+        await tx
+          .update(contentCards)
+          .set({ stage: targetStage, updatedAt: new Date() })
+          .where(eq(contentCards.id, card.id));
+      }
+    });
   }
 
   return NextResponse.json({ script: updated });
