@@ -1,0 +1,226 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+  Token architecture (the @theme inline block, the --color-* aliasing
+  pattern, the light/dark split) is ported verbatim from Forge's
+  globals.css — it's solid, reusable structure. Only the actual color
+  values change below, to Creator OS's dark industrial-luxury identity
+  (near-black canvas, acid yellow + electric indigo accents, Syne/DM Mono
+  type) instead of Forge's editorial paper-on-ink palette.
+*/
+
+@theme inline {
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-syne), var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-dm-mono), ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --color-acid: var(--acid);
+  --color-acid-foreground: var(--acid-foreground);
+  --color-indigo: var(--indigo);
+  --color-indigo-foreground: var(--indigo-foreground);
+  --color-ink: var(--ink);
+  --color-paper: var(--paper);
+
+  --color-emerald-stat: var(--emerald-stat);
+  --color-emerald-stat-foreground: var(--emerald-stat-foreground);
+  --color-amber-stat: var(--amber-stat);
+  --color-amber-stat-foreground: var(--amber-stat-foreground);
+  --color-indigo-stat: var(--indigo-stat);
+  --color-indigo-stat-foreground: var(--indigo-stat-foreground);
+  --color-rose-stat: var(--rose-stat);
+  --color-rose-stat-foreground: var(--rose-stat-foreground);
+
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+}
+
+/* :root = light variant, kept only so the theme toggle has somewhere to go. */
+:root {
+  --radius: 0.5rem;
+
+  --paper: oklch(0.98 0.005 90);
+  --ink: oklch(0.12 0.01 260);
+
+  --background: oklch(0.98 0.005 90);
+  --foreground: oklch(0.12 0.01 260);
+
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.12 0.01 260);
+
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.12 0.01 260);
+
+  --primary: oklch(0.5 0.24 275); /* electric indigo */
+  --primary-foreground: oklch(0.99 0 0);
+
+  --secondary: oklch(0.95 0.008 90);
+  --secondary-foreground: oklch(0.16 0.01 260);
+
+  --muted: oklch(0.94 0.008 90);
+  --muted-foreground: oklch(0.45 0.01 260);
+
+  --accent: oklch(0.92 0.19 105); /* acid yellow */
+  --accent-foreground: oklch(0.16 0.05 100);
+
+  --destructive: oklch(0.58 0.24 25);
+  --destructive-foreground: oklch(0.99 0 0);
+
+  --border: oklch(0.12 0.01 260 / 12%);
+  --input: oklch(0.12 0.01 260 / 12%);
+  --ring: oklch(0.5 0.24 275);
+
+  --acid: oklch(0.92 0.19 105);
+  --acid-foreground: oklch(0.16 0.05 100);
+  --indigo: oklch(0.5 0.24 275);
+  --indigo-foreground: oklch(0.99 0 0);
+
+  --emerald-stat: oklch(0.55 0.16 155);
+  --emerald-stat-foreground: oklch(0.99 0 0);
+  --amber-stat: oklch(0.78 0.17 80);
+  --amber-stat-foreground: oklch(0.18 0.05 80);
+  --indigo-stat: oklch(0.5 0.24 275);
+  --indigo-stat-foreground: oklch(0.99 0 0);
+  --rose-stat: oklch(0.58 0.24 25);
+  --rose-stat-foreground: oklch(0.99 0 0);
+
+  --sidebar: oklch(1 0 0);
+  --sidebar-foreground: oklch(0.12 0.01 260);
+  --sidebar-accent: oklch(0.5 0.24 275);
+  --sidebar-accent-foreground: oklch(0.99 0 0);
+  --sidebar-border: oklch(0.12 0.01 260 / 10%);
+}
+
+/* .dark = the actual brand identity, and the default state (see ThemeToggle.tsx). */
+.dark {
+  --paper: oklch(0.1 0.012 260);
+  --ink: oklch(0.97 0.005 90);
+
+  --background: oklch(0.1 0.012 260); /* near-black */
+  --foreground: oklch(0.96 0.005 90);
+  --card: oklch(0.14 0.014 260);
+  --card-foreground: oklch(0.96 0.005 90);
+  --popover: oklch(0.14 0.014 260);
+  --popover-foreground: oklch(0.96 0.005 90);
+
+  --primary: oklch(0.6 0.25 280); /* electric indigo, brighter on dark */
+  --primary-foreground: oklch(0.99 0 0);
+
+  --secondary: oklch(0.2 0.016 260);
+  --secondary-foreground: oklch(0.96 0.005 90);
+
+  --muted: oklch(0.2 0.016 260);
+  --muted-foreground: oklch(0.65 0.01 90);
+
+  --accent: oklch(0.9 0.2 105); /* acid yellow */
+  --accent-foreground: oklch(0.16 0.05 100);
+
+  --destructive: oklch(0.65 0.24 25);
+  --destructive-foreground: oklch(0.99 0 0);
+
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 12%);
+  --ring: oklch(0.6 0.25 280);
+
+  --acid: oklch(0.9 0.2 105);
+  --acid-foreground: oklch(0.16 0.05 100);
+  --indigo: oklch(0.6 0.25 280);
+  --indigo-foreground: oklch(0.99 0 0);
+
+  --emerald-stat: oklch(0.62 0.17 155);
+  --emerald-stat-foreground: oklch(0.99 0 0);
+  --amber-stat: oklch(0.78 0.17 80);
+  --amber-stat-foreground: oklch(0.18 0.05 80);
+  --indigo-stat: oklch(0.6 0.25 280);
+  --indigo-stat-foreground: oklch(0.99 0 0);
+  --rose-stat: oklch(0.65 0.24 25);
+  --rose-stat-foreground: oklch(0.99 0 0);
+
+  --sidebar: oklch(0.07 0.01 260);
+  --sidebar-foreground: oklch(0.94 0.005 90);
+  --sidebar-accent: oklch(0.6 0.25 280);
+  --sidebar-accent-foreground: oklch(0.99 0 0);
+  --sidebar-border: oklch(1 0 0 / 8%);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    font-feature-settings: "ss01", "cv11";
+    background-image: radial-gradient(circle at 1px 1px, color-mix(in oklab, var(--ink) 6%, transparent) 1px, transparent 0);
+    background-size: 28px 28px;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    letter-spacing: -0.02em;
+    font-weight: 700;
+  }
+
+  .num, .font-mono {
+    font-family: var(--font-mono);
+    font-variant-numeric: tabular-nums;
+    letter-spacing: -0.01em;
+  }
+}
+
+@layer utilities {
+  .stamp {
+    position: relative;
+  }
+  .stamp::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border: 1px solid color-mix(in oklab, var(--ink) 14%, transparent);
+    border-radius: inherit;
+    transform: translate(6px, 6px);
+    pointer-events: none;
+    z-index: -1;
+  }
+
+  .grid-paper {
+    background-image:
+      linear-gradient(to right, color-mix(in oklab, var(--ink) 5%, transparent) 1px, transparent 1px),
+      linear-gradient(to bottom, color-mix(in oklab, var(--ink) 5%, transparent) 1px, transparent 1px);
+    background-size: 24px 24px;
+  }
+}

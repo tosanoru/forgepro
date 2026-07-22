@@ -1,0 +1,2051 @@
+# Active Context
+
+## Code Changes (2026-07-22 14:20:00)
+
+### Added Files
+- .next/app-path-routes-manifest.json
+- .next/build-manifest.json
+- .next/dev/build-manifest.json
+- .next/dev/cache/next-devtools-config.json
+- .next/dev/fallback-build-manifest.json
+- .next/dev/package.json
+- .next/dev/prerender-manifest.json
+- .next/dev/routes-manifest.json
+- .next/dev/server/app/_not-found/page/app-paths-manifest.json
+- .next/dev/server/app/_not-found/page/build-manifest.json
+- .next/dev/server/app/_not-found/page/next-font-manifest.json
+- .next/dev/server/app/_not-found/page/react-loadable-manifest.json
+- .next/dev/server/app/_not-found/page/server-reference-manifest.json
+- .next/dev/server/app/_not-found/page.js
+- .next/dev/server/app/_not-found/page_client-reference-manifest.js
+- .next/dev/server/app/api/admin/me/route/app-paths-manifest.json
+- .next/dev/server/app/api/admin/me/route/build-manifest.json
+- .next/dev/server/app/api/admin/me/route/server-reference-manifest.json
+- .next/dev/server/app/api/admin/me/route.js
+- .next/dev/server/app/api/admin/me/route_client-reference-manifest.js
+- .next/dev/server/app/api/auth/[...nextauth]/route/app-paths-manifest.json
+- .next/dev/server/app/api/auth/[...nextauth]/route/build-manifest.json
+- .next/dev/server/app/api/auth/[...nextauth]/route/server-reference-manifest.json
+- .next/dev/server/app/api/auth/[...nextauth]/route.js
+- .next/dev/server/app/api/auth/[...nextauth]/route_client-reference-manifest.js
+- .next/dev/server/app/api/auth/register/route/app-paths-manifest.json
+- .next/dev/server/app/api/auth/register/route/build-manifest.json
+- .next/dev/server/app/api/auth/register/route/server-reference-manifest.json
+- .next/dev/server/app/api/auth/register/route.js
+- .next/dev/server/app/api/auth/register/route_client-reference-manifest.js
+- .next/dev/server/app/api/content/[id]/route/app-paths-manifest.json
+- .next/dev/server/app/api/content/[id]/route/build-manifest.json
+- .next/dev/server/app/api/content/[id]/route/server-reference-manifest.json
+- .next/dev/server/app/api/content/[id]/route.js
+- .next/dev/server/app/api/content/[id]/route_client-reference-manifest.js
+- .next/dev/server/app/api/content/[id]/stage/route/app-paths-manifest.json
+- .next/dev/server/app/api/content/[id]/stage/route/build-manifest.json
+- .next/dev/server/app/api/content/[id]/stage/route/server-reference-manifest.json
+- .next/dev/server/app/api/content/[id]/stage/route.js
+- .next/dev/server/app/api/content/[id]/stage/route_client-reference-manifest.js
+- .next/dev/server/app/api/content/attach/route/app-paths-manifest.json
+- .next/dev/server/app/api/content/attach/route/build-manifest.json
+- .next/dev/server/app/api/content/attach/route/server-reference-manifest.json
+- .next/dev/server/app/api/content/attach/route.js
+- .next/dev/server/app/api/content/attach/route_client-reference-manifest.js
+- .next/dev/server/app/api/content/route/app-paths-manifest.json
+- .next/dev/server/app/api/content/route/build-manifest.json
+- .next/dev/server/app/api/content/route/server-reference-manifest.json
+- .next/dev/server/app/api/content/route.js
+- .next/dev/server/app/api/content/route_client-reference-manifest.js
+- .next/dev/server/app/api/niche-finder/mcp-keys/route/app-paths-manifest.json
+- .next/dev/server/app/api/niche-finder/mcp-keys/route/build-manifest.json
+- .next/dev/server/app/api/niche-finder/mcp-keys/route/server-reference-manifest.json
+- .next/dev/server/app/api/niche-finder/mcp-keys/route.js
+- .next/dev/server/app/api/niche-finder/mcp-keys/route_client-reference-manifest.js
+- .next/dev/server/app/api/niche-finder/niches/route/app-paths-manifest.json
+- .next/dev/server/app/api/niche-finder/niches/route/build-manifest.json
+- .next/dev/server/app/api/niche-finder/niches/route/server-reference-manifest.json
+- .next/dev/server/app/api/niche-finder/niches/route.js
+- .next/dev/server/app/api/niche-finder/niches/route_client-reference-manifest.js
+- .next/dev/server/app/api/niche-finder/tracked-channels/route/app-paths-manifest.json
+- .next/dev/server/app/api/niche-finder/tracked-channels/route/build-manifest.json
+- .next/dev/server/app/api/niche-finder/tracked-channels/route/server-reference-manifest.json
+- .next/dev/server/app/api/niche-finder/tracked-channels/route.js
+- .next/dev/server/app/api/niche-finder/tracked-channels/route_client-reference-manifest.js
+- .next/dev/server/app/api/scripts/[id]/route/app-paths-manifest.json
+- .next/dev/server/app/api/scripts/[id]/route/build-manifest.json
+- .next/dev/server/app/api/scripts/[id]/route/server-reference-manifest.json
+- .next/dev/server/app/api/scripts/[id]/route.js
+- .next/dev/server/app/api/scripts/[id]/route_client-reference-manifest.js
+- .next/dev/server/app/api/scripts/[id]/versions/route/app-paths-manifest.json
+- .next/dev/server/app/api/scripts/[id]/versions/route/build-manifest.json
+- .next/dev/server/app/api/scripts/[id]/versions/route/server-reference-manifest.json
+- .next/dev/server/app/api/scripts/[id]/versions/route.js
+- .next/dev/server/app/api/scripts/[id]/versions/route_client-reference-manifest.js
+- .next/dev/server/app/api/scripts/route/app-paths-manifest.json
+- .next/dev/server/app/api/scripts/route/build-manifest.json
+- .next/dev/server/app/api/scripts/route/server-reference-manifest.json
+- .next/dev/server/app/api/scripts/route.js
+- .next/dev/server/app/api/scripts/route_client-reference-manifest.js
+- .next/dev/server/app/api/thumbnails/analyze-script/route/app-paths-manifest.json
+- .next/dev/server/app/api/thumbnails/analyze-script/route/build-manifest.json
+- .next/dev/server/app/api/thumbnails/analyze-script/route/server-reference-manifest.json
+- .next/dev/server/app/api/thumbnails/analyze-script/route.js
+- .next/dev/server/app/api/thumbnails/analyze-script/route_client-reference-manifest.js
+- .next/dev/server/app/api/thumbnails/route/app-paths-manifest.json
+- .next/dev/server/app/api/thumbnails/route/build-manifest.json
+- .next/dev/server/app/api/thumbnails/route/server-reference-manifest.json
+- .next/dev/server/app/api/thumbnails/route.js
+- .next/dev/server/app/api/thumbnails/route_client-reference-manifest.js
+- .next/dev/server/app/api/workspace/[id]/ai-settings/route/app-paths-manifest.json
+- .next/dev/server/app/api/workspace/[id]/ai-settings/route/build-manifest.json
+- .next/dev/server/app/api/workspace/[id]/ai-settings/route/server-reference-manifest.json
+- .next/dev/server/app/api/workspace/[id]/ai-settings/route.js
+- .next/dev/server/app/api/workspace/[id]/ai-settings/route_client-reference-manifest.js
+- .next/dev/server/app/api/workspace/[id]/assets/route/app-paths-manifest.json
+- .next/dev/server/app/api/workspace/[id]/assets/route/build-manifest.json
+- .next/dev/server/app/api/workspace/[id]/assets/route/server-reference-manifest.json
+- .next/dev/server/app/api/workspace/[id]/assets/route.js
+- .next/dev/server/app/api/workspace/[id]/assets/route_client-reference-manifest.js
+- .next/dev/server/app/api/workspace/[id]/image-settings/route/app-paths-manifest.json
+- .next/dev/server/app/api/workspace/[id]/image-settings/route/build-manifest.json
+- .next/dev/server/app/api/workspace/[id]/image-settings/route/server-reference-manifest.json
+- .next/dev/server/app/api/workspace/[id]/image-settings/route.js
+- .next/dev/server/app/api/workspace/[id]/image-settings/route_client-reference-manifest.js
+- .next/dev/server/app/api/workspace/[id]/revenue/[provider]/route/app-paths-manifest.json
+- .next/dev/server/app/api/workspace/[id]/revenue/[provider]/route/build-manifest.json
+- .next/dev/server/app/api/workspace/[id]/revenue/[provider]/route/server-reference-manifest.json
+- .next/dev/server/app/api/workspace/[id]/revenue/[provider]/route.js
+- .next/dev/server/app/api/workspace/[id]/revenue/[provider]/route_client-reference-manifest.js
+- .next/dev/server/app/api/workspace/[id]/revenue/route/app-paths-manifest.json
+- .next/dev/server/app/api/workspace/[id]/revenue/route/build-manifest.json
+- .next/dev/server/app/api/workspace/[id]/revenue/route/server-reference-manifest.json
+- .next/dev/server/app/api/workspace/[id]/revenue/route.js
+- .next/dev/server/app/api/workspace/[id]/revenue/route_client-reference-manifest.js
+- .next/dev/server/app/api/workspace/[id]/videos/route/app-paths-manifest.json
+- .next/dev/server/app/api/workspace/[id]/videos/route/build-manifest.json
+- .next/dev/server/app/api/workspace/[id]/videos/route/server-reference-manifest.json
+- .next/dev/server/app/api/workspace/[id]/videos/route.js
+- .next/dev/server/app/api/workspace/[id]/videos/route_client-reference-manifest.js
+- .next/dev/server/app/api/workspace/route/app-paths-manifest.json
+- .next/dev/server/app/api/workspace/route/build-manifest.json
+- .next/dev/server/app/api/workspace/route/server-reference-manifest.json
+- .next/dev/server/app/api/workspace/route.js
+- .next/dev/server/app/api/workspace/route_client-reference-manifest.js
+- .next/dev/server/app/assets/page/app-paths-manifest.json
+- .next/dev/server/app/assets/page/build-manifest.json
+- .next/dev/server/app/assets/page/next-font-manifest.json
+- .next/dev/server/app/assets/page/react-loadable-manifest.json
+- .next/dev/server/app/assets/page/server-reference-manifest.json
+- .next/dev/server/app/assets/page.js
+- .next/dev/server/app/assets/page_client-reference-manifest.js
+- .next/dev/server/app/challenges/120-days-100k/page/app-paths-manifest.json
+- .next/dev/server/app/challenges/120-days-100k/page/build-manifest.json
+- .next/dev/server/app/challenges/120-days-100k/page/next-font-manifest.json
+- .next/dev/server/app/challenges/120-days-100k/page/react-loadable-manifest.json
+- .next/dev/server/app/challenges/120-days-100k/page/server-reference-manifest.json
+- .next/dev/server/app/challenges/120-days-100k/page.js
+- .next/dev/server/app/challenges/120-days-100k/page_client-reference-manifest.js
+- .next/dev/server/app/challenges/30-days-1k/page/app-paths-manifest.json
+- .next/dev/server/app/challenges/30-days-1k/page/build-manifest.json
+- .next/dev/server/app/challenges/30-days-1k/page/next-font-manifest.json
+- .next/dev/server/app/challenges/30-days-1k/page/react-loadable-manifest.json
+- .next/dev/server/app/challenges/30-days-1k/page/server-reference-manifest.json
+- .next/dev/server/app/challenges/30-days-1k/page.js
+- .next/dev/server/app/challenges/30-days-1k/page_client-reference-manifest.js
+- .next/dev/server/app/challenges/90-days-10k/page/app-paths-manifest.json
+- .next/dev/server/app/challenges/90-days-10k/page/build-manifest.json
+- .next/dev/server/app/challenges/90-days-10k/page/next-font-manifest.json
+- .next/dev/server/app/challenges/90-days-10k/page/react-loadable-manifest.json
+- .next/dev/server/app/challenges/90-days-10k/page/server-reference-manifest.json
+- .next/dev/server/app/challenges/90-days-10k/page.js
+- .next/dev/server/app/challenges/90-days-10k/page_client-reference-manifest.js
+- .next/dev/server/app/content/page/app-paths-manifest.json
+- .next/dev/server/app/content/page/build-manifest.json
+- .next/dev/server/app/content/page/next-font-manifest.json
+- .next/dev/server/app/content/page/react-loadable-manifest.json
+- .next/dev/server/app/content/page/server-reference-manifest.json
+- .next/dev/server/app/content/page.js
+- .next/dev/server/app/content/page_client-reference-manifest.js
+- .next/dev/server/app/login/page/app-paths-manifest.json
+- .next/dev/server/app/login/page/build-manifest.json
+- .next/dev/server/app/login/page/next-font-manifest.json
+- .next/dev/server/app/login/page/react-loadable-manifest.json
+- .next/dev/server/app/login/page/server-reference-manifest.json
+- .next/dev/server/app/login/page.js
+- .next/dev/server/app/login/page_client-reference-manifest.js
+- .next/dev/server/app/niche-finder/mcp/page/app-paths-manifest.json
+- .next/dev/server/app/niche-finder/mcp/page/build-manifest.json
+- .next/dev/server/app/niche-finder/mcp/page/next-font-manifest.json
+- .next/dev/server/app/niche-finder/mcp/page/react-loadable-manifest.json
+- .next/dev/server/app/niche-finder/mcp/page/server-reference-manifest.json
+- .next/dev/server/app/niche-finder/mcp/page.js
+- .next/dev/server/app/niche-finder/mcp/page_client-reference-manifest.js
+- .next/dev/server/app/niche-finder/page/app-paths-manifest.json
+- .next/dev/server/app/niche-finder/page/build-manifest.json
+- .next/dev/server/app/niche-finder/page/next-font-manifest.json
+- .next/dev/server/app/niche-finder/page/react-loadable-manifest.json
+- .next/dev/server/app/niche-finder/page/server-reference-manifest.json
+- .next/dev/server/app/niche-finder/page.js
+- .next/dev/server/app/niche-finder/page_client-reference-manifest.js
+- .next/dev/server/app/niche-finder/tracked/page/app-paths-manifest.json
+- .next/dev/server/app/niche-finder/tracked/page/build-manifest.json
+- .next/dev/server/app/niche-finder/tracked/page/next-font-manifest.json
+- .next/dev/server/app/niche-finder/tracked/page/react-loadable-manifest.json
+- .next/dev/server/app/niche-finder/tracked/page/server-reference-manifest.json
+- .next/dev/server/app/niche-finder/tracked/page.js
+- .next/dev/server/app/niche-finder/tracked/page_client-reference-manifest.js
+- .next/dev/server/app/page/app-paths-manifest.json
+- .next/dev/server/app/page/build-manifest.json
+- .next/dev/server/app/page/next-font-manifest.json
+- .next/dev/server/app/page/react-loadable-manifest.json
+- .next/dev/server/app/page/server-reference-manifest.json
+- .next/dev/server/app/page.js
+- .next/dev/server/app/page_client-reference-manifest.js
+- .next/dev/server/app/revenue/page/app-paths-manifest.json
+- .next/dev/server/app/revenue/page/build-manifest.json
+- .next/dev/server/app/revenue/page/next-font-manifest.json
+- .next/dev/server/app/revenue/page/react-loadable-manifest.json
+- .next/dev/server/app/revenue/page/server-reference-manifest.json
+- .next/dev/server/app/revenue/page.js
+- .next/dev/server/app/revenue/page_client-reference-manifest.js
+- .next/dev/server/app/script/[id]/page/app-paths-manifest.json
+- .next/dev/server/app/script/[id]/page/build-manifest.json
+- .next/dev/server/app/script/[id]/page/next-font-manifest.json
+- .next/dev/server/app/script/[id]/page/react-loadable-manifest.json
+- .next/dev/server/app/script/[id]/page/server-reference-manifest.json
+- .next/dev/server/app/script/[id]/page.js
+- .next/dev/server/app/script/[id]/page_client-reference-manifest.js
+- .next/dev/server/app/script/new/page/app-paths-manifest.json
+- .next/dev/server/app/script/new/page/build-manifest.json
+- .next/dev/server/app/script/new/page/next-font-manifest.json
+- .next/dev/server/app/script/new/page/react-loadable-manifest.json
+- .next/dev/server/app/script/new/page/server-reference-manifest.json
+- .next/dev/server/app/script/new/page.js
+- .next/dev/server/app/script/new/page_client-reference-manifest.js
+- .next/dev/server/app/script/page/app-paths-manifest.json
+- .next/dev/server/app/script/page/build-manifest.json
+- .next/dev/server/app/script/page/next-font-manifest.json
+- .next/dev/server/app/script/page/react-loadable-manifest.json
+- .next/dev/server/app/script/page/server-reference-manifest.json
+- .next/dev/server/app/script/page.js
+- .next/dev/server/app/script/page_client-reference-manifest.js
+- .next/dev/server/app/settings/billing/page/app-paths-manifest.json
+- .next/dev/server/app/settings/billing/page/build-manifest.json
+- .next/dev/server/app/settings/billing/page/next-font-manifest.json
+- .next/dev/server/app/settings/billing/page/react-loadable-manifest.json
+- .next/dev/server/app/settings/billing/page/server-reference-manifest.json
+- .next/dev/server/app/settings/billing/page.js
+- .next/dev/server/app/settings/billing/page_client-reference-manifest.js
+- .next/dev/server/app/settings/page/app-paths-manifest.json
+- .next/dev/server/app/settings/page/build-manifest.json
+- .next/dev/server/app/settings/page/next-font-manifest.json
+- .next/dev/server/app/settings/page/react-loadable-manifest.json
+- .next/dev/server/app/settings/page/server-reference-manifest.json
+- .next/dev/server/app/settings/page.js
+- .next/dev/server/app/settings/page_client-reference-manifest.js
+- .next/dev/server/app/settings/profile/page/app-paths-manifest.json
+- .next/dev/server/app/settings/profile/page/build-manifest.json
+- .next/dev/server/app/settings/profile/page/next-font-manifest.json
+- .next/dev/server/app/settings/profile/page/react-loadable-manifest.json
+- .next/dev/server/app/settings/profile/page/server-reference-manifest.json
+- .next/dev/server/app/settings/profile/page.js
+- .next/dev/server/app/settings/profile/page_client-reference-manifest.js
+- .next/dev/server/app/team/page/app-paths-manifest.json
+- .next/dev/server/app/team/page/build-manifest.json
+- .next/dev/server/app/team/page/next-font-manifest.json
+- .next/dev/server/app/team/page/react-loadable-manifest.json
+- .next/dev/server/app/team/page/server-reference-manifest.json
+- .next/dev/server/app/team/page.js
+- .next/dev/server/app/team/page_client-reference-manifest.js
+- .next/dev/server/app/thumbnails/page/app-paths-manifest.json
+- .next/dev/server/app/thumbnails/page/build-manifest.json
+- .next/dev/server/app/thumbnails/page/next-font-manifest.json
+- .next/dev/server/app/thumbnails/page/react-loadable-manifest.json
+- .next/dev/server/app/thumbnails/page/server-reference-manifest.json
+- .next/dev/server/app/thumbnails/page.js
+- .next/dev/server/app/thumbnails/page_client-reference-manifest.js
+- .next/dev/server/app/videos/page/app-paths-manifest.json
+- .next/dev/server/app/videos/page/build-manifest.json
+- .next/dev/server/app/videos/page/next-font-manifest.json
+- .next/dev/server/app/videos/page/react-loadable-manifest.json
+- .next/dev/server/app/videos/page/server-reference-manifest.json
+- .next/dev/server/app/videos/page.js
+- .next/dev/server/app/videos/page_client-reference-manifest.js
+- .next/dev/server/app-paths-manifest.json
+- .next/dev/server/chunks/1hkl_server_app_api_niche-finder_tracked-channels_route_actions_14zqo3c.js
+- .next/dev/server/chunks/1hkl_server_app_api_workspace_[id]_image-settings_route_actions_11v8aa8.js
+- .next/dev/server/chunks/1hkl_server_app_api_workspace_[id]_revenue_[provider]_route_actions_14qw5jq.js
+- .next/dev/server/chunks/1ksy_0kdkroz._.js
+- .next/dev/server/chunks/1ksy_1nqv4bg._.js
+- .next/dev/server/chunks/1ksy_@anthropic-ai_sdk_15d505g._.js
+- .next/dev/server/chunks/1ksy_@auth_core_09z8zp2._.js
+- .next/dev/server/chunks/1ksy_@mux_mux-node_043z0uh._.js
+- .next/dev/server/chunks/1ksy_@neondatabase_serverless_index_mjs_1w5940c._.js
+- .next/dev/server/chunks/1ksy_bcryptjs_index_08zn4vp.js
+- .next/dev/server/chunks/1ksy_drizzle-orm_05rf_30._.js
+- .next/dev/server/chunks/1ksy_drizzle-orm_0gz5b3r._.js
+- .next/dev/server/chunks/1ksy_drizzle-orm_1cy-13p._.js
+- .next/dev/server/chunks/1ksy_drizzle-orm_1lc7axd._.js
+- .next/dev/server/chunks/1ksy_drizzle-orm_1m_hyaj._.js
+- .next/dev/server/chunks/1ksy_drizzle-orm_1yrystq._.js
+- .next/dev/server/chunks/1ksy_jose_dist_webapi_0g7ysl8._.js
+- .next/dev/server/chunks/1ksy_next_0-m4w0k._.js
+- .next/dev/server/chunks/1ksy_next_061-xpe._.js
+- .next/dev/server/chunks/1ksy_next_0acbhj4._.js
+- .next/dev/server/chunks/1ksy_next_0an5b5_._.js
+- .next/dev/server/chunks/1ksy_next_0bi8p_j._.js
+- .next/dev/server/chunks/1ksy_next_0jo4gxk._.js
+- .next/dev/server/chunks/1ksy_next_0njqyig._.js
+- .next/dev/server/chunks/1ksy_next_0psw8v3._.js
+- .next/dev/server/chunks/1ksy_next_0xhr94l._.js
+- .next/dev/server/chunks/1ksy_next_0zl6-aj._.js
+- .next/dev/server/chunks/1ksy_next_19iinfb._.js
+- .next/dev/server/chunks/1ksy_next_1b0obwy._.js
+- .next/dev/server/chunks/1ksy_next_1e7-sk2._.js
+- .next/dev/server/chunks/1ksy_next_1euc0z2._.js
+- .next/dev/server/chunks/1ksy_next_1fyj8hu._.js
+- .next/dev/server/chunks/1ksy_next_1k2chtv._.js
+- .next/dev/server/chunks/1ksy_next_1mlxttt._.js
+- .next/dev/server/chunks/1ksy_next_1ovwc2r._.js
+- .next/dev/server/chunks/1ksy_next_1pa_hm4._.js
+- .next/dev/server/chunks/1ksy_next_1parzqg._.js
+- .next/dev/server/chunks/1ksy_next_20d-w6c._.js
+- .next/dev/server/chunks/1ksy_next_21506qm._.js
+- .next/dev/server/chunks/1ksy_stripe_esm_0nlcxbm._.js
+- .next/dev/server/chunks/1ksy_stripe_esm_resources_0k95yl9._.js
+- .next/dev/server/chunks/1ksy_zod_v3_0faao48._.js
+- .next/dev/server/chunks/1mnb__next-internal_server_app_api_auth_[___nextauth]_route_actions_1lt-5-m.js
+- .next/dev/server/chunks/1mnb__next-internal_server_app_api_content_[id]_stage_route_actions_0bnaprw.js
+- .next/dev/server/chunks/1mnb__next-internal_server_app_api_niche-finder_mcp-keys_route_actions_1jrgcjc.js
+- .next/dev/server/chunks/1mnb__next-internal_server_app_api_niche-finder_niches_route_actions_0-rxpme.js
+- .next/dev/server/chunks/1mnb__next-internal_server_app_api_scripts_[id]_versions_route_actions_0bjx5ge.js
+- .next/dev/server/chunks/1mnb__next-internal_server_app_api_thumbnails_analyze-script_route_actions_0aylo2m.js
+- .next/dev/server/chunks/1mnb__next-internal_server_app_api_workspace_[id]_ai-settings_route_actions_0e6ry0b.js
+- .next/dev/server/chunks/1mnb__next-internal_server_app_api_workspace_[id]_assets_route_actions_19xbbo6.js
+- .next/dev/server/chunks/1mnb__next-internal_server_app_api_workspace_[id]_revenue_route_actions_1cgft_a.js
+- .next/dev/server/chunks/1mnb__next-internal_server_app_api_workspace_[id]_videos_route_actions_1xjzral.js
+- .next/dev/server/chunks/1x14_Forge Pro__next-internal_server_app_api_content_attach_route_actions_18rb4o4.js
+- .next/dev/server/chunks/Herd_Forge Pro__next-internal_server_app_api_admin_me_route_actions_0kz7krq.js
+- .next/dev/server/chunks/Herd_Forge Pro__next-internal_server_app_api_auth_register_route_actions_149scd_.js
+- .next/dev/server/chunks/Herd_Forge Pro__next-internal_server_app_api_content_[id]_route_actions_1bgxbkw.js
+- .next/dev/server/chunks/Herd_Forge Pro__next-internal_server_app_api_content_route_actions_1o0lvxh.js
+- .next/dev/server/chunks/Herd_Forge Pro__next-internal_server_app_api_scripts_[id]_route_actions_1_toxlc.js
+- .next/dev/server/chunks/Herd_Forge Pro__next-internal_server_app_api_scripts_route_actions_1zo3zkl.js
+- .next/dev/server/chunks/Herd_Forge Pro__next-internal_server_app_api_thumbnails_route_actions_08wrbpl.js
+- .next/dev/server/chunks/Herd_Forge Pro__next-internal_server_app_api_workspace_route_actions_1enyu45.js
+- .next/dev/server/chunks/Herd_Forge Pro_src_app_api_admin_me_route_ts_17dmke3._.js
+- .next/dev/server/chunks/Herd_Forge Pro_src_app_api_auth_[___nextauth]_route_ts_211h8y-._.js
+- .next/dev/server/chunks/Herd_Forge Pro_src_app_api_auth_register_route_ts_0r8e7lx._.js
+- .next/dev/server/chunks/Herd_Forge Pro_src_app_api_content_[id]_route_ts_1-pdrlc._.js
+- .next/dev/server/chunks/Herd_Forge Pro_src_app_api_content_[id]_stage_route_ts_1-2txqi._.js
+- .next/dev/server/chunks/Herd_Forge Pro_src_app_api_content_attach_route_ts_1dqmnnd._.js
+- .next/dev/server/chunks/Herd_Forge Pro_src_app_api_content_route_ts_1fure5-._.js
+- .next/dev/server/chunks/Herd_Forge Pro_src_app_api_niche-finder_mcp-keys_route_ts_19lyi6x._.js
+- .next/dev/server/chunks/Herd_Forge Pro_src_app_api_niche-finder_niches_route_ts_0rrquek._.js
+- .next/dev/server/chunks/Herd_Forge Pro_src_app_api_niche-finder_tracked-channels_route_ts_1--o7a-._.js
+- .next/dev/server/chunks/Herd_Forge Pro_src_app_api_scripts_[id]_route_ts_1a4pul1._.js
+- .next/dev/server/chunks/Herd_Forge Pro_src_app_api_scripts_[id]_route_ts_1dr2ok6._.js
+- .next/dev/server/chunks/Herd_Forge Pro_src_app_api_scripts_[id]_versions_route_ts_1z9_94i._.js
+- .next/dev/server/chunks/Herd_Forge Pro_src_app_api_thumbnails_route_ts_0p3tkd9._.js
+- .next/dev/server/chunks/Herd_Forge Pro_src_app_api_thumbnails_route_ts_1k48pja._.js
+- .next/dev/server/chunks/Herd_Forge Pro_src_app_api_workspace_[id]_ai-settings_route_ts_06mdaom._.js
+- .next/dev/server/chunks/Herd_Forge Pro_src_app_api_workspace_[id]_assets_route_ts_1gyimen._.js
+- .next/dev/server/chunks/Herd_Forge Pro_src_app_api_workspace_[id]_image-settings_route_ts_1svfzo7._.js
+- .next/dev/server/chunks/Herd_Forge Pro_src_app_api_workspace_[id]_revenue_[provider]_route_ts_1ihzfo9._.js
+- .next/dev/server/chunks/Herd_Forge Pro_src_app_api_workspace_[id]_revenue_route_ts_0quoxgi._.js
+- .next/dev/server/chunks/Herd_Forge Pro_src_app_api_workspace_[id]_videos_route_ts_1ou1b0_._.js
+- .next/dev/server/chunks/Herd_Forge Pro_src_app_api_workspace_route_ts_02u493q._.js
+- .next/dev/server/chunks/[externals]_node_fs_1t1l-4-._.js
+- .next/dev/server/chunks/[externals]_node_path_1pmhwj3._.js
+- .next/dev/server/chunks/[root-of-the-server]__01bogmi._.js
+- .next/dev/server/chunks/[root-of-the-server]__0bbgohy._.js
+- .next/dev/server/chunks/[root-of-the-server]__0d9nfom._.js
+- .next/dev/server/chunks/[root-of-the-server]__0e13kd7._.js
+- .next/dev/server/chunks/[root-of-the-server]__0m7cyy0._.js
+- .next/dev/server/chunks/[root-of-the-server]__0mcjebr._.js
+- .next/dev/server/chunks/[root-of-the-server]__0nysi9r._.js
+- .next/dev/server/chunks/[root-of-the-server]__0oo1fh5._.js
+- .next/dev/server/chunks/[root-of-the-server]__0qfa581._.js
+- .next/dev/server/chunks/[root-of-the-server]__0t71pd-._.js
+- .next/dev/server/chunks/[root-of-the-server]__0uexhfd._.js
+- .next/dev/server/chunks/[root-of-the-server]__0xzzht3._.js
+- .next/dev/server/chunks/[root-of-the-server]__0z7d5bw._.js
+- .next/dev/server/chunks/[root-of-the-server]__0zv_1s-._.js
+- .next/dev/server/chunks/[root-of-the-server]__109-wc6._.js
+- .next/dev/server/chunks/[root-of-the-server]__111zize._.js
+- .next/dev/server/chunks/[root-of-the-server]__15qufkc._.js
+- .next/dev/server/chunks/[root-of-the-server]__1dc3vdm._.js
+- .next/dev/server/chunks/[root-of-the-server]__1h-9qmc._.js
+- .next/dev/server/chunks/[root-of-the-server]__1hayt48._.js
+- .next/dev/server/chunks/[root-of-the-server]__1hmrwfx._.js
+- .next/dev/server/chunks/[root-of-the-server]__1i5dz8o._.js
+- .next/dev/server/chunks/[root-of-the-server]__1jt2xa-._.js
+- .next/dev/server/chunks/[root-of-the-server]__1ogbh20._.js
+- .next/dev/server/chunks/[root-of-the-server]__1ow-_lj._.js
+- .next/dev/server/chunks/[root-of-the-server]__1pn3blv._.js
+- .next/dev/server/chunks/[root-of-the-server]__1rp683h._.js
+- .next/dev/server/chunks/[root-of-the-server]__1s87sfr._.js
+- .next/dev/server/chunks/[root-of-the-server]__1x23zkn._.js
+- .next/dev/server/chunks/[turbopack]_runtime.js
+- .next/dev/server/chunks/ssr/1ksy_0-4-wzq._.js
+- .next/dev/server/chunks/ssr/1ksy_0-7ffmb._.js
+- .next/dev/server/chunks/ssr/1ksy_0-goi0w._.js
+- .next/dev/server/chunks/ssr/1ksy_0-icha5._.js
+- .next/dev/server/chunks/ssr/1ksy_0056sd2._.js
+- .next/dev/server/chunks/ssr/1ksy_01-5bw1._.js
+- .next/dev/server/chunks/ssr/1ksy_01eo32p._.js
+- .next/dev/server/chunks/ssr/1ksy_01h7hyh._.js
+- .next/dev/server/chunks/ssr/1ksy_01s-7_q._.js
+- .next/dev/server/chunks/ssr/1ksy_029jj_j._.js
+- .next/dev/server/chunks/ssr/1ksy_03uo_3b._.js
+- .next/dev/server/chunks/ssr/1ksy_0423c_m._.js
+- .next/dev/server/chunks/ssr/1ksy_042k6hz._.js
+- .next/dev/server/chunks/ssr/1ksy_05i2144._.js
+- .next/dev/server/chunks/ssr/1ksy_07_zuf6._.js
+- .next/dev/server/chunks/ssr/1ksy_07ob833._.js
+- .next/dev/server/chunks/ssr/1ksy_07tgw2w._.js
+- .next/dev/server/chunks/ssr/1ksy_09x-p37._.js
+- .next/dev/server/chunks/ssr/1ksy_0a7q1do._.js
+- .next/dev/server/chunks/ssr/1ksy_0dio4xg._.js
+- .next/dev/server/chunks/ssr/1ksy_0fev2-r._.js
+- .next/dev/server/chunks/ssr/1ksy_0fvxcln._.js
+- .next/dev/server/chunks/ssr/1ksy_0gt4zi1._.js
+- .next/dev/server/chunks/ssr/1ksy_0hrgp2g._.js
+- .next/dev/server/chunks/ssr/1ksy_0hwztxx._.js
+- .next/dev/server/chunks/ssr/1ksy_0hxqydl._.js
+- .next/dev/server/chunks/ssr/1ksy_0if45dq._.js
+- .next/dev/server/chunks/ssr/1ksy_0lwqm4_._.js
+- .next/dev/server/chunks/ssr/1ksy_0nkofze._.js
+- .next/dev/server/chunks/ssr/1ksy_0nmggx3._.js
+- .next/dev/server/chunks/ssr/1ksy_0o7qbug._.js
+- .next/dev/server/chunks/ssr/1ksy_0osqgte._.js
+- .next/dev/server/chunks/ssr/1ksy_0oydn_o._.js
+- .next/dev/server/chunks/ssr/1ksy_0pn3vtn._.js
+- .next/dev/server/chunks/ssr/1ksy_0qwdqo1._.js
+- .next/dev/server/chunks/ssr/1ksy_0r0xfs2._.js
+- .next/dev/server/chunks/ssr/1ksy_0r5yj-8._.js
+- .next/dev/server/chunks/ssr/1ksy_0rmzt9g._.js
+- .next/dev/server/chunks/ssr/1ksy_0s7wc9o._.js
+- .next/dev/server/chunks/ssr/1ksy_0sf85nd._.js
+- .next/dev/server/chunks/ssr/1ksy_0slwadn._.js
+- .next/dev/server/chunks/ssr/1ksy_0sz8hct._.js
+- .next/dev/server/chunks/ssr/1ksy_0t_i3gn._.js
+- .next/dev/server/chunks/ssr/1ksy_0u3gfdu._.js
+- .next/dev/server/chunks/ssr/1ksy_0u_wpdu._.js
+- .next/dev/server/chunks/ssr/1ksy_0v_w5kl._.js
+- .next/dev/server/chunks/ssr/1ksy_0vm1zic._.js
+- .next/dev/server/chunks/ssr/1ksy_0w3g2vd._.js
+- .next/dev/server/chunks/ssr/1ksy_0x34qwo._.js
+- .next/dev/server/chunks/ssr/1ksy_0x96zln._.js
+- .next/dev/server/chunks/ssr/1ksy_0xf8_be._.js
+- .next/dev/server/chunks/ssr/1ksy_0z6cxbe._.js
+- .next/dev/server/chunks/ssr/1ksy_0z7k6ue._.js
+- .next/dev/server/chunks/ssr/1ksy_0zp-539._.js
+- .next/dev/server/chunks/ssr/1ksy_0zxia5g._.js
+- .next/dev/server/chunks/ssr/1ksy_1-lxzs8._.js
+- .next/dev/server/chunks/ssr/1ksy_10bce8l._.js
+- .next/dev/server/chunks/ssr/1ksy_10upby0._.js
+- .next/dev/server/chunks/ssr/1ksy_11b3_z1._.js
+- .next/dev/server/chunks/ssr/1ksy_12_68yi._.js
+- .next/dev/server/chunks/ssr/1ksy_12iqn68._.js
+- .next/dev/server/chunks/ssr/1ksy_13-oo1l._.js
+- .next/dev/server/chunks/ssr/1ksy_1383qpm._.js
+- .next/dev/server/chunks/ssr/1ksy_13er0d1._.js
+- .next/dev/server/chunks/ssr/1ksy_13nnnh3._.js
+- .next/dev/server/chunks/ssr/1ksy_14-ndyr._.js
+- .next/dev/server/chunks/ssr/1ksy_14_zxn_._.js
+- .next/dev/server/chunks/ssr/1ksy_17eucx4._.js
+- .next/dev/server/chunks/ssr/1ksy_17kop7u._.js
+- .next/dev/server/chunks/ssr/1ksy_17qth2h._.js
+- .next/dev/server/chunks/ssr/1ksy_18wnfpu._.js
+- .next/dev/server/chunks/ssr/1ksy_194ofp_._.js
+- .next/dev/server/chunks/ssr/1ksy_1_2jzr7._.js
+- .next/dev/server/chunks/ssr/1ksy_1_ivjge._.js
+- .next/dev/server/chunks/ssr/1ksy_1b7vav6._.js
+- .next/dev/server/chunks/ssr/1ksy_1bha-6t._.js
+- .next/dev/server/chunks/ssr/1ksy_1bv8_-c._.js
+- .next/dev/server/chunks/ssr/1ksy_1bzwtsr._.js
+- .next/dev/server/chunks/ssr/1ksy_1cqeh4n._.js
+- .next/dev/server/chunks/ssr/1ksy_1cvajl0._.js
+- .next/dev/server/chunks/ssr/1ksy_1e25l8u._.js
+- .next/dev/server/chunks/ssr/1ksy_1ebn3p4._.js
+- .next/dev/server/chunks/ssr/1ksy_1gmx8f4._.js
+- .next/dev/server/chunks/ssr/1ksy_1itt6jz._.js
+- .next/dev/server/chunks/ssr/1ksy_1k-5z7a._.js
+- .next/dev/server/chunks/ssr/1ksy_1k3zugm._.js
+- .next/dev/server/chunks/ssr/1ksy_1k6-ngu._.js
+- .next/dev/server/chunks/ssr/1ksy_1lc5e4s._.js
+- .next/dev/server/chunks/ssr/1ksy_1lw2-pd._.js
+- .next/dev/server/chunks/ssr/1ksy_1lxevwd._.js
+- .next/dev/server/chunks/ssr/1ksy_1mvckdi._.js
+- .next/dev/server/chunks/ssr/1ksy_1q970js._.js
+- .next/dev/server/chunks/ssr/1ksy_1r-3e7a._.js
+- .next/dev/server/chunks/ssr/1ksy_1t_bkp2._.js
+- .next/dev/server/chunks/ssr/1ksy_1tyg5tr._.js
+- .next/dev/server/chunks/ssr/1ksy_1u-bxey._.js
+- .next/dev/server/chunks/ssr/1ksy_1ua1n2d._.js
+- .next/dev/server/chunks/ssr/1ksy_1uv4zqh._.js
+- .next/dev/server/chunks/ssr/1ksy_1uwcy4u._.js
+- .next/dev/server/chunks/ssr/1ksy_1uwdsd9._.js
+- .next/dev/server/chunks/ssr/1ksy_1uygyp0._.js
+- .next/dev/server/chunks/ssr/1ksy_1vdgu-v._.js
+- .next/dev/server/chunks/ssr/1ksy_1wpnxvs._.js
+- .next/dev/server/chunks/ssr/1ksy_1x9gl2h._.js
+- .next/dev/server/chunks/ssr/1ksy_1y7hcqx._.js
+- .next/dev/server/chunks/ssr/1ksy_1zh_zf-._.js
+- .next/dev/server/chunks/ssr/1ksy_@floating-ui_1vyj7-u._.js
+- .next/dev/server/chunks/ssr/1ksy_@radix-ui_0h5_jn0._.js
+- .next/dev/server/chunks/ssr/1ksy_@radix-ui_1idlupk._.js
+- .next/dev/server/chunks/ssr/1ksy_lodash_0xe7tvm._.js
+- .next/dev/server/chunks/ssr/1ksy_micromark-core-commonmark_dev_lib_04u3qhm._.js
+- .next/dev/server/chunks/ssr/1ksy_next_04rkziq._.js
+- .next/dev/server/chunks/ssr/1ksy_next_12ud3cu._.js
+- .next/dev/server/chunks/ssr/1ksy_next_1al6qof._.js
+- .next/dev/server/chunks/ssr/1ksy_next_dist_1b3qrvr._.js
+- .next/dev/server/chunks/ssr/1ksy_next_dist_client_components_0vf2lab._.js
+- .next/dev/server/chunks/ssr/1ksy_next_dist_client_components_builtin_forbidden_0371387.js
+- .next/dev/server/chunks/ssr/1ksy_next_dist_client_components_builtin_global-error_1oh1p7e.js
+- .next/dev/server/chunks/ssr/1ksy_next_dist_client_components_builtin_unauthorized_12mop4j.js
+- .next/dev/server/chunks/ssr/1ksy_next_dist_compiled_1ihf954._.js
+- .next/dev/server/chunks/ssr/1ksy_next_dist_esm_02f3jnm._.js
+- .next/dev/server/chunks/ssr/1ksy_next_dist_esm_02vafe6._.js
+- .next/dev/server/chunks/ssr/1ksy_next_dist_esm_0_mz4k9._.js
+- .next/dev/server/chunks/ssr/1ksy_next_dist_esm_0_synpi._.js
+- .next/dev/server/chunks/ssr/1ksy_next_dist_esm_0db-yml._.js
+- .next/dev/server/chunks/ssr/1ksy_next_dist_esm_0qs_vks._.js
+- .next/dev/server/chunks/ssr/1ksy_next_dist_esm_0sa_gbi._.js
+- .next/dev/server/chunks/ssr/1ksy_next_dist_esm_0sg_gvj._.js
+- .next/dev/server/chunks/ssr/1ksy_next_dist_esm_0xblhll._.js
+- .next/dev/server/chunks/ssr/1ksy_next_dist_esm_0yb_ajg._.js
+- .next/dev/server/chunks/ssr/1ksy_next_dist_esm_12pz3qr._.js
+- .next/dev/server/chunks/ssr/1ksy_next_dist_esm_16ghc1w._.js
+- .next/dev/server/chunks/ssr/1ksy_next_dist_esm_18aewlu._.js
+- .next/dev/server/chunks/ssr/1ksy_next_dist_esm_1_bby5k._.js
+- .next/dev/server/chunks/ssr/1ksy_next_dist_esm_1al7-gy._.js
+- .next/dev/server/chunks/ssr/1ksy_next_dist_esm_1mudz84._.js
+- .next/dev/server/chunks/ssr/1ksy_next_dist_esm_1payc4f._.js
+- .next/dev/server/chunks/ssr/1ksy_next_dist_esm_1pyzgbs._.js
+- .next/dev/server/chunks/ssr/1ksy_next_dist_esm_1tssxe1._.js
+- .next/dev/server/chunks/ssr/1ksy_next_dist_esm_1w98rjv._.js
+- .next/dev/server/chunks/ssr/1ksy_next_dist_esm_1yct_d2._.js
+- .next/dev/server/chunks/ssr/1ksy_next_dist_server_route-modules_app-page_0rm2i0v._.js
+- .next/dev/server/chunks/ssr/1ksy_recharts_es6_1gxi6ni._.js
+- .next/dev/server/chunks/ssr/1ksy_tailwind-merge_dist_bundle-mjs_mjs_1kewdsi._.js
+- .next/dev/server/chunks/ssr/1mnb__next-internal_server_app_challenges_120-days-100k_page_actions_0psg5z8.js
+- .next/dev/server/chunks/ssr/1x14_Forge Pro__next-internal_server_app_challenges_30-days-1k_page_actions_0tnhm5r.js
+- .next/dev/server/chunks/ssr/1x14_Forge Pro__next-internal_server_app_challenges_90-days-10k_page_actions_16uh6iu.js
+- .next/dev/server/chunks/ssr/1x14_Forge Pro__next-internal_server_app_niche-finder_tracked_page_actions_1y-jl34.js
+- .next/dev/server/chunks/ssr/Herd_Forge Pro__next-internal_server_app__not-found_page_actions_0lhwgxr.js
+- .next/dev/server/chunks/ssr/Herd_Forge Pro__next-internal_server_app_assets_page_actions_0ycul58.js
+- .next/dev/server/chunks/ssr/Herd_Forge Pro__next-internal_server_app_content_page_actions_011mnsv.js
+- .next/dev/server/chunks/ssr/Herd_Forge Pro__next-internal_server_app_login_page_actions_052ryp6.js
+- .next/dev/server/chunks/ssr/Herd_Forge Pro__next-internal_server_app_niche-finder_mcp_page_actions_0nc3rcq.js
+- .next/dev/server/chunks/ssr/Herd_Forge Pro__next-internal_server_app_niche-finder_page_actions_0as0s8b.js
+- .next/dev/server/chunks/ssr/Herd_Forge Pro__next-internal_server_app_page_actions_0ouyxqx.js
+- .next/dev/server/chunks/ssr/Herd_Forge Pro__next-internal_server_app_revenue_page_actions_1hg9s1c.js
+- .next/dev/server/chunks/ssr/Herd_Forge Pro__next-internal_server_app_script_[id]_page_actions_1iig-c4.js
+- .next/dev/server/chunks/ssr/Herd_Forge Pro__next-internal_server_app_script_new_page_actions_0vqeyt7.js
+- .next/dev/server/chunks/ssr/Herd_Forge Pro__next-internal_server_app_script_page_actions_1jirv7x.js
+- .next/dev/server/chunks/ssr/Herd_Forge Pro__next-internal_server_app_settings_billing_page_actions_0-lbkmv.js
+- .next/dev/server/chunks/ssr/Herd_Forge Pro__next-internal_server_app_settings_page_actions_0dr5j3d.js
+- .next/dev/server/chunks/ssr/Herd_Forge Pro__next-internal_server_app_settings_profile_page_actions_1ifnx8s.js
+- .next/dev/server/chunks/ssr/Herd_Forge Pro__next-internal_server_app_team_page_actions_1nhsmxh.js
+- .next/dev/server/chunks/ssr/Herd_Forge Pro__next-internal_server_app_thumbnails_page_actions_1zxqbhx.js
+- .next/dev/server/chunks/ssr/Herd_Forge Pro__next-internal_server_app_videos_page_actions_0fckauz.js
+- .next/dev/server/chunks/ssr/Herd_Forge Pro_src_00e0pfc._.js
+- .next/dev/server/chunks/ssr/Herd_Forge Pro_src_01056n2._.js
+- .next/dev/server/chunks/ssr/Herd_Forge Pro_src_0408wuf._.js
+- .next/dev/server/chunks/ssr/Herd_Forge Pro_src_05pk6qi._.js
+- .next/dev/server/chunks/ssr/Herd_Forge Pro_src_05pmjoa._.js
+- .next/dev/server/chunks/ssr/Herd_Forge Pro_src_070muxc._.js
+- .next/dev/server/chunks/ssr/Herd_Forge Pro_src_0c6mdin._.js
+- .next/dev/server/chunks/ssr/Herd_Forge Pro_src_0grudqt._.js
+- .next/dev/server/chunks/ssr/Herd_Forge Pro_src_0hz03fp._.js
+- .next/dev/server/chunks/ssr/Herd_Forge Pro_src_0pi5s6j._.js
+- .next/dev/server/chunks/ssr/Herd_Forge Pro_src_0u1j_n9._.js
+- .next/dev/server/chunks/ssr/Herd_Forge Pro_src_1374td4._.js
+- .next/dev/server/chunks/ssr/Herd_Forge Pro_src_15u57k6._.js
+- .next/dev/server/chunks/ssr/Herd_Forge Pro_src_1_4h1cc._.js
+- .next/dev/server/chunks/ssr/Herd_Forge Pro_src_1b-iw_j._.js
+- .next/dev/server/chunks/ssr/Herd_Forge Pro_src_1c_2yrv._.js
+- .next/dev/server/chunks/ssr/Herd_Forge Pro_src_1kq0f0g._.js
+- .next/dev/server/chunks/ssr/Herd_Forge Pro_src_1l8_52b._.js
+- .next/dev/server/chunks/ssr/Herd_Forge Pro_src_1lqmpi8._.js
+- .next/dev/server/chunks/ssr/Herd_Forge Pro_src_1no2vie._.js
+- .next/dev/server/chunks/ssr/Herd_Forge Pro_src_1oo17at._.js
+- .next/dev/server/chunks/ssr/Herd_Forge Pro_src_1ov0-ym._.js
+- .next/dev/server/chunks/ssr/Herd_Forge Pro_src_1texij9._.js
+- .next/dev/server/chunks/ssr/Herd_Forge Pro_src_1uka7bg._.js
+- .next/dev/server/chunks/ssr/Herd_Forge Pro_src_1zqxmwp._.js
+- .next/dev/server/chunks/ssr/Herd_Forge Pro_src_1zxzvlj._.js
+- .next/dev/server/chunks/ssr/[externals]__12if52y._.js
+- .next/dev/server/chunks/ssr/[externals]__1vp7etu._.js
+- .next/dev/server/chunks/ssr/[externals]_next_dist_shared_lib_no-fallback-error_external_0r3u29k.js
+- .next/dev/server/chunks/ssr/[root-of-the-server]__0-sy691._.js
+- .next/dev/server/chunks/ssr/[root-of-the-server]__006ou1z._.js
+- .next/dev/server/chunks/ssr/[root-of-the-server]__06wqzy2._.js
+- .next/dev/server/chunks/ssr/[root-of-the-server]__077pqrk._.js
+- .next/dev/server/chunks/ssr/[root-of-the-server]__0hpn3yv._.js
+- .next/dev/server/chunks/ssr/[root-of-the-server]__0j4mk-n._.js
+- .next/dev/server/chunks/ssr/[root-of-the-server]__0o67k37._.js
+- .next/dev/server/chunks/ssr/[root-of-the-server]__0ovyi5l._.js
+- .next/dev/server/chunks/ssr/[root-of-the-server]__0riag_3._.js
+- .next/dev/server/chunks/ssr/[root-of-the-server]__10qprvq._.js
+- .next/dev/server/chunks/ssr/[root-of-the-server]__12kk3g5._.js
+- .next/dev/server/chunks/ssr/[root-of-the-server]__14ybv89._.js
+- .next/dev/server/chunks/ssr/[root-of-the-server]__180io4m._.js
+- .next/dev/server/chunks/ssr/[root-of-the-server]__18jyyvg._.js
+- .next/dev/server/chunks/ssr/[root-of-the-server]__19l0ima._.js
+- .next/dev/server/chunks/ssr/[root-of-the-server]__1_irg92._.js
+- .next/dev/server/chunks/ssr/[root-of-the-server]__1a26sji._.js
+- .next/dev/server/chunks/ssr/[root-of-the-server]__1h0y9gz._.js
+- .next/dev/server/chunks/ssr/[root-of-the-server]__1h9xfij._.js
+- .next/dev/server/chunks/ssr/[root-of-the-server]__1j4lj5u._.js
+- .next/dev/server/chunks/ssr/[root-of-the-server]__1rlkuyg._.js
+- .next/dev/server/chunks/ssr/[root-of-the-server]__1tr46lc._.js
+- .next/dev/server/chunks/ssr/[root-of-the-server]__1w096g0._.js
+- .next/dev/server/chunks/ssr/[root-of-the-server]__1zciqvk._.js
+- .next/dev/server/chunks/ssr/[turbopack]_runtime.js
+- .next/dev/server/edge/chunks/06z5_next_dist_esm_build_templates_edge-wrapper_0jzbx04.js
+- .next/dev/server/edge/chunks/1ksy_10lmcef._.js
+- .next/dev/server/edge/chunks/1ksy_@auth_core_1774h2v._.js
+- .next/dev/server/edge/chunks/1ksy_jose_dist_webapi_1if2p_g._.js
+- .next/dev/server/edge/chunks/1ksy_next_dist_200sx9x._.js
+- .next/dev/server/edge/chunks/[root-of-the-server]__0f8zfth._.js
+- .next/dev/server/interception-route-rewrite-manifest.js
+- .next/dev/server/middleware/middleware-manifest.json
+- .next/dev/server/middleware-build-manifest.js
+- .next/dev/server/middleware-manifest.json
+- .next/dev/server/next-font-manifest.js
+- .next/dev/server/next-font-manifest.json
+- .next/dev/server/pages/_app/build-manifest.json
+- .next/dev/server/pages/_app/client-build-manifest.json
+- .next/dev/server/pages/_app/next-font-manifest.json
+- .next/dev/server/pages/_app/pages-manifest.json
+- .next/dev/server/pages/_app/react-loadable-manifest.json
+- .next/dev/server/pages/_app.js
+- .next/dev/server/pages/_document/next-font-manifest.json
+- .next/dev/server/pages/_document/pages-manifest.json
+- .next/dev/server/pages/_document/react-loadable-manifest.json
+- .next/dev/server/pages/_document.js
+- .next/dev/server/pages/_error/build-manifest.json
+- .next/dev/server/pages/_error/client-build-manifest.json
+- .next/dev/server/pages/_error/next-font-manifest.json
+- .next/dev/server/pages/_error/pages-manifest.json
+- .next/dev/server/pages/_error/react-loadable-manifest.json
+- .next/dev/server/pages/_error.js
+- .next/dev/server/pages-manifest.json
+- .next/dev/server/server-reference-manifest.js
+- .next/dev/server/server-reference-manifest.json
+- .next/dev/static/chunks/1ksy_0-y4hsr._.js
+- .next/dev/static/chunks/1ksy_002h590._.js
+- .next/dev/static/chunks/1ksy_00h6_mk._.js
+- .next/dev/static/chunks/1ksy_014icmb._.js
+- .next/dev/static/chunks/1ksy_01an4ie._.js
+- .next/dev/static/chunks/1ksy_01h3bvy._.js
+- .next/dev/static/chunks/1ksy_02a-am4._.js
+- .next/dev/static/chunks/1ksy_02zb2jb._.js
+- .next/dev/static/chunks/1ksy_033w_dm._.js
+- .next/dev/static/chunks/1ksy_03myetn._.js
+- .next/dev/static/chunks/1ksy_048z27f._.js
+- .next/dev/static/chunks/1ksy_04nr4kf._.js
+- .next/dev/static/chunks/1ksy_05-wbl4._.js
+- .next/dev/static/chunks/1ksy_0709nb-._.js
+- .next/dev/static/chunks/1ksy_07ryl5j._.js
+- .next/dev/static/chunks/1ksy_07v_0mz._.js
+- .next/dev/static/chunks/1ksy_080q4br._.js
+- .next/dev/static/chunks/1ksy_0893mpy._.js
+- .next/dev/static/chunks/1ksy_0btk5-q._.js
+- .next/dev/static/chunks/1ksy_0c9y7kf._.js
+- .next/dev/static/chunks/1ksy_0coq6n2._.js
+- .next/dev/static/chunks/1ksy_0e-sdzt._.js
+- .next/dev/static/chunks/1ksy_0f025d-._.js
+- .next/dev/static/chunks/1ksy_0i4gsan._.js
+- .next/dev/static/chunks/1ksy_0ilztdg._.js
+- .next/dev/static/chunks/1ksy_0jkunay._.js
+- .next/dev/static/chunks/1ksy_0k99kej._.js
+- .next/dev/static/chunks/1ksy_0ki6q6c._.js
+- .next/dev/static/chunks/1ksy_0lobqcx._.js
+- .next/dev/static/chunks/1ksy_0lpr9h1._.js
+- .next/dev/static/chunks/1ksy_0mcaq-i._.js
+- .next/dev/static/chunks/1ksy_0meeq93._.js
+- .next/dev/static/chunks/1ksy_0nzvabu._.js
+- .next/dev/static/chunks/1ksy_0o0-tzy._.js
+- .next/dev/static/chunks/1ksy_0q5rjh-._.js
+- .next/dev/static/chunks/1ksy_0qm1lwm._.js
+- .next/dev/static/chunks/1ksy_0r4t3ab._.js
+- .next/dev/static/chunks/1ksy_0rz_b69._.js
+- .next/dev/static/chunks/1ksy_0rzxbp9._.js
+- .next/dev/static/chunks/1ksy_0sgsirw._.js
+- .next/dev/static/chunks/1ksy_0sv9b8h._.js
+- .next/dev/static/chunks/1ksy_0t0m_cl._.js
+- .next/dev/static/chunks/1ksy_0t891e5._.js
+- .next/dev/static/chunks/1ksy_0t9bbcn._.js
+- .next/dev/static/chunks/1ksy_0tt1k-5._.js
+- .next/dev/static/chunks/1ksy_0unyqky._.js
+- .next/dev/static/chunks/1ksy_0x0-9fk._.js
+- .next/dev/static/chunks/1ksy_0x1rx0g._.js
+- .next/dev/static/chunks/1ksy_0yogcy-._.js
+- .next/dev/static/chunks/1ksy_0z7fv0q._.js
+- .next/dev/static/chunks/1ksy_0zeg3pk._.js
+- .next/dev/static/chunks/1ksy_10yx8og._.js
+- .next/dev/static/chunks/1ksy_1295c2f._.js
+- .next/dev/static/chunks/1ksy_12o30gg._.js
+- .next/dev/static/chunks/1ksy_1498xv8._.js
+- .next/dev/static/chunks/1ksy_14hm1nd._.js
+- .next/dev/static/chunks/1ksy_14hvngw._.js
+- .next/dev/static/chunks/1ksy_14jky-y._.js
+- .next/dev/static/chunks/1ksy_14phm8y._.js
+- .next/dev/static/chunks/1ksy_159vrnu._.js
+- .next/dev/static/chunks/1ksy_16yz0pa._.js
+- .next/dev/static/chunks/1ksy_1732bb3._.js
+- .next/dev/static/chunks/1ksy_17be7t1._.js
+- .next/dev/static/chunks/1ksy_17z4_0h._.js
+- .next/dev/static/chunks/1ksy_19qra7s._.js
+- .next/dev/static/chunks/1ksy_1_2zjlr._.js
+- .next/dev/static/chunks/1ksy_1a9gfht._.js
+- .next/dev/static/chunks/1ksy_1ae9k_0._.js
+- .next/dev/static/chunks/1ksy_1bwqktg._.js
+- .next/dev/static/chunks/1ksy_1cnoi43._.js
+- .next/dev/static/chunks/1ksy_1dfnjks._.js
+- .next/dev/static/chunks/1ksy_1e27_cs._.js
+- .next/dev/static/chunks/1ksy_1gcfs30._.js
+- .next/dev/static/chunks/1ksy_1gdxui3._.js
+- .next/dev/static/chunks/1ksy_1hecgcm._.js
+- .next/dev/static/chunks/1ksy_1hr2qgl._.js
+- .next/dev/static/chunks/1ksy_1jcd087._.js
+- .next/dev/static/chunks/1ksy_1jf-493._.js
+- .next/dev/static/chunks/1ksy_1kwtfz1._.js
+- .next/dev/static/chunks/1ksy_1nbpo8v._.js
+- .next/dev/static/chunks/1ksy_1nl9xrh._.js
+- .next/dev/static/chunks/1ksy_1o39a_m._.js
+- .next/dev/static/chunks/1ksy_1omr6t6._.js
+- .next/dev/static/chunks/1ksy_1r3d-4m._.js
+- .next/dev/static/chunks/1ksy_1raacia._.js
+- .next/dev/static/chunks/1ksy_1reya7u._.js
+- .next/dev/static/chunks/1ksy_1ryt_ys._.js
+- .next/dev/static/chunks/1ksy_1sqxoke._.js
+- .next/dev/static/chunks/1ksy_1suao23._.js
+- .next/dev/static/chunks/1ksy_1tg-3sz._.js
+- .next/dev/static/chunks/1ksy_1tkqwp4._.js
+- .next/dev/static/chunks/1ksy_1tlx9do._.js
+- .next/dev/static/chunks/1ksy_1ttqahh._.js
+- .next/dev/static/chunks/1ksy_1ua6nzn._.js
+- .next/dev/static/chunks/1ksy_1uqbaj9._.js
+- .next/dev/static/chunks/1ksy_1uxj2c3._.js
+- .next/dev/static/chunks/1ksy_1w280_y._.js
+- .next/dev/static/chunks/1ksy_1w2m8vi._.js
+- .next/dev/static/chunks/1ksy_1w6_bvf._.js
+- .next/dev/static/chunks/1ksy_1wj9-xj._.js
+- .next/dev/static/chunks/1ksy_1x21m95._.js
+- .next/dev/static/chunks/1ksy_1y5f5gr._.js
+- .next/dev/static/chunks/1ksy_1yzbmsr._.js
+- .next/dev/static/chunks/1ksy_1zebph2._.js
+- .next/dev/static/chunks/1ksy_@floating-ui_1z9ovac._.js
+- .next/dev/static/chunks/1ksy_@radix-ui_18xyxa7._.js
+- .next/dev/static/chunks/1ksy_@radix-ui_1pourze._.js
+- .next/dev/static/chunks/1ksy_@swc_helpers_cjs_175ueyq._.js
+- .next/dev/static/chunks/1ksy_lodash_114s8-a._.js
+- .next/dev/static/chunks/1ksy_micromark-core-commonmark_dev_lib_1roljdy._.js
+- .next/dev/static/chunks/1ksy_next_app_1a4z4i8.js
+- .next/dev/static/chunks/1ksy_next_dist_04ar4ui._.js
+- .next/dev/static/chunks/1ksy_next_dist_0lkijzn._.js
+- .next/dev/static/chunks/1ksy_next_dist_0mk4m3m._.js
+- .next/dev/static/chunks/1ksy_next_dist_build_polyfills_polyfill-nomodule.js
+- .next/dev/static/chunks/1ksy_next_dist_client_1iuy1ie._.js
+- .next/dev/static/chunks/1ksy_next_dist_client_2047woa._.js
+- .next/dev/static/chunks/1ksy_next_dist_client_components_builtin_global-error_1g1cn1y.js
+- .next/dev/static/chunks/1ksy_next_dist_compiled_0tbbdu4._.js
+- .next/dev/static/chunks/1ksy_next_dist_compiled_19e33bt._.js
+- .next/dev/static/chunks/1ksy_next_dist_compiled_next-devtools_index_0wt7x6d.js
+- .next/dev/static/chunks/1ksy_next_dist_compiled_react-dom_18quqo_._.js
+- .next/dev/static/chunks/1ksy_next_dist_compiled_react-server-dom-turbopack_0vyl9km._.js
+- .next/dev/static/chunks/1ksy_next_dist_shared_lib_04xswqu._.js
+- .next/dev/static/chunks/1ksy_next_dist_shared_lib_0v2ty1n._.js
+- .next/dev/static/chunks/1ksy_react-dom_0rqegse._.js
+- .next/dev/static/chunks/1ksy_recharts_es6_1k4pxhc._.js
+- .next/dev/static/chunks/1ksy_tailwind-merge_dist_bundle-mjs_mjs_1lbhl9i._.js
+- .next/dev/static/chunks/Herd_Forge Pro_1anvha4._.js
+- .next/dev/static/chunks/Herd_Forge Pro_pages__app_0du2_q-._.js
+- .next/dev/static/chunks/Herd_Forge Pro_pages__error_0du2_q-._.js
+- .next/dev/static/chunks/Herd_Forge Pro_src_0-8zyjt._.js
+- .next/dev/static/chunks/Herd_Forge Pro_src_08yr4g3._.js
+- .next/dev/static/chunks/Herd_Forge Pro_src_0994awf._.js
+- .next/dev/static/chunks/Herd_Forge Pro_src_0bve_6o._.js
+- .next/dev/static/chunks/Herd_Forge Pro_src_0bzevnj._.js
+- .next/dev/static/chunks/Herd_Forge Pro_src_0h96rrs._.js
+- .next/dev/static/chunks/Herd_Forge Pro_src_0j71gew._.js
+- .next/dev/static/chunks/Herd_Forge Pro_src_0k4dlt6._.js
+- .next/dev/static/chunks/Herd_Forge Pro_src_0kaw_x0._.js
+- .next/dev/static/chunks/Herd_Forge Pro_src_0kc2vs2._.js
+- .next/dev/static/chunks/Herd_Forge Pro_src_0kqrkkg._.js
+- .next/dev/static/chunks/Herd_Forge Pro_src_0lgjouc._.js
+- .next/dev/static/chunks/Herd_Forge Pro_src_0m0ebeu._.js
+- .next/dev/static/chunks/Herd_Forge Pro_src_0ug9p6s._.js
+- .next/dev/static/chunks/Herd_Forge Pro_src_0xdlmnp._.js
+- .next/dev/static/chunks/Herd_Forge Pro_src_0y7gmk0._.js
+- .next/dev/static/chunks/Herd_Forge Pro_src_0yrbz9e._.js
+- .next/dev/static/chunks/Herd_Forge Pro_src_0zw0q4k._.js
+- .next/dev/static/chunks/Herd_Forge Pro_src_146jtdk._.js
+- .next/dev/static/chunks/Herd_Forge Pro_src_159hpem._.js
+- .next/dev/static/chunks/Herd_Forge Pro_src_1_ext9y._.js
+- .next/dev/static/chunks/Herd_Forge Pro_src_1gkwxav._.js
+- .next/dev/static/chunks/Herd_Forge Pro_src_1tgbtug._.js
+- .next/dev/static/chunks/Herd_Forge Pro_src_1w44n64._.js
+- .next/dev/static/chunks/Herd_Forge Pro_src_1wf8x81._.js
+- .next/dev/static/chunks/Herd_Forge Pro_src_20i9q0c._.js
+- .next/dev/static/chunks/Herd_Forge Pro_src_app_assets_page_tsx_1g1cn1y._.js
+- .next/dev/static/chunks/Herd_Forge Pro_src_app_challenges_120-days-100k_page_tsx_1g1cn1y._.js
+- .next/dev/static/chunks/Herd_Forge Pro_src_app_challenges_30-days-1k_page_tsx_1g1cn1y._.js
+- .next/dev/static/chunks/Herd_Forge Pro_src_app_challenges_90-days-10k_page_tsx_1g1cn1y._.js
+- .next/dev/static/chunks/Herd_Forge Pro_src_app_content_page_tsx_1g1cn1y._.js
+- .next/dev/static/chunks/Herd_Forge Pro_src_app_globals_css_1igg3k2._.single.css
+- .next/dev/static/chunks/Herd_Forge Pro_src_app_layout_tsx_1teut-n._.js
+- .next/dev/static/chunks/Herd_Forge Pro_src_app_login_page_tsx_1g1cn1y._.js
+- .next/dev/static/chunks/Herd_Forge Pro_src_app_niche-finder_mcp_page_tsx_1g1cn1y._.js
+- .next/dev/static/chunks/Herd_Forge Pro_src_app_niche-finder_page_tsx_1g1cn1y._.js
+- .next/dev/static/chunks/Herd_Forge Pro_src_app_niche-finder_tracked_page_tsx_1g1cn1y._.js
+- .next/dev/static/chunks/Herd_Forge Pro_src_app_page_tsx_1g1cn1y._.js
+- .next/dev/static/chunks/Herd_Forge Pro_src_app_revenue_page_tsx_1g1cn1y._.js
+- .next/dev/static/chunks/Herd_Forge Pro_src_app_script_[id]_page_tsx_1g1cn1y._.js
+- .next/dev/static/chunks/Herd_Forge Pro_src_app_script_new_page_tsx_1g1cn1y._.js
+- .next/dev/static/chunks/Herd_Forge Pro_src_app_script_page_tsx_1g1cn1y._.js
+- .next/dev/static/chunks/Herd_Forge Pro_src_app_settings_billing_page_tsx_1g1cn1y._.js
+- .next/dev/static/chunks/Herd_Forge Pro_src_app_settings_page_tsx_1g1cn1y._.js
+- .next/dev/static/chunks/Herd_Forge Pro_src_app_settings_profile_page_tsx_1g1cn1y._.js
+- .next/dev/static/chunks/Herd_Forge Pro_src_app_team_page_tsx_1g1cn1y._.js
+- .next/dev/static/chunks/Herd_Forge Pro_src_app_thumbnails_page_tsx_1g1cn1y._.js
+- .next/dev/static/chunks/Herd_Forge Pro_src_app_videos_page_tsx_1g1cn1y._.js
+- .next/dev/static/chunks/Herd_Forge Pro_src_components_AuthSessionProvider_tsx_061gdtu._.js
+- .next/dev/static/chunks/[next]_entry_page-loader_ts_19kb8ez._.js
+- .next/dev/static/chunks/[next]_entry_page-loader_ts_1qmqtuy._.js
+- .next/dev/static/chunks/[next]_internal_font_google_dm_mono_ac305142_module_css_1igg3k2._.single.css
+- .next/dev/static/chunks/[next]_internal_font_google_inter_c15e96cb_module_css_1igg3k2._.single.css
+- .next/dev/static/chunks/[next]_internal_font_google_syne_89eecdd9_module_css_1igg3k2._.single.css
+- .next/dev/static/chunks/[root-of-the-server]__0i-pkwc._.css
+- .next/dev/static/chunks/[root-of-the-server]__0ym5220._.js
+- .next/dev/static/chunks/[root-of-the-server]__1dv5snd._.js
+- .next/dev/static/chunks/[turbopack]_browser_dev_hmr-client_hmr-client_ts_0h08kz4._.js
+- .next/dev/static/chunks/[turbopack]_browser_dev_hmr-client_hmr-client_ts_0r48e60._.js
+- .next/dev/static/chunks/[turbopack]_browser_dev_hmr-client_hmr-client_ts_1mojsay._.js
+- .next/dev/static/chunks/pages/_app.js
+- .next/dev/static/chunks/pages/_error.js
+- .next/dev/static/chunks/turbopack-Herd_Forge Pro_15vvdig._.js
+- .next/dev/static/chunks/turbopack-Herd_Forge Pro_pages__app_0v__3f8._.js
+- .next/dev/static/chunks/turbopack-Herd_Forge Pro_pages__error_1ov850h._.js
+- .next/dev/static/development/_buildManifest.js
+- .next/dev/static/development/_clientMiddlewareManifest.js
+- .next/dev/static/development/_ssgManifest.js
+- .next/dev/types/cache-life.d.ts
+- .next/dev/types/routes.d.ts
+- .next/dev/types/validator.ts
+- .next/diagnostics/build-diagnostics.json
+- .next/diagnostics/framework.json
+- .next/diagnostics/route-bundle-stats.json
+- .next/export-marker.json
+- .next/fallback-build-manifest.json
+- .next/images-manifest.json
+- .next/next-minimal-server.js.nft.json
+- .next/next-server.js.nft.json
+- .next/package.json
+- .next/prerender-manifest.json
+- .next/required-server-files.js
+- .next/required-server-files.json
+- .next/routes-manifest.json
+- .next/server/app/_global-error/page/app-paths-manifest.json
+- .next/server/app/_global-error/page/build-manifest.json
+- .next/server/app/_global-error/page/next-font-manifest.json
+- .next/server/app/_global-error/page/react-loadable-manifest.json
+- .next/server/app/_global-error/page/server-reference-manifest.json
+- .next/server/app/_global-error/page.js
+- .next/server/app/_global-error/page.js.nft.json
+- .next/server/app/_global-error/page_client-reference-manifest.js
+- .next/server/app/_global-error.html
+- .next/server/app/_not-found/page/app-paths-manifest.json
+- .next/server/app/_not-found/page/build-manifest.json
+- .next/server/app/_not-found/page/next-font-manifest.json
+- .next/server/app/_not-found/page/react-loadable-manifest.json
+- .next/server/app/_not-found/page/server-reference-manifest.json
+- .next/server/app/_not-found/page.js
+- .next/server/app/_not-found/page.js.nft.json
+- .next/server/app/_not-found/page_client-reference-manifest.js
+- .next/server/app/_not-found.html
+- .next/server/app/admin/page/app-paths-manifest.json
+- .next/server/app/admin/page/build-manifest.json
+- .next/server/app/admin/page/next-font-manifest.json
+- .next/server/app/admin/page/react-loadable-manifest.json
+- .next/server/app/admin/page/server-reference-manifest.json
+- .next/server/app/admin/page.js
+- .next/server/app/admin/page.js.nft.json
+- .next/server/app/admin/page_client-reference-manifest.js
+- .next/server/app/admin.html
+- .next/server/app/api/admin/me/route/app-paths-manifest.json
+- .next/server/app/api/admin/me/route/build-manifest.json
+- .next/server/app/api/admin/me/route/server-reference-manifest.json
+- .next/server/app/api/admin/me/route.js
+- .next/server/app/api/admin/me/route.js.nft.json
+- .next/server/app/api/admin/me/route_client-reference-manifest.js
+- .next/server/app/api/admin/niche-categories/[id]/route/app-paths-manifest.json
+- .next/server/app/api/admin/niche-categories/[id]/route/build-manifest.json
+- .next/server/app/api/admin/niche-categories/[id]/route/server-reference-manifest.json
+- .next/server/app/api/admin/niche-categories/[id]/route.js
+- .next/server/app/api/admin/niche-categories/[id]/route.js.nft.json
+- .next/server/app/api/admin/niche-categories/[id]/route_client-reference-manifest.js
+- .next/server/app/api/admin/niche-categories/route/app-paths-manifest.json
+- .next/server/app/api/admin/niche-categories/route/build-manifest.json
+- .next/server/app/api/admin/niche-categories/route/server-reference-manifest.json
+- .next/server/app/api/admin/niche-categories/route.js
+- .next/server/app/api/admin/niche-categories/route.js.nft.json
+- .next/server/app/api/admin/niche-categories/route_client-reference-manifest.js
+- .next/server/app/api/admin/users/[id]/route/app-paths-manifest.json
+- .next/server/app/api/admin/users/[id]/route/build-manifest.json
+- .next/server/app/api/admin/users/[id]/route/server-reference-manifest.json
+- .next/server/app/api/admin/users/[id]/route.js
+- .next/server/app/api/admin/users/[id]/route.js.nft.json
+- .next/server/app/api/admin/users/[id]/route_client-reference-manifest.js
+- .next/server/app/api/admin/users/route/app-paths-manifest.json
+- .next/server/app/api/admin/users/route/build-manifest.json
+- .next/server/app/api/admin/users/route/server-reference-manifest.json
+- .next/server/app/api/admin/users/route.js
+- .next/server/app/api/admin/users/route.js.nft.json
+- .next/server/app/api/admin/users/route_client-reference-manifest.js
+- .next/server/app/api/admin/workspaces/[id]/route/app-paths-manifest.json
+- .next/server/app/api/admin/workspaces/[id]/route/build-manifest.json
+- .next/server/app/api/admin/workspaces/[id]/route/server-reference-manifest.json
+- .next/server/app/api/admin/workspaces/[id]/route.js
+- .next/server/app/api/admin/workspaces/[id]/route.js.nft.json
+- .next/server/app/api/admin/workspaces/[id]/route_client-reference-manifest.js
+- .next/server/app/api/admin/workspaces/route/app-paths-manifest.json
+- .next/server/app/api/admin/workspaces/route/build-manifest.json
+- .next/server/app/api/admin/workspaces/route/server-reference-manifest.json
+- .next/server/app/api/admin/workspaces/route.js
+- .next/server/app/api/admin/workspaces/route.js.nft.json
+- .next/server/app/api/admin/workspaces/route_client-reference-manifest.js
+- .next/server/app/api/admin/youtube-quota/route/app-paths-manifest.json
+- .next/server/app/api/admin/youtube-quota/route/build-manifest.json
+- .next/server/app/api/admin/youtube-quota/route/server-reference-manifest.json
+- .next/server/app/api/admin/youtube-quota/route.js
+- .next/server/app/api/admin/youtube-quota/route.js.nft.json
+- .next/server/app/api/admin/youtube-quota/route_client-reference-manifest.js
+- .next/server/app/api/approval/[token]/approve/route/app-paths-manifest.json
+- .next/server/app/api/approval/[token]/approve/route/build-manifest.json
+- .next/server/app/api/approval/[token]/approve/route/server-reference-manifest.json
+- .next/server/app/api/approval/[token]/approve/route.js
+- .next/server/app/api/approval/[token]/approve/route.js.nft.json
+- .next/server/app/api/approval/[token]/approve/route_client-reference-manifest.js
+- .next/server/app/api/approval/[token]/comments/route/app-paths-manifest.json
+- .next/server/app/api/approval/[token]/comments/route/build-manifest.json
+- .next/server/app/api/approval/[token]/comments/route/server-reference-manifest.json
+- .next/server/app/api/approval/[token]/comments/route.js
+- .next/server/app/api/approval/[token]/comments/route.js.nft.json
+- .next/server/app/api/approval/[token]/comments/route_client-reference-manifest.js
+- .next/server/app/api/approval/[token]/route/app-paths-manifest.json
+- .next/server/app/api/approval/[token]/route/build-manifest.json
+- .next/server/app/api/approval/[token]/route/server-reference-manifest.json
+- .next/server/app/api/approval/[token]/route.js
+- .next/server/app/api/approval/[token]/route.js.nft.json
+- .next/server/app/api/approval/[token]/route_client-reference-manifest.js
+- .next/server/app/api/assets/[id]/download/route/app-paths-manifest.json
+- .next/server/app/api/assets/[id]/download/route/build-manifest.json
+- .next/server/app/api/assets/[id]/download/route/server-reference-manifest.json
+- .next/server/app/api/assets/[id]/download/route.js
+- .next/server/app/api/assets/[id]/download/route.js.nft.json
+- .next/server/app/api/assets/[id]/download/route_client-reference-manifest.js
+- .next/server/app/api/assets/[id]/route/app-paths-manifest.json
+- .next/server/app/api/assets/[id]/route/build-manifest.json
+- .next/server/app/api/assets/[id]/route/server-reference-manifest.json
+- .next/server/app/api/assets/[id]/route.js
+- .next/server/app/api/assets/[id]/route.js.nft.json
+- .next/server/app/api/assets/[id]/route_client-reference-manifest.js
+- .next/server/app/api/auth/[...nextauth]/route/app-paths-manifest.json
+- .next/server/app/api/auth/[...nextauth]/route/build-manifest.json
+- .next/server/app/api/auth/[...nextauth]/route/server-reference-manifest.json
+- .next/server/app/api/auth/[...nextauth]/route.js
+- .next/server/app/api/auth/[...nextauth]/route.js.nft.json
+- .next/server/app/api/auth/[...nextauth]/route_client-reference-manifest.js
+- .next/server/app/api/auth/register/route/app-paths-manifest.json
+- .next/server/app/api/auth/register/route/build-manifest.json
+- .next/server/app/api/auth/register/route/server-reference-manifest.json
+- .next/server/app/api/auth/register/route.js
+- .next/server/app/api/auth/register/route.js.nft.json
+- .next/server/app/api/auth/register/route_client-reference-manifest.js
+- .next/server/app/api/billing/checkout/route/app-paths-manifest.json
+- .next/server/app/api/billing/checkout/route/build-manifest.json
+- .next/server/app/api/billing/checkout/route/server-reference-manifest.json
+- .next/server/app/api/billing/checkout/route.js
+- .next/server/app/api/billing/checkout/route.js.nft.json
+- .next/server/app/api/billing/checkout/route_client-reference-manifest.js
+- .next/server/app/api/billing/portal/route/app-paths-manifest.json
+- .next/server/app/api/billing/portal/route/build-manifest.json
+- .next/server/app/api/billing/portal/route/server-reference-manifest.json
+- .next/server/app/api/billing/portal/route.js
+- .next/server/app/api/billing/portal/route.js.nft.json
+- .next/server/app/api/billing/portal/route_client-reference-manifest.js
+- .next/server/app/api/billing/status/route/app-paths-manifest.json
+- .next/server/app/api/billing/status/route/build-manifest.json
+- .next/server/app/api/billing/status/route/server-reference-manifest.json
+- .next/server/app/api/billing/status/route.js
+- .next/server/app/api/billing/status/route.js.nft.json
+- .next/server/app/api/billing/status/route_client-reference-manifest.js
+- .next/server/app/api/billing/webhook/route/app-paths-manifest.json
+- .next/server/app/api/billing/webhook/route/build-manifest.json
+- .next/server/app/api/billing/webhook/route/server-reference-manifest.json
+- .next/server/app/api/billing/webhook/route.js
+- .next/server/app/api/billing/webhook/route.js.nft.json
+- .next/server/app/api/billing/webhook/route_client-reference-manifest.js
+- .next/server/app/api/content/[id]/route/app-paths-manifest.json
+- .next/server/app/api/content/[id]/route/build-manifest.json
+- .next/server/app/api/content/[id]/route/server-reference-manifest.json
+- .next/server/app/api/content/[id]/route.js
+- .next/server/app/api/content/[id]/route.js.nft.json
+- .next/server/app/api/content/[id]/route_client-reference-manifest.js
+- .next/server/app/api/content/[id]/stage/route/app-paths-manifest.json
+- .next/server/app/api/content/[id]/stage/route/build-manifest.json
+- .next/server/app/api/content/[id]/stage/route/server-reference-manifest.json
+- .next/server/app/api/content/[id]/stage/route.js
+- .next/server/app/api/content/[id]/stage/route.js.nft.json
+- .next/server/app/api/content/[id]/stage/route_client-reference-manifest.js
+- .next/server/app/api/content/attach/route/app-paths-manifest.json
+- .next/server/app/api/content/attach/route/build-manifest.json
+- .next/server/app/api/content/attach/route/server-reference-manifest.json
+- .next/server/app/api/content/attach/route.js
+- .next/server/app/api/content/attach/route.js.nft.json
+- .next/server/app/api/content/attach/route_client-reference-manifest.js
+- .next/server/app/api/content/route/app-paths-manifest.json
+- .next/server/app/api/content/route/build-manifest.json
+- .next/server/app/api/content/route/server-reference-manifest.json
+- .next/server/app/api/content/route.js
+- .next/server/app/api/content/route.js.nft.json
+- .next/server/app/api/content/route_client-reference-manifest.js
+- .next/server/app/api/cron/niche-finder/discover-channels/route/app-paths-manifest.json
+- .next/server/app/api/cron/niche-finder/discover-channels/route/build-manifest.json
+- .next/server/app/api/cron/niche-finder/discover-channels/route/server-reference-manifest.json
+- .next/server/app/api/cron/niche-finder/discover-channels/route.js
+- .next/server/app/api/cron/niche-finder/discover-channels/route.js.nft.json
+- .next/server/app/api/cron/niche-finder/discover-channels/route_client-reference-manifest.js
+- .next/server/app/api/cron/niche-finder/prune-stale/route/app-paths-manifest.json
+- .next/server/app/api/cron/niche-finder/prune-stale/route/build-manifest.json
+- .next/server/app/api/cron/niche-finder/prune-stale/route/server-reference-manifest.json
+- .next/server/app/api/cron/niche-finder/prune-stale/route.js
+- .next/server/app/api/cron/niche-finder/prune-stale/route.js.nft.json
+- .next/server/app/api/cron/niche-finder/prune-stale/route_client-reference-manifest.js
+- .next/server/app/api/cron/niche-finder/recompute-scores/route/app-paths-manifest.json
+- .next/server/app/api/cron/niche-finder/recompute-scores/route/build-manifest.json
+- .next/server/app/api/cron/niche-finder/recompute-scores/route/server-reference-manifest.json
+- .next/server/app/api/cron/niche-finder/recompute-scores/route.js
+- .next/server/app/api/cron/niche-finder/recompute-scores/route.js.nft.json
+- .next/server/app/api/cron/niche-finder/recompute-scores/route_client-reference-manifest.js
+- .next/server/app/api/cron/niche-finder/snapshot-channels/route/app-paths-manifest.json
+- .next/server/app/api/cron/niche-finder/snapshot-channels/route/build-manifest.json
+- .next/server/app/api/cron/niche-finder/snapshot-channels/route/server-reference-manifest.json
+- .next/server/app/api/cron/niche-finder/snapshot-channels/route.js
+- .next/server/app/api/cron/niche-finder/snapshot-channels/route.js.nft.json
+- .next/server/app/api/cron/niche-finder/snapshot-channels/route_client-reference-manifest.js
+- .next/server/app/api/cron/sync-revenue/route/app-paths-manifest.json
+- .next/server/app/api/cron/sync-revenue/route/build-manifest.json
+- .next/server/app/api/cron/sync-revenue/route/server-reference-manifest.json
+- .next/server/app/api/cron/sync-revenue/route.js
+- .next/server/app/api/cron/sync-revenue/route.js.nft.json
+- .next/server/app/api/cron/sync-revenue/route_client-reference-manifest.js
+- .next/server/app/api/mcp/niche-finder/route/app-paths-manifest.json
+- .next/server/app/api/mcp/niche-finder/route/build-manifest.json
+- .next/server/app/api/mcp/niche-finder/route/server-reference-manifest.json
+- .next/server/app/api/mcp/niche-finder/route.js
+- .next/server/app/api/mcp/niche-finder/route.js.nft.json
+- .next/server/app/api/mcp/niche-finder/route_client-reference-manifest.js
+- .next/server/app/api/mux/webhook/route/app-paths-manifest.json
+- .next/server/app/api/mux/webhook/route/build-manifest.json
+- .next/server/app/api/mux/webhook/route/server-reference-manifest.json
+- .next/server/app/api/mux/webhook/route.js
+- .next/server/app/api/mux/webhook/route.js.nft.json
+- .next/server/app/api/mux/webhook/route_client-reference-manifest.js
+- .next/server/app/api/niche-finder/channels/[id]/history/route/app-paths-manifest.json
+- .next/server/app/api/niche-finder/channels/[id]/history/route/build-manifest.json
+- .next/server/app/api/niche-finder/channels/[id]/history/route/server-reference-manifest.json
+- .next/server/app/api/niche-finder/channels/[id]/history/route.js
+- .next/server/app/api/niche-finder/channels/[id]/history/route.js.nft.json
+- .next/server/app/api/niche-finder/channels/[id]/history/route_client-reference-manifest.js
+- .next/server/app/api/niche-finder/channels/[id]/route/app-paths-manifest.json
+- .next/server/app/api/niche-finder/channels/[id]/route/build-manifest.json
+- .next/server/app/api/niche-finder/channels/[id]/route/server-reference-manifest.json
+- .next/server/app/api/niche-finder/channels/[id]/route.js
+- .next/server/app/api/niche-finder/channels/[id]/route.js.nft.json
+- .next/server/app/api/niche-finder/channels/[id]/route_client-reference-manifest.js
+- .next/server/app/api/niche-finder/mcp-keys/[id]/route/app-paths-manifest.json
+- .next/server/app/api/niche-finder/mcp-keys/[id]/route/build-manifest.json
+- .next/server/app/api/niche-finder/mcp-keys/[id]/route/server-reference-manifest.json
+- .next/server/app/api/niche-finder/mcp-keys/[id]/route.js
+- .next/server/app/api/niche-finder/mcp-keys/[id]/route.js.nft.json
+- .next/server/app/api/niche-finder/mcp-keys/[id]/route_client-reference-manifest.js
+- .next/server/app/api/niche-finder/mcp-keys/route/app-paths-manifest.json
+- .next/server/app/api/niche-finder/mcp-keys/route/build-manifest.json
+- .next/server/app/api/niche-finder/mcp-keys/route/server-reference-manifest.json
+- .next/server/app/api/niche-finder/mcp-keys/route.js
+- .next/server/app/api/niche-finder/mcp-keys/route.js.nft.json
+- .next/server/app/api/niche-finder/mcp-keys/route_client-reference-manifest.js
+- .next/server/app/api/niche-finder/niches/[id]/route/app-paths-manifest.json
+- .next/server/app/api/niche-finder/niches/[id]/route/build-manifest.json
+- .next/server/app/api/niche-finder/niches/[id]/route/server-reference-manifest.json
+- .next/server/app/api/niche-finder/niches/[id]/route.js
+- .next/server/app/api/niche-finder/niches/[id]/route.js.nft.json
+- .next/server/app/api/niche-finder/niches/[id]/route_client-reference-manifest.js
+- .next/server/app/api/niche-finder/niches/route/app-paths-manifest.json
+- .next/server/app/api/niche-finder/niches/route/build-manifest.json
+- .next/server/app/api/niche-finder/niches/route/server-reference-manifest.json
+- .next/server/app/api/niche-finder/niches/route.js
+- .next/server/app/api/niche-finder/niches/route.js.nft.json
+- .next/server/app/api/niche-finder/niches/route_client-reference-manifest.js
+- .next/server/app/api/niche-finder/tracked-channels/[id]/route/app-paths-manifest.json
+- .next/server/app/api/niche-finder/tracked-channels/[id]/route/build-manifest.json
+- .next/server/app/api/niche-finder/tracked-channels/[id]/route/server-reference-manifest.json
+- .next/server/app/api/niche-finder/tracked-channels/[id]/route.js
+- .next/server/app/api/niche-finder/tracked-channels/[id]/route.js.nft.json
+- .next/server/app/api/niche-finder/tracked-channels/[id]/route_client-reference-manifest.js
+- .next/server/app/api/niche-finder/tracked-channels/route/app-paths-manifest.json
+- .next/server/app/api/niche-finder/tracked-channels/route/build-manifest.json
+- .next/server/app/api/niche-finder/tracked-channels/route/server-reference-manifest.json
+- .next/server/app/api/niche-finder/tracked-channels/route.js
+- .next/server/app/api/niche-finder/tracked-channels/route.js.nft.json
+- .next/server/app/api/niche-finder/tracked-channels/route_client-reference-manifest.js
+- .next/server/app/api/revenue/[id]/route/app-paths-manifest.json
+- .next/server/app/api/revenue/[id]/route/build-manifest.json
+- .next/server/app/api/revenue/[id]/route/server-reference-manifest.json
+- .next/server/app/api/revenue/[id]/route.js
+- .next/server/app/api/revenue/[id]/route.js.nft.json
+- .next/server/app/api/revenue/[id]/route_client-reference-manifest.js
+- .next/server/app/api/scripts/[id]/route/app-paths-manifest.json
+- .next/server/app/api/scripts/[id]/route/build-manifest.json
+- .next/server/app/api/scripts/[id]/route/server-reference-manifest.json
+- .next/server/app/api/scripts/[id]/route.js
+- .next/server/app/api/scripts/[id]/route.js.nft.json
+- .next/server/app/api/scripts/[id]/route_client-reference-manifest.js
+- .next/server/app/api/scripts/[id]/versions/[versionId]/restore/route/app-paths-manifest.json
+- .next/server/app/api/scripts/[id]/versions/[versionId]/restore/route/build-manifest.json
+- .next/server/app/api/scripts/[id]/versions/[versionId]/restore/route/server-reference-manifest.json
+- .next/server/app/api/scripts/[id]/versions/[versionId]/restore/route.js
+- .next/server/app/api/scripts/[id]/versions/[versionId]/restore/route.js.nft.json
+- .next/server/app/api/scripts/[id]/versions/[versionId]/restore/route_client-reference-manifest.js
+- .next/server/app/api/scripts/[id]/versions/route/app-paths-manifest.json
+- .next/server/app/api/scripts/[id]/versions/route/build-manifest.json
+- .next/server/app/api/scripts/[id]/versions/route/server-reference-manifest.json
+- .next/server/app/api/scripts/[id]/versions/route.js
+- .next/server/app/api/scripts/[id]/versions/route.js.nft.json
+- .next/server/app/api/scripts/[id]/versions/route_client-reference-manifest.js
+- .next/server/app/api/scripts/route/app-paths-manifest.json
+- .next/server/app/api/scripts/route/build-manifest.json
+- .next/server/app/api/scripts/route/server-reference-manifest.json
+- .next/server/app/api/scripts/route.js
+- .next/server/app/api/scripts/route.js.nft.json
+- .next/server/app/api/scripts/route_client-reference-manifest.js
+- .next/server/app/api/thumbnails/[id]/route/app-paths-manifest.json
+- .next/server/app/api/thumbnails/[id]/route/build-manifest.json
+- .next/server/app/api/thumbnails/[id]/route/server-reference-manifest.json
+- .next/server/app/api/thumbnails/[id]/route.js
+- .next/server/app/api/thumbnails/[id]/route.js.nft.json
+- .next/server/app/api/thumbnails/[id]/route_client-reference-manifest.js
+- .next/server/app/api/thumbnails/analyze-script/route/app-paths-manifest.json
+- .next/server/app/api/thumbnails/analyze-script/route/build-manifest.json
+- .next/server/app/api/thumbnails/analyze-script/route/server-reference-manifest.json
+- .next/server/app/api/thumbnails/analyze-script/route.js
+- .next/server/app/api/thumbnails/analyze-script/route.js.nft.json
+- .next/server/app/api/thumbnails/analyze-script/route_client-reference-manifest.js
+- .next/server/app/api/thumbnails/route/app-paths-manifest.json
+- .next/server/app/api/thumbnails/route/build-manifest.json
+- .next/server/app/api/thumbnails/route/server-reference-manifest.json
+- .next/server/app/api/thumbnails/route.js
+- .next/server/app/api/thumbnails/route.js.nft.json
+- .next/server/app/api/thumbnails/route_client-reference-manifest.js
+- .next/server/app/api/videos/[id]/approval-link/route/app-paths-manifest.json
+- .next/server/app/api/videos/[id]/approval-link/route/build-manifest.json
+- .next/server/app/api/videos/[id]/approval-link/route/server-reference-manifest.json
+- .next/server/app/api/videos/[id]/approval-link/route.js
+- .next/server/app/api/videos/[id]/approval-link/route.js.nft.json
+- .next/server/app/api/videos/[id]/approval-link/route_client-reference-manifest.js
+- .next/server/app/api/videos/[id]/comments/[commentId]/route/app-paths-manifest.json
+- .next/server/app/api/videos/[id]/comments/[commentId]/route/build-manifest.json
+- .next/server/app/api/videos/[id]/comments/[commentId]/route/server-reference-manifest.json
+- .next/server/app/api/videos/[id]/comments/[commentId]/route.js
+- .next/server/app/api/videos/[id]/comments/[commentId]/route.js.nft.json
+- .next/server/app/api/videos/[id]/comments/[commentId]/route_client-reference-manifest.js
+- .next/server/app/api/videos/[id]/comments/route/app-paths-manifest.json
+- .next/server/app/api/videos/[id]/comments/route/build-manifest.json
+- .next/server/app/api/videos/[id]/comments/route/server-reference-manifest.json
+- .next/server/app/api/videos/[id]/comments/route.js
+- .next/server/app/api/videos/[id]/comments/route.js.nft.json
+- .next/server/app/api/videos/[id]/comments/route_client-reference-manifest.js
+- .next/server/app/api/videos/[id]/route/app-paths-manifest.json
+- .next/server/app/api/videos/[id]/route/build-manifest.json
+- .next/server/app/api/videos/[id]/route/server-reference-manifest.json
+- .next/server/app/api/videos/[id]/route.js
+- .next/server/app/api/videos/[id]/route.js.nft.json
+- .next/server/app/api/videos/[id]/route_client-reference-manifest.js
+- .next/server/app/api/workspace/[id]/ai-settings/route/app-paths-manifest.json
+- .next/server/app/api/workspace/[id]/ai-settings/route/build-manifest.json
+- .next/server/app/api/workspace/[id]/ai-settings/route/server-reference-manifest.json
+- .next/server/app/api/workspace/[id]/ai-settings/route.js
+- .next/server/app/api/workspace/[id]/ai-settings/route.js.nft.json
+- .next/server/app/api/workspace/[id]/ai-settings/route_client-reference-manifest.js
+- .next/server/app/api/workspace/[id]/assets/route/app-paths-manifest.json
+- .next/server/app/api/workspace/[id]/assets/route/build-manifest.json
+- .next/server/app/api/workspace/[id]/assets/route/server-reference-manifest.json
+- .next/server/app/api/workspace/[id]/assets/route.js
+- .next/server/app/api/workspace/[id]/assets/route.js.nft.json
+- .next/server/app/api/workspace/[id]/assets/route_client-reference-manifest.js
+- .next/server/app/api/workspace/[id]/children/route/app-paths-manifest.json
+- .next/server/app/api/workspace/[id]/children/route/build-manifest.json
+- .next/server/app/api/workspace/[id]/children/route/server-reference-manifest.json
+- .next/server/app/api/workspace/[id]/children/route.js
+- .next/server/app/api/workspace/[id]/children/route.js.nft.json
+- .next/server/app/api/workspace/[id]/children/route_client-reference-manifest.js
+- .next/server/app/api/workspace/[id]/image-settings/route/app-paths-manifest.json
+- .next/server/app/api/workspace/[id]/image-settings/route/build-manifest.json
+- .next/server/app/api/workspace/[id]/image-settings/route/server-reference-manifest.json
+- .next/server/app/api/workspace/[id]/image-settings/route.js
+- .next/server/app/api/workspace/[id]/image-settings/route.js.nft.json
+- .next/server/app/api/workspace/[id]/image-settings/route_client-reference-manifest.js
+- .next/server/app/api/workspace/[id]/revenue/[provider]/route/app-paths-manifest.json
+- .next/server/app/api/workspace/[id]/revenue/[provider]/route/build-manifest.json
+- .next/server/app/api/workspace/[id]/revenue/[provider]/route/server-reference-manifest.json
+- .next/server/app/api/workspace/[id]/revenue/[provider]/route.js
+- .next/server/app/api/workspace/[id]/revenue/[provider]/route.js.nft.json
+- .next/server/app/api/workspace/[id]/revenue/[provider]/route_client-reference-manifest.js
+- .next/server/app/api/workspace/[id]/revenue/[provider]/sync/route/app-paths-manifest.json
+- .next/server/app/api/workspace/[id]/revenue/[provider]/sync/route/build-manifest.json
+- .next/server/app/api/workspace/[id]/revenue/[provider]/sync/route/server-reference-manifest.json
+- .next/server/app/api/workspace/[id]/revenue/[provider]/sync/route.js
+- .next/server/app/api/workspace/[id]/revenue/[provider]/sync/route.js.nft.json
+- .next/server/app/api/workspace/[id]/revenue/[provider]/sync/route_client-reference-manifest.js
+- .next/server/app/api/workspace/[id]/revenue/route/app-paths-manifest.json
+- .next/server/app/api/workspace/[id]/revenue/route/build-manifest.json
+- .next/server/app/api/workspace/[id]/revenue/route/server-reference-manifest.json
+- .next/server/app/api/workspace/[id]/revenue/route.js
+- .next/server/app/api/workspace/[id]/revenue/route.js.nft.json
+- .next/server/app/api/workspace/[id]/revenue/route_client-reference-manifest.js
+- .next/server/app/api/workspace/[id]/videos/route/app-paths-manifest.json
+- .next/server/app/api/workspace/[id]/videos/route/build-manifest.json
+- .next/server/app/api/workspace/[id]/videos/route/server-reference-manifest.json
+- .next/server/app/api/workspace/[id]/videos/route.js
+- .next/server/app/api/workspace/[id]/videos/route.js.nft.json
+- .next/server/app/api/workspace/[id]/videos/route_client-reference-manifest.js
+- .next/server/app/api/workspace/[id]/youtube-subscribers/route/app-paths-manifest.json
+- .next/server/app/api/workspace/[id]/youtube-subscribers/route/build-manifest.json
+- .next/server/app/api/workspace/[id]/youtube-subscribers/route/server-reference-manifest.json
+- .next/server/app/api/workspace/[id]/youtube-subscribers/route.js
+- .next/server/app/api/workspace/[id]/youtube-subscribers/route.js.nft.json
+- .next/server/app/api/workspace/[id]/youtube-subscribers/route_client-reference-manifest.js
+- .next/server/app/api/workspace/active/route/app-paths-manifest.json
+- .next/server/app/api/workspace/active/route/build-manifest.json
+- .next/server/app/api/workspace/active/route/server-reference-manifest.json
+- .next/server/app/api/workspace/active/route.js
+- .next/server/app/api/workspace/active/route.js.nft.json
+- .next/server/app/api/workspace/active/route_client-reference-manifest.js
+- .next/server/app/api/workspace/invite/route/app-paths-manifest.json
+- .next/server/app/api/workspace/invite/route/build-manifest.json
+- .next/server/app/api/workspace/invite/route/server-reference-manifest.json
+- .next/server/app/api/workspace/invite/route.js
+- .next/server/app/api/workspace/invite/route.js.nft.json
+- .next/server/app/api/workspace/invite/route_client-reference-manifest.js
+- .next/server/app/api/workspace/route/app-paths-manifest.json
+- .next/server/app/api/workspace/route/build-manifest.json
+- .next/server/app/api/workspace/route/server-reference-manifest.json
+- .next/server/app/api/workspace/route.js
+- .next/server/app/api/workspace/route.js.nft.json
+- .next/server/app/api/workspace/route_client-reference-manifest.js
+- .next/server/app/approve/[token]/page/app-paths-manifest.json
+- .next/server/app/approve/[token]/page/build-manifest.json
+- .next/server/app/approve/[token]/page/next-font-manifest.json
+- .next/server/app/approve/[token]/page/react-loadable-manifest.json
+- .next/server/app/approve/[token]/page/server-reference-manifest.json
+- .next/server/app/approve/[token]/page.js
+- .next/server/app/approve/[token]/page.js.nft.json
+- .next/server/app/approve/[token]/page_client-reference-manifest.js
+- .next/server/app/assets/page/app-paths-manifest.json
+- .next/server/app/assets/page/build-manifest.json
+- .next/server/app/assets/page/next-font-manifest.json
+- .next/server/app/assets/page/react-loadable-manifest.json
+- .next/server/app/assets/page/server-reference-manifest.json
+- .next/server/app/assets/page.js
+- .next/server/app/assets/page.js.nft.json
+- .next/server/app/assets/page_client-reference-manifest.js
+- .next/server/app/assets.html
+- .next/server/app/challenges/120-days-100k/page/app-paths-manifest.json
+- .next/server/app/challenges/120-days-100k/page/build-manifest.json
+- .next/server/app/challenges/120-days-100k/page/next-font-manifest.json
+- .next/server/app/challenges/120-days-100k/page/react-loadable-manifest.json
+- .next/server/app/challenges/120-days-100k/page/server-reference-manifest.json
+- .next/server/app/challenges/120-days-100k/page.js
+- .next/server/app/challenges/120-days-100k/page.js.nft.json
+- .next/server/app/challenges/120-days-100k/page_client-reference-manifest.js
+- .next/server/app/challenges/120-days-100k.html
+- .next/server/app/challenges/30-days-1k/page/app-paths-manifest.json
+- .next/server/app/challenges/30-days-1k/page/build-manifest.json
+- .next/server/app/challenges/30-days-1k/page/next-font-manifest.json
+- .next/server/app/challenges/30-days-1k/page/react-loadable-manifest.json
+- .next/server/app/challenges/30-days-1k/page/server-reference-manifest.json
+- .next/server/app/challenges/30-days-1k/page.js
+- .next/server/app/challenges/30-days-1k/page.js.nft.json
+- .next/server/app/challenges/30-days-1k/page_client-reference-manifest.js
+- .next/server/app/challenges/30-days-1k.html
+- .next/server/app/challenges/90-days-10k/page/app-paths-manifest.json
+- .next/server/app/challenges/90-days-10k/page/build-manifest.json
+- .next/server/app/challenges/90-days-10k/page/next-font-manifest.json
+- .next/server/app/challenges/90-days-10k/page/react-loadable-manifest.json
+- .next/server/app/challenges/90-days-10k/page/server-reference-manifest.json
+- .next/server/app/challenges/90-days-10k/page.js
+- .next/server/app/challenges/90-days-10k/page.js.nft.json
+- .next/server/app/challenges/90-days-10k/page_client-reference-manifest.js
+- .next/server/app/challenges/90-days-10k.html
+- .next/server/app/content/page/app-paths-manifest.json
+- .next/server/app/content/page/build-manifest.json
+- .next/server/app/content/page/next-font-manifest.json
+- .next/server/app/content/page/react-loadable-manifest.json
+- .next/server/app/content/page/server-reference-manifest.json
+- .next/server/app/content/page.js
+- .next/server/app/content/page.js.nft.json
+- .next/server/app/content/page_client-reference-manifest.js
+- .next/server/app/content.html
+- .next/server/app/index.html
+- .next/server/app/login/page/app-paths-manifest.json
+- .next/server/app/login/page/build-manifest.json
+- .next/server/app/login/page/next-font-manifest.json
+- .next/server/app/login/page/react-loadable-manifest.json
+- .next/server/app/login/page/server-reference-manifest.json
+- .next/server/app/login/page.js
+- .next/server/app/login/page.js.nft.json
+- .next/server/app/login/page_client-reference-manifest.js
+- .next/server/app/login.html
+- .next/server/app/niche-finder/[id]/page/app-paths-manifest.json
+- .next/server/app/niche-finder/[id]/page/build-manifest.json
+- .next/server/app/niche-finder/[id]/page/next-font-manifest.json
+- .next/server/app/niche-finder/[id]/page/react-loadable-manifest.json
+- .next/server/app/niche-finder/[id]/page/server-reference-manifest.json
+- .next/server/app/niche-finder/[id]/page.js
+- .next/server/app/niche-finder/[id]/page.js.nft.json
+- .next/server/app/niche-finder/[id]/page_client-reference-manifest.js
+- .next/server/app/niche-finder/channels/[id]/page/app-paths-manifest.json
+- .next/server/app/niche-finder/channels/[id]/page/build-manifest.json
+- .next/server/app/niche-finder/channels/[id]/page/next-font-manifest.json
+- .next/server/app/niche-finder/channels/[id]/page/react-loadable-manifest.json
+- .next/server/app/niche-finder/channels/[id]/page/server-reference-manifest.json
+- .next/server/app/niche-finder/channels/[id]/page.js
+- .next/server/app/niche-finder/channels/[id]/page.js.nft.json
+- .next/server/app/niche-finder/channels/[id]/page_client-reference-manifest.js
+- .next/server/app/niche-finder/mcp/page/app-paths-manifest.json
+- .next/server/app/niche-finder/mcp/page/build-manifest.json
+- .next/server/app/niche-finder/mcp/page/next-font-manifest.json
+- .next/server/app/niche-finder/mcp/page/react-loadable-manifest.json
+- .next/server/app/niche-finder/mcp/page/server-reference-manifest.json
+- .next/server/app/niche-finder/mcp/page.js
+- .next/server/app/niche-finder/mcp/page.js.nft.json
+- .next/server/app/niche-finder/mcp/page_client-reference-manifest.js
+- .next/server/app/niche-finder/mcp.html
+- .next/server/app/niche-finder/page/app-paths-manifest.json
+- .next/server/app/niche-finder/page/build-manifest.json
+- .next/server/app/niche-finder/page/next-font-manifest.json
+- .next/server/app/niche-finder/page/react-loadable-manifest.json
+- .next/server/app/niche-finder/page/server-reference-manifest.json
+- .next/server/app/niche-finder/page.js
+- .next/server/app/niche-finder/page.js.nft.json
+- .next/server/app/niche-finder/page_client-reference-manifest.js
+- .next/server/app/niche-finder/tracked/page/app-paths-manifest.json
+- .next/server/app/niche-finder/tracked/page/build-manifest.json
+- .next/server/app/niche-finder/tracked/page/next-font-manifest.json
+- .next/server/app/niche-finder/tracked/page/react-loadable-manifest.json
+- .next/server/app/niche-finder/tracked/page/server-reference-manifest.json
+- .next/server/app/niche-finder/tracked/page.js
+- .next/server/app/niche-finder/tracked/page.js.nft.json
+- .next/server/app/niche-finder/tracked/page_client-reference-manifest.js
+- .next/server/app/niche-finder/tracked.html
+- .next/server/app/niche-finder.html
+- .next/server/app/page/app-paths-manifest.json
+- .next/server/app/page/build-manifest.json
+- .next/server/app/page/next-font-manifest.json
+- .next/server/app/page/react-loadable-manifest.json
+- .next/server/app/page/server-reference-manifest.json
+- .next/server/app/page.js
+- .next/server/app/page.js.nft.json
+- .next/server/app/page_client-reference-manifest.js
+- .next/server/app/revenue/page/app-paths-manifest.json
+- .next/server/app/revenue/page/build-manifest.json
+- .next/server/app/revenue/page/next-font-manifest.json
+- .next/server/app/revenue/page/react-loadable-manifest.json
+- .next/server/app/revenue/page/server-reference-manifest.json
+- .next/server/app/revenue/page.js
+- .next/server/app/revenue/page.js.nft.json
+- .next/server/app/revenue/page_client-reference-manifest.js
+- .next/server/app/revenue.html
+- .next/server/app/script/[id]/page/app-paths-manifest.json
+- .next/server/app/script/[id]/page/build-manifest.json
+- .next/server/app/script/[id]/page/next-font-manifest.json
+- .next/server/app/script/[id]/page/react-loadable-manifest.json
+- .next/server/app/script/[id]/page/server-reference-manifest.json
+- .next/server/app/script/[id]/page.js
+- .next/server/app/script/[id]/page.js.nft.json
+- .next/server/app/script/[id]/page_client-reference-manifest.js
+- .next/server/app/script/new/page/app-paths-manifest.json
+- .next/server/app/script/new/page/build-manifest.json
+- .next/server/app/script/new/page/next-font-manifest.json
+- .next/server/app/script/new/page/react-loadable-manifest.json
+- .next/server/app/script/new/page/server-reference-manifest.json
+- .next/server/app/script/new/page.js
+- .next/server/app/script/new/page.js.nft.json
+- .next/server/app/script/new/page_client-reference-manifest.js
+- .next/server/app/script/new.html
+- .next/server/app/script/page/app-paths-manifest.json
+- .next/server/app/script/page/build-manifest.json
+- .next/server/app/script/page/next-font-manifest.json
+- .next/server/app/script/page/react-loadable-manifest.json
+- .next/server/app/script/page/server-reference-manifest.json
+- .next/server/app/script/page.js
+- .next/server/app/script/page.js.nft.json
+- .next/server/app/script/page_client-reference-manifest.js
+- .next/server/app/script.html
+- .next/server/app/settings/billing/page/app-paths-manifest.json
+- .next/server/app/settings/billing/page/build-manifest.json
+- .next/server/app/settings/billing/page/next-font-manifest.json
+- .next/server/app/settings/billing/page/react-loadable-manifest.json
+- .next/server/app/settings/billing/page/server-reference-manifest.json
+- .next/server/app/settings/billing/page.js
+- .next/server/app/settings/billing/page.js.nft.json
+- .next/server/app/settings/billing/page_client-reference-manifest.js
+- .next/server/app/settings/billing.html
+- .next/server/app/settings/page/app-paths-manifest.json
+- .next/server/app/settings/page/build-manifest.json
+- .next/server/app/settings/page/next-font-manifest.json
+- .next/server/app/settings/page/react-loadable-manifest.json
+- .next/server/app/settings/page/server-reference-manifest.json
+- .next/server/app/settings/page.js
+- .next/server/app/settings/page.js.nft.json
+- .next/server/app/settings/page_client-reference-manifest.js
+- .next/server/app/settings/profile/page/app-paths-manifest.json
+- .next/server/app/settings/profile/page/build-manifest.json
+- .next/server/app/settings/profile/page/next-font-manifest.json
+- .next/server/app/settings/profile/page/react-loadable-manifest.json
+- .next/server/app/settings/profile/page/server-reference-manifest.json
+- .next/server/app/settings/profile/page.js
+- .next/server/app/settings/profile/page.js.nft.json
+- .next/server/app/settings/profile/page_client-reference-manifest.js
+- .next/server/app/settings/profile.html
+- .next/server/app/settings.html
+- .next/server/app/team/page/app-paths-manifest.json
+- .next/server/app/team/page/build-manifest.json
+- .next/server/app/team/page/next-font-manifest.json
+- .next/server/app/team/page/react-loadable-manifest.json
+- .next/server/app/team/page/server-reference-manifest.json
+- .next/server/app/team/page.js
+- .next/server/app/team/page.js.nft.json
+- .next/server/app/team/page_client-reference-manifest.js
+- .next/server/app/team.html
+- .next/server/app/thumbnails/page/app-paths-manifest.json
+- .next/server/app/thumbnails/page/build-manifest.json
+- .next/server/app/thumbnails/page/next-font-manifest.json
+- .next/server/app/thumbnails/page/react-loadable-manifest.json
+- .next/server/app/thumbnails/page/server-reference-manifest.json
+- .next/server/app/thumbnails/page.js
+- .next/server/app/thumbnails/page.js.nft.json
+- .next/server/app/thumbnails/page_client-reference-manifest.js
+- .next/server/app/thumbnails.html
+- .next/server/app/videos/[id]/page/app-paths-manifest.json
+- .next/server/app/videos/[id]/page/build-manifest.json
+- .next/server/app/videos/[id]/page/next-font-manifest.json
+- .next/server/app/videos/[id]/page/react-loadable-manifest.json
+- .next/server/app/videos/[id]/page/server-reference-manifest.json
+- .next/server/app/videos/[id]/page.js
+- .next/server/app/videos/[id]/page.js.nft.json
+- .next/server/app/videos/[id]/page_client-reference-manifest.js
+- .next/server/app/videos/page/app-paths-manifest.json
+- .next/server/app/videos/page/build-manifest.json
+- .next/server/app/videos/page/next-font-manifest.json
+- .next/server/app/videos/page/react-loadable-manifest.json
+- .next/server/app/videos/page/server-reference-manifest.json
+- .next/server/app/videos/page.js
+- .next/server/app/videos/page.js.nft.json
+- .next/server/app/videos/page_client-reference-manifest.js
+- .next/server/app/videos.html
+- .next/server/app-paths-manifest.json
+- .next/server/chunks/1hkl_server_app_api_cron_niche-finder_discover-channels_route_actions_010oy6v.js
+- .next/server/chunks/1hkl_server_app_api_cron_niche-finder_prune-stale_route_actions_1gbmpor.js
+- .next/server/chunks/1hkl_server_app_api_cron_niche-finder_recompute-scores_route_actions_0cikjvv.js
+- .next/server/chunks/1hkl_server_app_api_cron_niche-finder_snapshot-channels_route_actions_1l8vcr6.js
+- .next/server/chunks/1hkl_server_app_api_niche-finder_channels_[id]_history_route_actions_0nco06m.js
+- .next/server/chunks/1hkl_server_app_api_niche-finder_tracked-channels_[id]_route_actions_1u4ddx7.js
+- .next/server/chunks/1hkl_server_app_api_niche-finder_tracked-channels_route_actions_14zqo3c.js
+- .next/server/chunks/1hkl_server_app_api_scripts_[id]_versions_[versionId]_restore_route_actions_1g5c9x-.js
+- .next/server/chunks/1hkl_server_app_api_videos_[id]_comments_[commentId]_route_actions_09jeih7.js
+- .next/server/chunks/1hkl_server_app_api_workspace_[id]_image-settings_route_actions_11v8aa8.js
+- .next/server/chunks/1hkl_server_app_api_workspace_[id]_revenue_[provider]_route_actions_14qw5jq.js
+- .next/server/chunks/1hkl_server_app_api_workspace_[id]_revenue_[provider]_sync_route_actions_1rzg93z.js
+- .next/server/chunks/1hkl_server_app_api_workspace_[id]_youtube-subscribers_route_actions_0aw95eu.js
+- .next/server/chunks/1ksy_@anthropic-ai_sdk_09_h0u8._.js
+- .next/server/chunks/1ksy_bcryptjs_index_08zn4vp.js
+- .next/server/chunks/1ksy_next_186wvw7._.js
+- .next/server/chunks/1ksy_next_dist_esm_build_templates_app-route_0lkmlop.js
+- .next/server/chunks/1ksy_next_dist_esm_build_templates_app-route_1me3n4w.js
+- .next/server/chunks/1ksy_zod_v3_14pw0n1._.js
+- .next/server/chunks/1ksy_zod_v3_18dr5au._.js
+- .next/server/chunks/1mnb__next-internal_server_app_api_admin_niche-categories_[id]_route_actions_0sjy18n.js
+- .next/server/chunks/1mnb__next-internal_server_app_api_admin_niche-categories_route_actions_0gpjign.js
+- .next/server/chunks/1mnb__next-internal_server_app_api_admin_workspaces_[id]_route_actions_0krimbh.js
+- .next/server/chunks/1mnb__next-internal_server_app_api_admin_youtube-quota_route_actions_19chk0r.js
+- .next/server/chunks/1mnb__next-internal_server_app_api_approval_[token]_approve_route_actions_09c8bw9.js
+- .next/server/chunks/1mnb__next-internal_server_app_api_approval_[token]_comments_route_actions_17tas-1.js
+- .next/server/chunks/1mnb__next-internal_server_app_api_assets_[id]_download_route_actions_1io-b1o.js
+- .next/server/chunks/1mnb__next-internal_server_app_api_auth_[___nextauth]_route_actions_1lt-5-m.js
+- .next/server/chunks/1mnb__next-internal_server_app_api_content_[id]_stage_route_actions_0bnaprw.js
+- .next/server/chunks/1mnb__next-internal_server_app_api_niche-finder_channels_[id]_route_actions_0aw979n.js
+- .next/server/chunks/1mnb__next-internal_server_app_api_niche-finder_mcp-keys_[id]_route_actions_00verpk.js
+- .next/server/chunks/1mnb__next-internal_server_app_api_niche-finder_mcp-keys_route_actions_1jrgcjc.js
+- .next/server/chunks/1mnb__next-internal_server_app_api_niche-finder_niches_[id]_route_actions_0pic18f.js
+- .next/server/chunks/1mnb__next-internal_server_app_api_niche-finder_niches_route_actions_0-rxpme.js
+- .next/server/chunks/1mnb__next-internal_server_app_api_scripts_[id]_versions_route_actions_0bjx5ge.js
+- .next/server/chunks/1mnb__next-internal_server_app_api_thumbnails_analyze-script_route_actions_0aylo2m.js
+- .next/server/chunks/1mnb__next-internal_server_app_api_videos_[id]_approval-link_route_actions_0s99fjt.js
+- .next/server/chunks/1mnb__next-internal_server_app_api_videos_[id]_comments_route_actions_04vba8u.js
+- .next/server/chunks/1mnb__next-internal_server_app_api_workspace_[id]_ai-settings_route_actions_0e6ry0b.js
+- .next/server/chunks/1mnb__next-internal_server_app_api_workspace_[id]_assets_route_actions_19xbbo6.js
+- .next/server/chunks/1mnb__next-internal_server_app_api_workspace_[id]_children_route_actions_0b9xoj4.js
+- .next/server/chunks/1mnb__next-internal_server_app_api_workspace_[id]_revenue_route_actions_1cgft_a.js
+- .next/server/chunks/1mnb__next-internal_server_app_api_workspace_[id]_videos_route_actions_1xjzral.js
+- .next/server/chunks/1x14_Forge Pro__next-internal_server_app_api_admin_users_[id]_route_actions_081b24s.js
+- .next/server/chunks/1x14_Forge Pro__next-internal_server_app_api_admin_workspaces_route_actions_1mhqtsn.js
+- .next/server/chunks/1x14_Forge Pro__next-internal_server_app_api_approval_[token]_route_actions_05qeeei.js
+- .next/server/chunks/1x14_Forge Pro__next-internal_server_app_api_billing_checkout_route_actions_1jncnif.js
+- .next/server/chunks/1x14_Forge Pro__next-internal_server_app_api_billing_portal_route_actions_0cnl479.js
+- .next/server/chunks/1x14_Forge Pro__next-internal_server_app_api_billing_status_route_actions_1sgnf96.js
+- .next/server/chunks/1x14_Forge Pro__next-internal_server_app_api_billing_webhook_route_actions_1rrmsm6.js
+- .next/server/chunks/1x14_Forge Pro__next-internal_server_app_api_content_attach_route_actions_18rb4o4.js
+- .next/server/chunks/1x14_Forge Pro__next-internal_server_app_api_cron_sync-revenue_route_actions_0ixyas2.js
+- .next/server/chunks/1x14_Forge Pro__next-internal_server_app_api_mcp_niche-finder_route_actions_0-3-odw.js
+- .next/server/chunks/1x14_Forge Pro__next-internal_server_app_api_thumbnails_[id]_route_actions_1hgdh7h.js
+- .next/server/chunks/1x14_Forge Pro__next-internal_server_app_api_workspace_active_route_actions_0mwv8ki.js
+- .next/server/chunks/1x14_Forge Pro__next-internal_server_app_api_workspace_invite_route_actions_0bnd6sx.js
+- .next/server/chunks/Herd_Forge Pro_0sgi4wa._.js
+- .next/server/chunks/Herd_Forge Pro__next-internal_server_app_api_admin_me_route_actions_0kz7krq.js
+- .next/server/chunks/Herd_Forge Pro__next-internal_server_app_api_admin_users_route_actions_1hagukv.js
+- .next/server/chunks/Herd_Forge Pro__next-internal_server_app_api_assets_[id]_route_actions_1s3eed2.js
+- .next/server/chunks/Herd_Forge Pro__next-internal_server_app_api_auth_register_route_actions_149scd_.js
+- .next/server/chunks/Herd_Forge Pro__next-internal_server_app_api_content_[id]_route_actions_1bgxbkw.js
+- .next/server/chunks/Herd_Forge Pro__next-internal_server_app_api_content_route_actions_1o0lvxh.js
+- .next/server/chunks/Herd_Forge Pro__next-internal_server_app_api_mux_webhook_route_actions_07h4bnk.js
+- .next/server/chunks/Herd_Forge Pro__next-internal_server_app_api_revenue_[id]_route_actions_1emucqv.js
+- .next/server/chunks/Herd_Forge Pro__next-internal_server_app_api_scripts_[id]_route_actions_1_toxlc.js
+- .next/server/chunks/Herd_Forge Pro__next-internal_server_app_api_scripts_route_actions_1zo3zkl.js
+- .next/server/chunks/Herd_Forge Pro__next-internal_server_app_api_thumbnails_route_actions_08wrbpl.js
+- .next/server/chunks/Herd_Forge Pro__next-internal_server_app_api_videos_[id]_route_actions_07zic-d.js
+- .next/server/chunks/Herd_Forge Pro__next-internal_server_app_api_workspace_route_actions_1enyu45.js
+- .next/server/chunks/Herd_Forge Pro_src_lib_mux_ts_0irz_no._.js
+- .next/server/chunks/[externals]__1gnunm3._.js
+- .next/server/chunks/[externals]_node_fs_1t1l-4-._.js
+- .next/server/chunks/[externals]_node_path_1pmhwj3._.js
+- .next/server/chunks/[root-of-the-server]__00c81ck._.js
+- .next/server/chunks/[root-of-the-server]__0165_t_._.js
+- .next/server/chunks/[root-of-the-server]__030cj1k._.js
+- .next/server/chunks/[root-of-the-server]__03l8bi4._.js
+- .next/server/chunks/[root-of-the-server]__059c_av._.js
+- .next/server/chunks/[root-of-the-server]__05dzwef._.js
+- .next/server/chunks/[root-of-the-server]__05if4hz._.js
+- .next/server/chunks/[root-of-the-server]__064dv6w._.js
+- .next/server/chunks/[root-of-the-server]__06juw0j._.js
+- .next/server/chunks/[root-of-the-server]__06sn2d1._.js
+- .next/server/chunks/[root-of-the-server]__08qul36._.js
+- .next/server/chunks/[root-of-the-server]__0a7nki7._.js
+- .next/server/chunks/[root-of-the-server]__0abh90v._.js
+- .next/server/chunks/[root-of-the-server]__0agn-1u._.js
+- .next/server/chunks/[root-of-the-server]__0aoa6h-._.js
+- .next/server/chunks/[root-of-the-server]__0cdq7l0._.js
+- .next/server/chunks/[root-of-the-server]__0d5okti._.js
+- .next/server/chunks/[root-of-the-server]__0d7m9ry._.js
+- .next/server/chunks/[root-of-the-server]__0feg06m._.js
+- .next/server/chunks/[root-of-the-server]__0fy4q7x._.js
+- .next/server/chunks/[root-of-the-server]__0g6zi03._.js
+- .next/server/chunks/[root-of-the-server]__0gaosqw._.js
+- .next/server/chunks/[root-of-the-server]__0ho1y2d._.js
+- .next/server/chunks/[root-of-the-server]__0i7im43._.js
+- .next/server/chunks/[root-of-the-server]__0idx2sh._.js
+- .next/server/chunks/[root-of-the-server]__0ivf-au._.js
+- .next/server/chunks/[root-of-the-server]__0j-jl3d._.js
+- .next/server/chunks/[root-of-the-server]__0jxdiaf._.js
+- .next/server/chunks/[root-of-the-server]__0kzshyo._.js
+- .next/server/chunks/[root-of-the-server]__0my1128._.js
+- .next/server/chunks/[root-of-the-server]__0nk-5zt._.js
+- .next/server/chunks/[root-of-the-server]__0qgnkee._.js
+- .next/server/chunks/[root-of-the-server]__0t69elq._.js
+- .next/server/chunks/[root-of-the-server]__0tdapst._.js
+- .next/server/chunks/[root-of-the-server]__0vocal7._.js
+- .next/server/chunks/[root-of-the-server]__0w8-2lz._.js
+- .next/server/chunks/[root-of-the-server]__0wzi48c._.js
+- .next/server/chunks/[root-of-the-server]__0xn3sbo._.js
+- .next/server/chunks/[root-of-the-server]__0zam874._.js
+- .next/server/chunks/[root-of-the-server]__1-ezmhq._.js
+- .next/server/chunks/[root-of-the-server]__10repv7._.js
+- .next/server/chunks/[root-of-the-server]__10t71_r._.js
+- .next/server/chunks/[root-of-the-server]__11d3zvb._.js
+- .next/server/chunks/[root-of-the-server]__11mr-3b._.js
+- .next/server/chunks/[root-of-the-server]__13lrlsr._.js
+- .next/server/chunks/[root-of-the-server]__13sexry._.js
+- .next/server/chunks/[root-of-the-server]__15el1q9._.js
+- .next/server/chunks/[root-of-the-server]__19x9yz7._.js
+- .next/server/chunks/[root-of-the-server]__1_e0ckn._.js
+- .next/server/chunks/[root-of-the-server]__1a7wmlp._.js
+- .next/server/chunks/[root-of-the-server]__1dvmau7._.js
+- .next/server/chunks/[root-of-the-server]__1ejuk2p._.js
+- .next/server/chunks/[root-of-the-server]__1emf4z8._.js
+- .next/server/chunks/[root-of-the-server]__1f7ooez._.js
+- .next/server/chunks/[root-of-the-server]__1fi4ook._.js
+- .next/server/chunks/[root-of-the-server]__1foponz._.js
+- .next/server/chunks/[root-of-the-server]__1gach2y._.js
+- .next/server/chunks/[root-of-the-server]__1h7oluk._.js
+- .next/server/chunks/[root-of-the-server]__1hy2jxc._.js
+- .next/server/chunks/[root-of-the-server]__1j0sc0_._.js
+- .next/server/chunks/[root-of-the-server]__1jvvzfq._.js
+- .next/server/chunks/[root-of-the-server]__1kp2vv7._.js
+- .next/server/chunks/[root-of-the-server]__1l-d2bz._.js
+- .next/server/chunks/[root-of-the-server]__1npfk62._.js
+- .next/server/chunks/[root-of-the-server]__1ohpjlc._.js
+- .next/server/chunks/[root-of-the-server]__1ojnkkc._.js
+- .next/server/chunks/[root-of-the-server]__1q19t0b._.js
+- .next/server/chunks/[root-of-the-server]__1rapmco._.js
+- .next/server/chunks/[root-of-the-server]__1tw_4dg._.js
+- .next/server/chunks/[root-of-the-server]__1ulrxn4._.js
+- .next/server/chunks/[root-of-the-server]__1wl2k1y._.js
+- .next/server/chunks/[root-of-the-server]__1zhj5i6._.js
+- .next/server/chunks/[root-of-the-server]__1zj4iul._.js
+- .next/server/chunks/[root-of-the-server]__202wjw3._.js
+- .next/server/chunks/[turbopack]_runtime.js
+- .next/server/chunks/ssr/1ksy_031bm42._.js
+- .next/server/chunks/ssr/1ksy_0jwwlvx._.js
+- .next/server/chunks/ssr/1ksy_0kmcrmj._.js
+- .next/server/chunks/ssr/1ksy_0l5h08z._.js
+- .next/server/chunks/ssr/1ksy_0v_w5kl._.js
+- .next/server/chunks/ssr/1ksy_1-4bwuf._.js
+- .next/server/chunks/ssr/1ksy_15ozxwi._.js
+- .next/server/chunks/ssr/1ksy_@mux_mux-player-react_dist_index_mjs_1ief-t1._.js
+- .next/server/chunks/ssr/1ksy_next_dist_09v6ya5._.js
+- .next/server/chunks/ssr/1ksy_next_dist_1zxv1ar._.js
+- .next/server/chunks/ssr/1ksy_next_dist_client_components_0vf2lab._.js
+- .next/server/chunks/ssr/1ksy_next_dist_client_components_builtin_forbidden_0371387.js
+- .next/server/chunks/ssr/1ksy_next_dist_client_components_builtin_global-error_1oh1p7e.js
+- .next/server/chunks/ssr/1ksy_next_dist_client_components_builtin_unauthorized_12mop4j.js
+- .next/server/chunks/ssr/1ksy_next_dist_esm_build_templates_app-page_00mkvbn.js
+- .next/server/chunks/ssr/1ksy_next_dist_esm_build_templates_app-page_01k378d.js
+- .next/server/chunks/ssr/1ksy_next_dist_esm_build_templates_app-page_067sn8w.js
+- .next/server/chunks/ssr/1ksy_next_dist_esm_build_templates_app-page_08u30sf.js
+- .next/server/chunks/ssr/1ksy_next_dist_esm_build_templates_app-page_0_-s8z-.js
+- .next/server/chunks/ssr/1ksy_next_dist_esm_build_templates_app-page_0ddev-v.js
+- .next/server/chunks/ssr/1ksy_next_dist_esm_build_templates_app-page_0gd0lnm.js
+- .next/server/chunks/ssr/1ksy_next_dist_esm_build_templates_app-page_0jidcb-.js
+- .next/server/chunks/ssr/1ksy_next_dist_esm_build_templates_app-page_0mk3-v-.js
+- .next/server/chunks/ssr/1ksy_next_dist_esm_build_templates_app-page_0tejcqf.js
+- .next/server/chunks/ssr/1ksy_next_dist_esm_build_templates_app-page_0ugz-4-.js
+- .next/server/chunks/ssr/1ksy_next_dist_esm_build_templates_app-page_0x2f05g.js
+- .next/server/chunks/ssr/1ksy_next_dist_esm_build_templates_app-page_14nfgx5.js
+- .next/server/chunks/ssr/1ksy_next_dist_esm_build_templates_app-page_14r895c.js
+- .next/server/chunks/ssr/1ksy_next_dist_esm_build_templates_app-page_15tqxoc.js
+- .next/server/chunks/ssr/1ksy_next_dist_esm_build_templates_app-page_1987snr.js
+- .next/server/chunks/ssr/1ksy_next_dist_esm_build_templates_app-page_19p5fem.js
+- .next/server/chunks/ssr/1ksy_next_dist_esm_build_templates_app-page_1_7gx70.js
+- .next/server/chunks/ssr/1ksy_next_dist_esm_build_templates_app-page_1dbdcpw.js
+- .next/server/chunks/ssr/1ksy_next_dist_esm_build_templates_app-page_1di0ego.js
+- .next/server/chunks/ssr/1ksy_next_dist_esm_build_templates_app-page_1f4szmp.js
+- .next/server/chunks/ssr/1ksy_next_dist_esm_build_templates_app-page_1foalcf.js
+- .next/server/chunks/ssr/1ksy_next_dist_esm_build_templates_app-page_1hfz7sq.js
+- .next/server/chunks/ssr/1ksy_next_dist_esm_build_templates_app-page_1hq_x_4.js
+- .next/server/chunks/ssr/1ksy_next_dist_esm_build_templates_app-page_1xbijhx.js
+- .next/server/chunks/ssr/1ksy_next_dist_esm_build_templates_app-page_1yaj48j.js
+- .next/server/chunks/ssr/1ksy_next_dist_esm_build_templates_app-page_21alel8.js
+- .next/server/chunks/ssr/1ksy_sonner_dist_index_mjs_1jh70do._.js
+- .next/server/chunks/ssr/1mnb__next-internal_server_app_challenges_120-days-100k_page_actions_0psg5z8.js
+- .next/server/chunks/ssr/1mnb__next-internal_server_app_niche-finder_channels_[id]_page_actions_0vcwko1.js
+- .next/server/chunks/ssr/1x14_Forge Pro__next-internal_server_app_challenges_30-days-1k_page_actions_0tnhm5r.js
+- .next/server/chunks/ssr/1x14_Forge Pro__next-internal_server_app_challenges_90-days-10k_page_actions_16uh6iu.js
+- .next/server/chunks/ssr/1x14_Forge Pro__next-internal_server_app_niche-finder_tracked_page_actions_1y-jl34.js
+- .next/server/chunks/ssr/Herd_Forge Pro_02hcw8r._.js
+- .next/server/chunks/ssr/Herd_Forge Pro_03mkfmi._.js
+- .next/server/chunks/ssr/Herd_Forge Pro_0_z5wl-._.js
+- .next/server/chunks/ssr/Herd_Forge Pro_0a-wgpr._.js
+- .next/server/chunks/ssr/Herd_Forge Pro_0emx6td._.js
+- .next/server/chunks/ssr/Herd_Forge Pro_0gyhis5._.js
+- .next/server/chunks/ssr/Herd_Forge Pro_0j_98b9._.js
+- .next/server/chunks/ssr/Herd_Forge Pro_0kwwo94._.js
+- .next/server/chunks/ssr/Herd_Forge Pro_0qber_r._.js
+- .next/server/chunks/ssr/Herd_Forge Pro_0qdjwiy._.js
+- .next/server/chunks/ssr/Herd_Forge Pro_0u83lxp._.js
+- .next/server/chunks/ssr/Herd_Forge Pro_0ymz_1p._.js
+- .next/server/chunks/ssr/Herd_Forge Pro_11uppuw._.js
+- .next/server/chunks/ssr/Herd_Forge Pro_136mqtq._.js
+- .next/server/chunks/ssr/Herd_Forge Pro_1_7x7ep._.js
+- .next/server/chunks/ssr/Herd_Forge Pro_1i134ee._.js
+- .next/server/chunks/ssr/Herd_Forge Pro_1pclr2_._.js
+- .next/server/chunks/ssr/Herd_Forge Pro_1turcdp._.js
+- .next/server/chunks/ssr/Herd_Forge Pro_1uw5rx2._.js
+- .next/server/chunks/ssr/Herd_Forge Pro__next-internal_server_app__global-error_page_actions_0xirbnq.js
+- .next/server/chunks/ssr/Herd_Forge Pro__next-internal_server_app__not-found_page_actions_0lhwgxr.js
+- .next/server/chunks/ssr/Herd_Forge Pro__next-internal_server_app_admin_page_actions_1dun_e3.js
+- .next/server/chunks/ssr/Herd_Forge Pro__next-internal_server_app_approve_[token]_page_actions_1a3-q-9.js
+- .next/server/chunks/ssr/Herd_Forge Pro__next-internal_server_app_assets_page_actions_0ycul58.js
+- .next/server/chunks/ssr/Herd_Forge Pro__next-internal_server_app_content_page_actions_011mnsv.js
+- .next/server/chunks/ssr/Herd_Forge Pro__next-internal_server_app_login_page_actions_052ryp6.js
+- .next/server/chunks/ssr/Herd_Forge Pro__next-internal_server_app_niche-finder_[id]_page_actions_09___fi.js
+- .next/server/chunks/ssr/Herd_Forge Pro__next-internal_server_app_niche-finder_mcp_page_actions_0nc3rcq.js
+- .next/server/chunks/ssr/Herd_Forge Pro__next-internal_server_app_niche-finder_page_actions_0as0s8b.js
+- .next/server/chunks/ssr/Herd_Forge Pro__next-internal_server_app_page_actions_0ouyxqx.js
+- .next/server/chunks/ssr/Herd_Forge Pro__next-internal_server_app_revenue_page_actions_1hg9s1c.js
+- .next/server/chunks/ssr/Herd_Forge Pro__next-internal_server_app_script_[id]_page_actions_1iig-c4.js
+- .next/server/chunks/ssr/Herd_Forge Pro__next-internal_server_app_script_new_page_actions_0vqeyt7.js
+- .next/server/chunks/ssr/Herd_Forge Pro__next-internal_server_app_script_page_actions_1jirv7x.js
+- .next/server/chunks/ssr/Herd_Forge Pro__next-internal_server_app_settings_billing_page_actions_0-lbkmv.js
+- .next/server/chunks/ssr/Herd_Forge Pro__next-internal_server_app_settings_page_actions_0dr5j3d.js
+- .next/server/chunks/ssr/Herd_Forge Pro__next-internal_server_app_settings_profile_page_actions_1ifnx8s.js
+- .next/server/chunks/ssr/Herd_Forge Pro__next-internal_server_app_team_page_actions_1nhsmxh.js
+- .next/server/chunks/ssr/Herd_Forge Pro__next-internal_server_app_thumbnails_page_actions_1zxqbhx.js
+- .next/server/chunks/ssr/Herd_Forge Pro__next-internal_server_app_videos_[id]_page_actions_0n3569r.js
+- .next/server/chunks/ssr/Herd_Forge Pro__next-internal_server_app_videos_page_actions_0fckauz.js
+- .next/server/chunks/ssr/Herd_Forge Pro_src_065yhz_._.js
+- .next/server/chunks/ssr/Herd_Forge Pro_src_09lh8t2._.js
+- .next/server/chunks/ssr/Herd_Forge Pro_src_0w2-m0y._.js
+- .next/server/chunks/ssr/Herd_Forge Pro_src_12ya9co._.js
+- .next/server/chunks/ssr/Herd_Forge Pro_src_16ki5ld._.js
+- .next/server/chunks/ssr/Herd_Forge Pro_src_app_admin_page_tsx_1g97m8b._.js
+- .next/server/chunks/ssr/Herd_Forge Pro_src_app_challenges_120-days-100k_page_tsx_0ecbyf5._.js
+- .next/server/chunks/ssr/Herd_Forge Pro_src_app_challenges_30-days-1k_page_tsx_1pm3k0e._.js
+- .next/server/chunks/ssr/Herd_Forge Pro_src_app_challenges_90-days-10k_page_tsx_12bndo7._.js
+- .next/server/chunks/ssr/Herd_Forge Pro_src_app_content_page_tsx_1m0s9h1._.js
+- .next/server/chunks/ssr/Herd_Forge Pro_src_app_niche-finder_channels_[id]_page_tsx_1hez9z0._.js
+- .next/server/chunks/ssr/Herd_Forge Pro_src_app_revenue_page_tsx_0epycpn._.js
+- .next/server/chunks/ssr/Herd_Forge Pro_src_components_AppShell_tsx_065ypui._.js
+- .next/server/chunks/ssr/[root-of-the-server]__001nzf0._.js
+- .next/server/chunks/ssr/[root-of-the-server]__005xlq3._.js
+- .next/server/chunks/ssr/[root-of-the-server]__04k5899._.js
+- .next/server/chunks/ssr/[root-of-the-server]__07-y_7h._.js
+- .next/server/chunks/ssr/[root-of-the-server]__07staqf._.js
+- .next/server/chunks/ssr/[root-of-the-server]__096ardp._.js
+- .next/server/chunks/ssr/[root-of-the-server]__0j1ewk6._.js
+- .next/server/chunks/ssr/[root-of-the-server]__0npcnra._.js
+- .next/server/chunks/ssr/[root-of-the-server]__0pso460._.js
+- .next/server/chunks/ssr/[root-of-the-server]__0q48jln._.js
+- .next/server/chunks/ssr/[root-of-the-server]__0uhf8b-._.js
+- .next/server/chunks/ssr/[root-of-the-server]__0uimpvw._.js
+- .next/server/chunks/ssr/[root-of-the-server]__0v8e_0j._.js
+- .next/server/chunks/ssr/[root-of-the-server]__0x28kzw._.js
+- .next/server/chunks/ssr/[root-of-the-server]__0zdlml8._.js
+- .next/server/chunks/ssr/[root-of-the-server]__1--70_0._.js
+- .next/server/chunks/ssr/[root-of-the-server]__1258hew._.js
+- .next/server/chunks/ssr/[root-of-the-server]__13t-p34._.js
+- .next/server/chunks/ssr/[root-of-the-server]__15p3v0r._.js
+- .next/server/chunks/ssr/[root-of-the-server]__18bu0cn._.js
+- .next/server/chunks/ssr/[root-of-the-server]__18djgj-._.js
+- .next/server/chunks/ssr/[root-of-the-server]__195iaeg._.js
+- .next/server/chunks/ssr/[root-of-the-server]__1_ta5l8._.js
+- .next/server/chunks/ssr/[root-of-the-server]__1a6fyye._.js
+- .next/server/chunks/ssr/[root-of-the-server]__1a807f6._.js
+- .next/server/chunks/ssr/[root-of-the-server]__1c8ln5l._.js
+- .next/server/chunks/ssr/[root-of-the-server]__1dah47d._.js
+- .next/server/chunks/ssr/[root-of-the-server]__1pt7mar._.js
+- .next/server/chunks/ssr/[root-of-the-server]__1q_586j._.js
+- .next/server/chunks/ssr/[root-of-the-server]__1sk-hvj._.js
+- .next/server/chunks/ssr/[root-of-the-server]__1t6_lft._.js
+- .next/server/chunks/ssr/[root-of-the-server]__1u_png3._.js
+- .next/server/chunks/ssr/[root-of-the-server]__1ys4qbf._.js
+- .next/server/chunks/ssr/[turbopack]_runtime.js
+- .next/server/edge/chunks/06z5_next_dist_esm_build_templates_edge-wrapper_0a026qm.js
+- .next/server/edge/chunks/1ksy_next_dist_esm_build_templates_edge-wrapper_0c4bffb.js
+- .next/server/edge/chunks/[root-of-the-server]__0mr811k._.js
+- .next/server/functions-config-manifest.json
+- .next/server/interception-route-rewrite-manifest.js
+- .next/server/middleware/middleware-manifest.json
+- .next/server/middleware-build-manifest.js
+- .next/server/middleware-manifest.json
+- .next/server/next-font-manifest.js
+- .next/server/next-font-manifest.json
+- .next/server/pages/404.html
+- .next/server/pages/500.html
+- .next/server/pages-manifest.json
+- .next/server/prefetch-hints.json
+- .next/server/server-reference-manifest.js
+- .next/server/server-reference-manifest.json
+- .next/static/QEP60aI2bfFhrl1M1OXfk/_buildManifest.js
+- .next/static/QEP60aI2bfFhrl1M1OXfk/_clientMiddlewareManifest.js
+- .next/static/QEP60aI2bfFhrl1M1OXfk/_ssgManifest.js
+- .next/static/chunks/0-98-p254bck2.js
+- .next/static/chunks/01tcjpy4kw4au.js
+- .next/static/chunks/01wki-uksrsxq.js
+- .next/static/chunks/02292_whplqlm.js
+- .next/static/chunks/08o0-hgwv55un.js
+- .next/static/chunks/0cz1d0mv5g_q7.js
+- .next/static/chunks/0x2rj3x4-pis_.js
+- .next/static/chunks/0x_ztznfjx3ga.js
+- .next/static/chunks/152hqehu2e20i.js
+- .next/static/chunks/15z34rlw2esc7.js
+- .next/static/chunks/16fuha582byeh.js
+- .next/static/chunks/16lhiza97qdmd.js
+- .next/static/chunks/17qbeqf1ho288.js
+- .next/static/chunks/18_768o1_0uo_.js
+- .next/static/chunks/1denn_s0gzfpj.js
+- .next/static/chunks/1edb9lcdqgkqv.js
+- .next/static/chunks/1hb97jcfi3dov.js
+- .next/static/chunks/1l3-_frstqimf.js
+- .next/static/chunks/1lgb_r4x-ct5n.js
+- .next/static/chunks/1u7got6ht6krz.js
+- .next/static/chunks/1xf_-j93jbl5d.js
+- .next/static/chunks/1yerozxabaaux.js
+- .next/static/chunks/1zgvru1edfqtu.js
+- .next/static/chunks/20lv3i3ocm5ob.js
+- .next/static/chunks/22-nwcnoj0zbv.js
+- .next/static/chunks/26r33nxgp249t.js
+- .next/static/chunks/26stn6kuvbimr.js
+- .next/static/chunks/27-rw4cy1obie.js
+- .next/static/chunks/2eme2sikbo8cb.css
+- .next/static/chunks/2f1xxlak6codt.js
+- .next/static/chunks/2xbk4x4e37i9-.js
+- .next/static/chunks/2xn_2ukog3xym.css
+- .next/static/chunks/3699kcwu848lu.js
+- .next/static/chunks/37bbu1egonkr6.js
+- .next/static/chunks/3dqd__2mkwi9k.js
+- .next/static/chunks/3h6xyz_q8taqr.js
+- .next/static/chunks/3kkw63csa-fu3.js
+- .next/static/chunks/3mucgg1xq-rbt.js
+- .next/static/chunks/3v8g75-9z0spu.js
+- .next/static/chunks/3w7a8rpad9-x1.js
+- .next/static/chunks/420wcwaax7rhu.js
+- .next/static/chunks/42sqzjl9cmzdq.js
+- .next/static/chunks/4369yuu_netyr.js
+- .next/static/chunks/turbopack-27jt4fnmw5tkq.js
+- .next/types/cache-life.d.ts
+- .next/types/routes.d.ts
+- .next/types/validator.ts
+- src/app/api/thumbnails/analyze-script/route.ts
+- src/app/api/workspace/[id]/youtube-subscribers/route.ts
+- src/app/challenges/120-days-100k/page.tsx
+- src/app/challenges/30-days-1k/page.tsx
+- src/app/challenges/90-days-10k/page.tsx
+- src/app/settings/profile/page.tsx
+- src/lib/script-sections.ts
+- src/lib/viral-styles.ts
+
+### Modified Files
+- package-lock.json
+- package.json
+- src/app/api/cron/niche-finder/snapshot-channels/route.ts
+- src/app/api/scripts/[id]/route.ts
+- src/app/api/scripts/route.ts
+- src/app/api/thumbnails/route.ts
+- src/app/api/workspace/[id]/ai-settings/route.ts
+- src/app/api/workspace/[id]/image-settings/route.ts
+- src/app/layout.tsx
+- src/app/page.tsx
+- src/app/script/[id]/page.tsx
+- src/app/script/new/page.tsx
+- src/app/settings/page.tsx
+- src/app/thumbnails/page.tsx
+- src/components/Sidebar.tsx
+- src/db/schema.ts
+- src/lib/ai-provider.ts
+- src/lib/image-provider.ts
+- src/lib/script-prompts.ts
+- src/lib/thumbnail-pricing.ts
+- src/lib/use-scripts.ts
+- src/lib/use-thumbnails.ts
+- src/lib/workspace-types.ts
+- src/lib/workspace.ts
+
+
+## Current Work Focus
+[Describe what you're currently working on]
+
+## Recent Changes
+[List recent changes to the project]
+
+## Next Steps
+[List next steps for the project]
+
+## Code Changes (2026-07-22 09:45:36)
+
+### Added Files
+- components.json
+- drizzle.config.ts
+- middleware.ts
+- next-env.d.ts
+- next.config.ts
+- package-lock.json
+- package.json
+- src/app/admin/page.tsx
+- src/app/api/admin/me/route.ts
+- src/app/api/admin/niche-categories/[id]/route.ts
+- src/app/api/admin/niche-categories/route.ts
+- src/app/api/admin/users/[id]/route.ts
+- src/app/api/admin/users/route.ts
+- src/app/api/admin/workspaces/[id]/route.ts
+- src/app/api/admin/workspaces/route.ts
+- src/app/api/admin/youtube-quota/route.ts
+- src/app/api/approval/[token]/approve/route.ts
+- src/app/api/approval/[token]/comments/route.ts
+- src/app/api/approval/[token]/route.ts
+- src/app/api/assets/[id]/download/route.ts
+- src/app/api/assets/[id]/route.ts
+- src/app/api/auth/[...nextauth]/route.ts
+- src/app/api/auth/register/route.ts
+- src/app/api/billing/checkout/route.ts
+- src/app/api/billing/portal/route.ts
+- src/app/api/billing/status/route.ts
+- src/app/api/billing/webhook/route.ts
+- src/app/api/content/[id]/route.ts
+- src/app/api/content/[id]/stage/route.ts
+- src/app/api/content/attach/route.ts
+- src/app/api/content/route.ts
+- src/app/api/cron/niche-finder/discover-channels/route.ts
+- src/app/api/cron/niche-finder/prune-stale/route.ts
+- src/app/api/cron/niche-finder/recompute-scores/route.ts
+- src/app/api/cron/niche-finder/snapshot-channels/route.ts
+- src/app/api/cron/sync-revenue/route.ts
+- src/app/api/mcp/niche-finder/route.ts
+- src/app/api/mux/webhook/route.ts
+- src/app/api/niche-finder/channels/[id]/history/route.ts
+- src/app/api/niche-finder/channels/[id]/route.ts
+- src/app/api/niche-finder/mcp-keys/[id]/route.ts
+- src/app/api/niche-finder/mcp-keys/route.ts
+- src/app/api/niche-finder/niches/[id]/route.ts
+- src/app/api/niche-finder/niches/route.ts
+- src/app/api/niche-finder/tracked-channels/[id]/route.ts
+- src/app/api/niche-finder/tracked-channels/route.ts
+- src/app/api/revenue/[id]/route.ts
+- src/app/api/scripts/[id]/route.ts
+- src/app/api/scripts/[id]/versions/[versionId]/restore/route.ts
+- src/app/api/scripts/[id]/versions/route.ts
+- src/app/api/scripts/route.ts
+- src/app/api/thumbnails/[id]/route.ts
+- src/app/api/thumbnails/route.ts
+- src/app/api/videos/[id]/approval-link/route.ts
+- src/app/api/videos/[id]/comments/[commentId]/route.ts
+- src/app/api/videos/[id]/comments/route.ts
+- src/app/api/videos/[id]/route.ts
+- src/app/api/workspace/[id]/ai-settings/route.ts
+- src/app/api/workspace/[id]/assets/route.ts
+- src/app/api/workspace/[id]/children/route.ts
+- src/app/api/workspace/[id]/image-settings/route.ts
+- src/app/api/workspace/[id]/revenue/[provider]/route.ts
+- src/app/api/workspace/[id]/revenue/[provider]/sync/route.ts
+- src/app/api/workspace/[id]/revenue/route.ts
+- src/app/api/workspace/[id]/videos/route.ts
+- src/app/api/workspace/active/route.ts
+- src/app/api/workspace/invite/route.ts
+- src/app/api/workspace/route.ts
+- src/app/approve/[token]/page.tsx
+- src/app/assets/page.tsx
+- src/app/content/page.tsx
+- src/app/globals.css
+- src/app/layout.tsx
+- src/app/login/page.tsx
+- src/app/niche-finder/[id]/page.tsx
+- src/app/niche-finder/channels/[id]/page.tsx
+- src/app/niche-finder/mcp/page.tsx
+- src/app/niche-finder/page.tsx
+- src/app/niche-finder/tracked/page.tsx
+- src/app/page.tsx
+- src/app/revenue/page.tsx
+- src/app/script/[id]/page.tsx
+- src/app/script/new/page.tsx
+- src/app/script/page.tsx
+- src/app/settings/billing/page.tsx
+- src/app/settings/page.tsx
+- src/app/team/page.tsx
+- src/app/thumbnails/page.tsx
+- src/app/videos/[id]/page.tsx
+- src/app/videos/page.tsx
+- src/auth.config.ts
+- src/auth.ts
+- src/components/AppShell.tsx
+- src/components/AttachCardPicker.tsx
+- src/components/AuthSessionProvider.tsx
+- src/components/ContentCalendarView.tsx
+- src/components/Sidebar.tsx
+- src/components/ThemeToggle.tsx
+- src/components/ui/accordion.tsx
+- src/components/ui/alert-dialog.tsx
+- src/components/ui/alert.tsx
+- src/components/ui/aspect-ratio.tsx
+- src/components/ui/avatar.tsx
+- src/components/ui/badge.tsx
+- src/components/ui/breadcrumb.tsx
+- src/components/ui/button.tsx
+- src/components/ui/calendar.tsx
+- src/components/ui/card.tsx
+- src/components/ui/carousel.tsx
+- src/components/ui/chart.tsx
+- src/components/ui/checkbox.tsx
+- src/components/ui/collapsible.tsx
+- src/components/ui/command.tsx
+- src/components/ui/context-menu.tsx
+- src/components/ui/dialog.tsx
+- src/components/ui/drawer.tsx
+- src/components/ui/dropdown-menu.tsx
+- src/components/ui/form.tsx
+- src/components/ui/hover-card.tsx
+- src/components/ui/input-otp.tsx
+- src/components/ui/input.tsx
+- src/components/ui/label.tsx
+- src/components/ui/menubar.tsx
+- src/components/ui/navigation-menu.tsx
+- src/components/ui/pagination.tsx
+- src/components/ui/popover.tsx
+- src/components/ui/progress.tsx
+- src/components/ui/radio-group.tsx
+- src/components/ui/resizable.tsx
+- src/components/ui/scroll-area.tsx
+- src/components/ui/select.tsx
+- src/components/ui/separator.tsx
+- src/components/ui/sheet.tsx
+- src/components/ui/sidebar.tsx
+- src/components/ui/skeleton.tsx
+- src/components/ui/slider.tsx
+- src/components/ui/sonner.tsx
+- src/components/ui/switch.tsx
+- src/components/ui/table.tsx
+- src/components/ui/tabs.tsx
+- src/components/ui/textarea.tsx
+- src/components/ui/toggle-group.tsx
+- src/components/ui/toggle.tsx
+- src/components/ui/tooltip.tsx
+- src/db/index.ts
+- src/db/schema.ts
+- src/hooks/use-mobile.tsx
+- src/hooks/useAuth.ts
+- src/lib/active-workspace.ts
+- src/lib/ai-provider.ts
+- src/lib/approval.ts
+- src/lib/content-meta.ts
+- src/lib/content-server.ts
+- src/lib/content-types.ts
+- src/lib/cron-auth.ts
+- src/lib/crypto.ts
+- src/lib/flutterwave.ts
+- src/lib/image-provider.ts
+- src/lib/invite-email.ts
+- src/lib/mcp-auth.ts
+- src/lib/mux.ts
+- src/lib/niche-category-defaults.ts
+- src/lib/niche-finder-server.ts
+- src/lib/niche-scoring.ts
+- src/lib/payment-providers.ts
+- src/lib/paystack.ts
+- src/lib/permissions.ts
+- src/lib/plan-limits.ts
+- src/lib/plan-usage.ts
+- src/lib/platform-billing.ts
+- src/lib/r2.ts
+- src/lib/script-prompts.ts
+- src/lib/stripe.ts
+- src/lib/super-admin.ts
+- src/lib/thumbnail-pricing.ts
+- src/lib/use-assets.ts
+- src/lib/use-billing.ts
+- src/lib/use-content.ts
+- src/lib/use-niche-finder.ts
+- src/lib/use-revenue.ts
+- src/lib/use-scripts.ts
+- src/lib/use-thumbnails.ts
+- src/lib/use-videos.ts
+- src/lib/use-workspace.ts
+- src/lib/utils.ts
+- src/lib/workspace-types.ts
+- src/lib/workspace.ts
+- src/lib/youtube-data.ts
+- tsconfig.json
+- vercel.json
+

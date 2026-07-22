@@ -1,0 +1,24 @@
+{
+  "crons": [
+    {
+      "path": "/api/cron/sync-revenue",
+      "schedule": "0 6 * * *"
+    },
+    {
+      "path": "/api/cron/niche-finder/snapshot-channels",
+      "schedule": "0 3 * * *"
+    },
+    {
+      "path": "/api/cron/niche-finder/recompute-scores",
+      "schedule": "0 6 * * *"
+    },
+    {
+      "path": "/api/cron/niche-finder/discover-channels",
+      "schedule": "0 4 * * *"
+    },
+    {
+      "path": "/api/cron/niche-finder/prune-stale",
+      "schedule": "0 5 1 * *"
+    }
+  ]
+}
