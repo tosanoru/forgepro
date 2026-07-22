@@ -35,7 +35,7 @@ export async function POST(req: Request) {
   const session = await auth();
   if (!session?.user?.id) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
 
-  const body = await req.json();
+  let body: unknown; try { body = await req.json(); } catch { return NextResponse.json({ error: "Invalid JSON body" }, { status: 400 }); }
   const { workspaceId, channelId } = body as { workspaceId: string; channelId: string };
   if (!workspaceId || !channelId) {
     return NextResponse.json({ error: "workspaceId and channelId are required" }, { status: 400 });

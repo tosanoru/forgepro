@@ -1,9 +1,16 @@
 import { NextResponse } from "next/server";
 import { eq } from "drizzle-orm";
+import { z } from "zod";
 import { auth } from "@/auth";
 import { db } from "@/db";
 import { scripts, scriptVersions, contentCards } from "@/db/schema";
 import { requireRole, PermissionError } from "@/lib/permissions";
+
+const PatchSchema = z.object({
+  title: z.string().max(500).optional(),
+  content: z.string().optional(),
+  status: z.enum(["draft", "in_review", "approved"]).optional(),
+});
 
 async function loadScript(id: string) {
   const [script] = await db.select().from(scripts).where(eq(scripts.id, id)).limit(1);
@@ -44,8 +51,17 @@ export async function PATCH(req: Request, { params }: { params: Promise<{ id: st
     throw e;
   }
 
-  const body = await req.json();
-  const { title, content, status } = body as { title?: string; content?: string; status?: string };
+  let body: unknown;
+  try {
+    body = await req.json();
+  } catch {
+    return NextResponse.json({ error: "Invalid JSON body" }, { status: 400 });
+  }
+  const parsed = PatchSchema.safeParse(body);
+  if (!parsed.success) {
+    return NextResponse.json({ error: parsed.error.issues[0]?.message ?? "Invalid input" }, { status: 400 });
+  }
+  const { title, content, status } = parsed.data;
 
   // Only snapshot when content is actually changing — a title/status-only
   // edit doesn't need a version row, and saving the OLD content (not the

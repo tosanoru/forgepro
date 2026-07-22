@@ -5,6 +5,8 @@ import { workspaceMembers, workspaceInvites, scripts, thumbnails, videos, brandA
 import { getPlanLimits, type PlanLimits } from "@/lib/plan-limits";
 import { THUMBNAIL_COST_ESTIMATE_CENTS } from "@/lib/thumbnail-pricing";
 
+type SqlClient = Pick<typeof db, "select" | "insert" | "update" | "delete">;
+
 function startOfMonth(): Date {
   const d = new Date();
   return new Date(d.getFullYear(), d.getMonth(), 1);
@@ -18,16 +20,17 @@ export interface PlanUsage {
   brandAssetStorageMB: number;
 }
 
-export async function getPlanUsage(workspaceId: string): Promise<PlanUsage> {
+export async function getPlanUsage(workspaceId: string, dbOrTx?: SqlClient): Promise<PlanUsage> {
+  const client = dbOrTx ?? db;
   const monthStart = startOfMonth();
 
   const [[members], [pendingInvites], [scriptCount], [thumbnailCount], [videoCount], [assetSize]] = await Promise.all([
-    db.select({ n: count() }).from(workspaceMembers).where(eq(workspaceMembers.workspaceId, workspaceId)),
-    db.select({ n: count() }).from(workspaceInvites).where(and(eq(workspaceInvites.workspaceId, workspaceId), eq(workspaceInvites.status, "pending"))),
-    db.select({ n: count() }).from(scripts).where(and(eq(scripts.workspaceId, workspaceId), gte(scripts.createdAt, monthStart))),
-    db.select({ n: count() }).from(thumbnails).where(and(eq(thumbnails.workspaceId, workspaceId), gte(thumbnails.createdAt, monthStart))),
-    db.select({ n: count() }).from(videos).where(eq(videos.workspaceId, workspaceId)),
-    db.select({ bytes: sum(brandAssets.sizeBytes) }).from(brandAssets).where(eq(brandAssets.workspaceId, workspaceId)),
+    client.select({ n: count() }).from(workspaceMembers).where(eq(workspaceMembers.workspaceId, workspaceId)),
+    client.select({ n: count() }).from(workspaceInvites).where(and(eq(workspaceInvites.workspaceId, workspaceId), eq(workspaceInvites.status, "pending"))),
+    client.select({ n: count() }).from(scripts).where(and(eq(scripts.workspaceId, workspaceId), gte(scripts.createdAt, monthStart))),
+    client.select({ n: count() }).from(thumbnails).where(and(eq(thumbnails.workspaceId, workspaceId), gte(thumbnails.createdAt, monthStart))),
+    client.select({ n: count() }).from(videos).where(eq(videos.workspaceId, workspaceId)),
+    client.select({ bytes: sum(brandAssets.sizeBytes) }).from(brandAssets).where(eq(brandAssets.workspaceId, workspaceId)),
   ]);
 
   return {
@@ -58,10 +61,12 @@ export async function enforcePlanLimit(
   workspaceId: string,
   resource: "teamMembers" | "scriptGenerationsThisMonth" | "thumbnailGenerationsThisMonth" | "videoUploads" | "brandAssetStorageMB",
   incomingAmount = 1,
+  dbOrTx?: SqlClient,
 ): Promise<void> {
-  const [workspace] = await db.select().from(workspaces).where(eq(workspaces.id, workspaceId)).limit(1);
+  const client = dbOrTx ?? db;
+  const [workspace] = await client.select().from(workspaces).where(eq(workspaces.id, workspaceId)).limit(1);
   const limits: PlanLimits = getPlanLimits(workspace?.plan ?? "free");
-  const usage = await getPlanUsage(workspaceId);
+  const usage = await getPlanUsage(workspaceId, client);
 
   const limitMap: Record<typeof resource, number> = {
     teamMembers: limits.teamMembers,

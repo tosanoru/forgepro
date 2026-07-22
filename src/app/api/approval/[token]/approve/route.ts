@@ -22,7 +22,12 @@ export async function POST(req: Request, { params }: { params: Promise<{ token: 
     throw e;
   }
 
-  const body = await req.json();
+  let body: unknown;
+  try {
+    body = await req.json();
+  } catch {
+    return NextResponse.json({ error: "Invalid JSON body" }, { status: 400 });
+  }
   const { videoId, reviewStatus } = body as { videoId: string; reviewStatus: string };
 
   const video = resolved.videos.find((v) => v.id === videoId);
@@ -36,6 +41,8 @@ export async function POST(req: Request, { params }: { params: Promise<{ token: 
     .set({ reviewStatus, updatedAt: new Date() })
     .where(eq(videos.id, videoId))
     .returning();
+
+  if (!updated) return NextResponse.json({ error: "Video not found" }, { status: 404 });
 
   return NextResponse.json({ video: { id: updated.id, reviewStatus: updated.reviewStatus } });
 }

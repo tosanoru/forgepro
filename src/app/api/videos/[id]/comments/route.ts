@@ -50,7 +50,12 @@ export async function POST(req: Request, { params }: { params: Promise<{ id: str
     throw e;
   }
 
-  const body = await req.json();
+  let body: unknown;
+  try {
+    body = await req.json();
+  } catch {
+    return NextResponse.json({ error: "Invalid JSON body" }, { status: 400 });
+  }
   const { timestampSeconds, content } = body as { timestampSeconds: number; content: string };
   if (typeof timestampSeconds !== "number" || !content?.trim()) {
     return NextResponse.json({ error: "timestampSeconds and content are required" }, { status: 400 });

@@ -4,7 +4,8 @@ import { auth } from "@/auth";
 import { db } from "@/db";
 import { users, workspaceMembers, workspaceInvites, workspaces } from "@/db/schema";
 import { requireRole, PermissionError } from "@/lib/permissions";
-import { enforcePlanLimit, PlanLimitError } from "@/lib/plan-usage";
+import { enforcePlanLimit, getPlanUsage, PlanLimitError } from "@/lib/plan-usage";
+import { getPlanLimits } from "@/lib/plan-limits";
 import { sendInviteEmail } from "@/lib/invite-email";
 import type { WorkspaceRole } from "@/lib/workspace-types";
 
@@ -32,7 +33,12 @@ export async function POST(req: Request) {
   const session = await auth();
   if (!session?.user?.id) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
 
-  const body = await req.json();
+  let body: unknown;
+  try {
+    body = await req.json();
+  } catch {
+    return NextResponse.json({ error: "Invalid JSON body" }, { status: 400 });
+  }
   const { workspaceId, email, role } = body as { workspaceId: string; email: string; role: WorkspaceRole };
 
   if (!workspaceId || !email || !INVITABLE_ROLES.includes(role)) {
@@ -54,16 +60,28 @@ export async function POST(req: Request) {
   }
 
   const [existingUser] = await db.select().from(users).where(eq(users.email, email)).limit(1);
+  const invitedBy = session.user.id!;
 
-  if (existingUser) {
-    await db
-      .insert(workspaceMembers)
-      .values({ workspaceId, userId: existingUser.id, role })
-      .onConflictDoNothing();
-    return NextResponse.json({ status: "added" });
-  }
+  await db.transaction(async (tx) => {
+    const usage = await getPlanUsage(workspaceId, tx);
+    const [ws] = await tx.select().from(workspaces).where(eq(workspaces.id, workspaceId)).limit(1);
+    const limits = getPlanLimits(ws?.plan ?? "free");
+    if (usage.teamMembers + 1 > limits.teamMembers) {
+      throw new PlanLimitError(
+        usage.teamMembers >= limits.teamMembers
+          ? `Team members limit reached (${limits.teamMembers} on the ${limits.label} plan). Upgrade in Settings → Billing to add more.`
+          : `This would put you over your team members limit (${limits.teamMembers} on the ${limits.label} plan). Upgrade in Settings → Billing.`,
+      );
+    }
 
-  await db.insert(workspaceInvites).values({ workspaceId, email, role, invitedBy: session.user.id });
+    if (existingUser) {
+      await tx.insert(workspaceMembers).values({ workspaceId, userId: existingUser.id, role }).onConflictDoNothing();
+    } else {
+      await tx.insert(workspaceInvites).values({ workspaceId, email, role, invitedBy });
+    }
+  });
+
+  if (existingUser) return NextResponse.json({ status: "added" });
 
   // Fire-and-forget — a missing RESEND_API_KEY (see sendInviteEmail) or a
   // transient send failure shouldn't fail the invite itself, since the

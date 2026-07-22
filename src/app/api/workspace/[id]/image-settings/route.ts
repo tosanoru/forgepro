@@ -40,7 +40,7 @@ export async function PATCH(req: Request, { params }: { params: Promise<{ id: st
     throw e;
   }
 
-  const body = await req.json();
+  let body: unknown; try { body = await req.json(); } catch { return NextResponse.json({ error: "Invalid JSON body" }, { status: 400 }); }
   const { monthlyBudgetCents } = body as { monthlyBudgetCents: number | null };
   if (monthlyBudgetCents !== null && (typeof monthlyBudgetCents !== "number" || monthlyBudgetCents < 0)) {
     return NextResponse.json({ error: "monthlyBudgetCents must be a non-negative number, or null to remove the budget" }, { status: 400 });
@@ -65,8 +65,8 @@ export async function POST(req: Request, { params }: { params: Promise<{ id: str
     throw e;
   }
 
-  const body = await req.json();
-  const { apiKey, provider } = body as { apiKey: string; provider?: ImageProvider };
+  let body2: unknown; try { body2 = await req.json(); } catch { return NextResponse.json({ error: "Invalid JSON body" }, { status: 400 }); }
+  const { apiKey, provider } = body2 as { apiKey: string; provider?: ImageProvider };
   if (!apiKey?.trim()) return NextResponse.json({ error: "apiKey is required" }, { status: 400 });
 
   const imageProvider: ImageProvider = provider ?? "openai";

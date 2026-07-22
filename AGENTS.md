@@ -109,5 +109,37 @@ Webhooks need a tunnel (ngrok) pointed at the endpoint. Cron jobs need `Authoriz
 
 Build: `next build` (Turbopack). Lint: `npm run lint`. Type-check: `npx tsc --noEmit`.
 
+## Production Bugfix Conventions
+
+### `req.json()` Safety
+Every `await req.json()` call in API route handlers MUST be wrapped in a try/catch to avoid 500 errors on malformed JSON:
+```ts
+let body: unknown; try { body = await req.json(); } catch { return NextResponse.json({ error: "Invalid JSON body" }, { status: 400 }); }
+```
+Use a different variable name (`body2`, `body3`) if a handler has multiple `req.json()` calls.
+
+### Read-Then-Write Race Conditions
+When reading a value, modifying it, and writing it back, wrap in `db.transaction()`:
+```ts
+await db.transaction(async (tx) => {
+  const [row] = await tx.select().from(table).where(eq(table.id, id)).limit(1);
+  await tx.update(table).set({ value: row.value + 1 }).where(eq(table.id, id));
+});
+```
+
+### Exclusive Claims (One-to-One)
+When a resource can only be claimed by one other resource (e.g. a content card can only be linked to one script), use `db.transaction()` with a fresh read inside:
+```ts
+await db.transaction(async (tx) => {
+  const [existing] = await tx.select().from(table).where(eq(table.claimId, targetId)).limit(1);
+  if (existing) throw new Error("Already claimed");
+  await tx.update(table).set({ claimId: targetId }).where(eq(table.id, id));
+});
+```
+
+### Webhook Idempotency
+- Mux webhooks: guard against status regression (e.g. ignore `video.upload.cancelled` if asset already exists). Fallback lookup by `source_upload_id` for out-of-order events.
+- All webhook routes MUST be in the public-path allowlist in `auth.config.ts`.
+
 ## Environment Variables (`.env.local`)
 `DATABASE_URL`, `AUTH_SECRET`, Google OAuth credentials, `ENCRYPTION_KEY`, `MUX_TOKEN_ID`/`SECRET`/`WEBHOOK_SECRET`, `R2_*`, `CRON_SECRET`, `YOUTUBE_API_KEY`, Stripe platform billing keys + price IDs, optionally `RESEND_API_KEY`/`FROM_EMAIL` and `ANTHROPIC_API_KEY`.

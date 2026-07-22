@@ -34,7 +34,7 @@ export async function PATCH(req: Request, { params }: { params: Promise<{ id: st
   }
 
   const { id } = await params;
-  const body = await req.json();
+  let body: unknown; try { body = await req.json(); } catch { return NextResponse.json({ error: "Invalid JSON body" }, { status: 400 }); }
   const { plan } = body as { plan: string };
   if (!VALID_PLANS.includes(plan as (typeof VALID_PLANS)[number])) {
     return NextResponse.json({ error: `plan must be one of: ${VALID_PLANS.join(", ")}` }, { status: 400 });

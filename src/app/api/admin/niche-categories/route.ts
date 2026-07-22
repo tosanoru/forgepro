@@ -31,7 +31,7 @@ export async function POST(req: Request) {
     throw e;
   }
 
-  const body = await req.json();
+  let body: unknown; try { body = await req.json(); } catch { return NextResponse.json({ error: "Invalid JSON body" }, { status: 400 }); }
   const { category, keywords } = body as { category?: string; keywords?: string[] };
   if (!category?.trim() || !Array.isArray(keywords) || keywords.length === 0) {
     return NextResponse.json({ error: "category and a non-empty keywords array are required" }, { status: 400 });

@@ -6,7 +6,7 @@ import { db } from "@/db";
 import { contentCards } from "@/db/schema";
 import { getWorkspaceMembers } from "@/lib/workspace";
 import { requireRole, PermissionError } from "@/lib/permissions";
-import { getWorkspaceCard, mapCard } from "@/lib/content-server";
+import { mapCard } from "@/lib/content-server";
 import { CONTENT_STAGES, type ContentStage } from "@/lib/content-types";
 
 const InputSchema = z.object({
@@ -26,7 +26,12 @@ export async function PATCH(req: Request, { params }: { params: Promise<{ id: st
   if (!session?.user?.id) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   const { id } = await params;
 
-  const body = await req.json();
+  let body: unknown;
+  try {
+    body = await req.json();
+  } catch {
+    return NextResponse.json({ error: "Invalid JSON body" }, { status: 400 });
+  }
   const parsed = InputSchema.safeParse(body);
   if (!parsed.success) {
     return NextResponse.json({ error: parsed.error.issues[0]?.message ?? "Invalid input" }, { status: 400 });
@@ -43,22 +48,30 @@ export async function PATCH(req: Request, { params }: { params: Promise<{ id: st
     throw e;
   }
 
-  const existing = await getWorkspaceCard(parsed.data.workspaceId, id);
-  if (!existing) return NextResponse.json({ error: "Not found" }, { status: 404 });
+  let row: typeof contentCards.$inferSelect;
+  try {
+    row = await db.transaction(async (tx) => {
+      const [existing] = await tx.select().from(contentCards).where(eq(contentCards.id, id)).limit(1);
+      if (!existing) throw new Error("Not found");
 
-  const fromIndex = CONTENT_STAGES.indexOf(existing.stage);
-  const toIndex = CONTENT_STAGES.indexOf(toStage);
+      const fromIndex = CONTENT_STAGES.indexOf(existing.stage);
+      const toIndex = CONTENT_STAGES.indexOf(toStage);
 
-  const stageDates = { ...(existing.stageDates ?? {}) };
-  if (toIndex > fromIndex) {
-    stageDates[existing.stage] = parsed.data.completionDate ?? new Date().toISOString().slice(0, 10);
+      const stageDates = { ...(existing.stageDates ?? {}) };
+      if (toIndex > fromIndex) {
+        stageDates[existing.stage] = parsed.data.completionDate ?? new Date().toISOString().slice(0, 10);
+      }
+
+      const [row] = await tx
+        .update(contentCards)
+        .set({ stage: toStage, stageDates, updatedAt: new Date() })
+        .where(eq(contentCards.id, id))
+        .returning();
+      return row;
+    });
+  } catch {
+    return NextResponse.json({ error: "Not found" }, { status: 404 });
   }
-
-  const [row] = await db
-    .update(contentCards)
-    .set({ stage: toStage, stageDates, updatedAt: new Date() })
-    .where(eq(contentCards.id, id))
-    .returning();
 
   const members = await getWorkspaceMembers(parsed.data.workspaceId);
   return NextResponse.json({ card: mapCard(row, new Map(members.map((m) => [m.id, m]))) });

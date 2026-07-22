@@ -53,7 +53,12 @@ export async function POST(req: Request) {
   if (!session?.user?.id) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   const userId = session.user.id; // captured once, plain string — narrowing through session.user.id doesn't reliably persist into the closure below
 
-  const body = await req.json();
+  let body: unknown;
+  try {
+    body = await req.json();
+  } catch {
+    return NextResponse.json({ error: "Invalid JSON body" }, { status: 400 });
+  }
   const { workspaceId, topic, title, format, scriptStyle, contentCardId } = body as {
     workspaceId: string;
     topic: string;
@@ -124,8 +129,10 @@ export async function POST(req: Request) {
           .returning();
 
         if (contentCardId) {
-          await db.update(contentCards).set({ scriptId: null, updatedAt: new Date() }).where(eq(contentCards.scriptId, script.id));
-          await db.update(contentCards).set({ scriptId: script.id, updatedAt: new Date() }).where(eq(contentCards.id, contentCardId));
+          await db.transaction(async (tx) => {
+            await tx.update(contentCards).set({ scriptId: null, updatedAt: new Date() }).where(eq(contentCards.scriptId, script.id));
+            await tx.update(contentCards).set({ scriptId: script.id, updatedAt: new Date() }).where(eq(contentCards.id, contentCardId));
+          });
         }
 
         send({ done: true, script });

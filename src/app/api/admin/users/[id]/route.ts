@@ -17,7 +17,7 @@ export async function PATCH(req: Request, { params }: { params: Promise<{ id: st
   }
 
   const { id } = await params;
-  const body = await req.json();
+  let body: unknown; try { body = await req.json(); } catch { return NextResponse.json({ error: "Invalid JSON body" }, { status: 400 }); }
   const { isSuperAdmin } = body as { isSuperAdmin: boolean };
   if (typeof isSuperAdmin !== "boolean") {
     return NextResponse.json({ error: "isSuperAdmin must be a boolean" }, { status: 400 });
