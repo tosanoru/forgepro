@@ -255,7 +255,7 @@ export default function DashboardPage() {
           </Card>
         </Link>
 
-        <Link href="/script">
+        <Link href="/ai-script">
           <Card className="transition hover:border-primary/40">
             <CardHeader>
               <div className="flex items-center gap-2">

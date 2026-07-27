@@ -5,15 +5,28 @@ import { useState } from "react";
 import { usePathname, useRouter } from "next/navigation";
 import { signOut } from "next-auth/react";
 import useSWR from "swr";
-import { LayoutDashboard, Users, Building2, Sparkles, Settings, Video, LayoutGrid, FolderOpen, DollarSign, Image, Loader2, Compass, CreditCard, ShieldCheck, LogOut, User, TrendingUp, Flag, Rocket } from "lucide-react";
+import { LayoutDashboard, Users, Building2, Sparkles, Settings, Video, LayoutGrid, FolderOpen, DollarSign, Image, Loader2, Compass, CreditCard, ShieldCheck, LogOut, User, TrendingUp, Flag, Rocket, Plus, PenLine } from "lucide-react";
 import { useWorkspace } from "@/lib/use-workspace";
 import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+  DropdownMenuRadioGroup,
+  DropdownMenuRadioItem,
+} from "@/components/ui/dropdown-menu";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogDescription,
+  DialogFooter,
+} from "@/components/ui/dialog";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 import { toast } from "sonner";
 
 const NAV_GROUPS = [
@@ -22,7 +35,8 @@ const NAV_GROUPS = [
     items: [
       { href: "/content", label: "Content Planning", icon: LayoutGrid },
       { href: "/videos", label: "Video Review", icon: Video },
-      { href: "/script", label: "AI Scripts", icon: Sparkles },
+      { href: "/ai-script", label: "AI Scripts", icon: Sparkles },
+      { href: "/script", label: "Script", icon: PenLine },
       { href: "/thumbnails", label: "Thumbnails", icon: Image },
     ],
   },
@@ -53,25 +67,17 @@ const NAV_GROUPS = [
   },
 ];
 
-/**
- * No Forge equivalent for the workspace switcher — Forge only ever had one
- * flat workspace per user, so there was nothing to switch between.
- *
- * The switcher used to be display-only: it listed a person's workspaces
- * but selecting one did nothing, since there was no active-workspace
- * concept anywhere server-side. Fixed now — see
- * src/app/api/workspace/active/route.ts and ACTIVE_WORKSPACE_COOKIE in
- * src/lib/active-workspace.ts for where the selection actually lives.
- */
 export function Sidebar() {
   const pathname = usePathname();
   const router = useRouter();
-  const { workspace, allWorkspaces, switchWorkspace } = useWorkspace();
+  const { workspace, allWorkspaces, switchWorkspace, createWorkspace, renameWorkspace } = useWorkspace();
   const [switching, setSwitching] = useState(false);
-  // Every other nav item is workspace-scoped; this one isn't — it's
-  // platform-wide. Fetched fresh rather than trusted from the session
-  // token (see /api/admin/me for why) — worth the extra request, this
-  // only fires once per Sidebar mount, not per nav render.
+  const [renameOpen, setRenameOpen] = useState(false);
+  const [createOpen, setCreateOpen] = useState(false);
+  const [renameValue, setRenameValue] = useState("");
+  const [createValue, setCreateValue] = useState("");
+  const [submitting, setSubmitting] = useState(false);
+
   const { data: adminStatus } = useSWR<{ isSuperAdmin: boolean }>("/api/admin/me", (url: string) => fetch(url).then((r) => r.json()));
 
   const handleSwitch = async (workspaceId: string) => {
@@ -79,17 +85,49 @@ export function Sidebar() {
     setSwitching(true);
     try {
       await switchWorkspace(workspaceId);
-      // Every page's data hooks key off workspace.id, so a hard nav isn't
-      // strictly required for data to update — but content-heavy pages
-      // (the board, video list, etc.) can have local component state built
-      // around the previous workspace's ids, so a refresh is the simplest
-      // way to guarantee nothing stale lingers after a switch.
       router.refresh();
     } catch (err) {
       toast.error(err instanceof Error ? err.message : "Failed to switch workspace");
     } finally {
       setSwitching(false);
     }
+  };
+
+  const handleRename = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!renameValue.trim() || !workspace) return;
+    setSubmitting(true);
+    try {
+      await renameWorkspace(renameValue.trim());
+      toast.success("Workspace renamed");
+      setRenameOpen(false);
+    } catch (err) {
+      toast.error(err instanceof Error ? err.message : "Failed to rename workspace");
+    } finally {
+      setSubmitting(false);
+    }
+  };
+
+  const handleCreate = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!createValue.trim()) return;
+    setSubmitting(true);
+    try {
+      await createWorkspace(createValue.trim());
+      toast.success("Workspace created");
+      setCreateOpen(false);
+      setCreateValue("");
+      router.refresh();
+    } catch (err) {
+      toast.error(err instanceof Error ? err.message : "Failed to create workspace");
+    } finally {
+      setSubmitting(false);
+    }
+  };
+
+  const openRename = () => {
+    setRenameValue(workspace?.name ?? "");
+    setRenameOpen(true);
   };
 
   return (
@@ -102,26 +140,81 @@ export function Sidebar() {
       </div>
 
       <div className="border-b border-border px-4 py-3">
-        <Select value={workspace?.id} onValueChange={handleSwitch} disabled={switching || allWorkspaces.length <= 1}>
-          <SelectTrigger className="w-full text-xs">
-            <div className="flex items-center gap-2 truncate">
+        <DropdownMenu>
+          <DropdownMenuTrigger asChild>
+            <button className="flex w-full items-center gap-2 rounded px-3 py-2 text-xs text-muted-foreground hover:bg-muted hover:text-foreground transition-colors">
               {switching ? (
-                <Loader2 className="h-3.5 w-3.5 shrink-0 animate-spin text-muted-foreground" />
+                <Loader2 className="h-3.5 w-3.5 shrink-0 animate-spin" />
               ) : (
-                <Building2 className="h-3.5 w-3.5 shrink-0 text-muted-foreground" />
+                <Building2 className="h-3.5 w-3.5 shrink-0" />
               )}
-              <SelectValue placeholder="Workspace">{workspace?.name}</SelectValue>
-            </div>
-          </SelectTrigger>
-          <SelectContent>
-            {allWorkspaces.map((ws) => (
-              <SelectItem key={ws.id} value={ws.id}>
-                {ws.name}
-              </SelectItem>
-            ))}
-          </SelectContent>
-        </Select>
+              <span className="truncate text-left flex-1">{workspace?.name ?? "Workspace"}</span>
+            </button>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent align="start" side="right" className="w-56">
+            {allWorkspaces.length > 1 && (
+              <>
+                <DropdownMenuRadioGroup value={workspace?.id} onValueChange={handleSwitch}>
+                  {allWorkspaces.map((ws) => (
+                    <DropdownMenuRadioItem key={ws.id} value={ws.id}>
+                      {ws.name}
+                    </DropdownMenuRadioItem>
+                  ))}
+                </DropdownMenuRadioGroup>
+                <DropdownMenuSeparator />
+              </>
+            )}
+            <DropdownMenuItem onClick={() => { setCreateValue(""); setCreateOpen(true); }}>
+              <Plus className="mr-2 h-4 w-4" />
+              New workspace
+            </DropdownMenuItem>
+            <DropdownMenuItem onClick={openRename}>
+              <PenLine className="mr-2 h-4 w-4" />
+              Rename workspace
+            </DropdownMenuItem>
+          </DropdownMenuContent>
+        </DropdownMenu>
       </div>
+
+      <Dialog open={renameOpen} onOpenChange={setRenameOpen}>
+        <DialogContent>
+          <DialogHeader>
+            <DialogTitle>Rename workspace</DialogTitle>
+            <DialogDescription>Change the name of &ldquo;{workspace?.name}&rdquo;.</DialogDescription>
+          </DialogHeader>
+          <form onSubmit={handleRename}>
+            <div className="space-y-1.5 py-4">
+              <Label htmlFor="rename">Name</Label>
+              <Input id="rename" required value={renameValue} onChange={(e) => setRenameValue(e.target.value)} placeholder="My Workspace" />
+            </div>
+            <DialogFooter>
+              <Button type="submit" disabled={submitting || !renameValue.trim()}>
+                {submitting ? "Saving…" : "Save"}
+              </Button>
+            </DialogFooter>
+          </form>
+        </DialogContent>
+      </Dialog>
+
+      <Dialog open={createOpen} onOpenChange={setCreateOpen}>
+        <DialogContent>
+          <DialogHeader>
+            <DialogTitle>New workspace</DialogTitle>
+            <DialogDescription>Create a new workspace to organize content and clients.</DialogDescription>
+          </DialogHeader>
+          <form onSubmit={handleCreate}>
+            <div className="space-y-1.5 py-4">
+              <Label htmlFor="create">Workspace name</Label>
+              <Input id="create" required value={createValue} onChange={(e) => setCreateValue(e.target.value)} placeholder="My Agency" />
+            </div>
+            <DialogFooter>
+              <Button type="submit" disabled={submitting || !createValue.trim()}>
+                {submitting ? "Creating…" : "Create"}
+              </Button>
+            </DialogFooter>
+          </form>
+        </DialogContent>
+      </Dialog>
 
       <nav className="flex-1 space-y-4 overflow-y-auto px-3 py-4">
         <Link

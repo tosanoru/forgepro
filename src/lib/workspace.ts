@@ -129,6 +129,24 @@ export async function getTopLevelWorkspacesForUser(userId: string): Promise<Work
   return rows.map((r) => toSummary(r.workspace));
 }
 
+export async function createTopLevelWorkspace(params: {
+  name: string;
+  ownerId: string;
+  type?: "creator" | "agency" | "org";
+}): Promise<WorkspaceSummary> {
+  const [ws] = await db
+    .insert(workspaces)
+    .values({ name: params.name, type: params.type ?? "creator", ownerId: params.ownerId })
+    .returning();
+  await db.insert(workspaceMembers).values({ workspaceId: ws.id, userId: params.ownerId, role: "owner" });
+  return toSummary(ws);
+}
+
+export async function updateWorkspace(workspaceId: string, data: { name?: string }): Promise<WorkspaceSummary | null> {
+  const [ws] = await db.update(workspaces).set(data).where(eq(workspaces.id, workspaceId)).returning();
+  return ws ? toSummary(ws) : null;
+}
+
 function toSummary(ws: typeof workspaces.$inferSelect): WorkspaceSummary {
   return {
     id: ws.id,

@@ -1,0 +1,275 @@
+{
+  "schemaVersion": "1.0",
+  "description": "Format-specific script structure templates for AI-assisted content script generation",
+  "shortform": {
+    "description": "Optimized for TikTok, Reels, Shorts — typically 15-90 seconds, retention-critical first 1-2 seconds",
+    "templates": [
+      {
+        "id": "sf-pattern-interrupt",
+        "name": "Pattern Interrupt Hook",
+        "shortCode": "SF-PI",
+        "description": "Visual or verbal shock in the first frame to stop the scroll, then rapid payoff.",
+        "estimatedLength": { "min": 15, "max": 45, "unit": "seconds" },
+        "sections": [
+          { "key": "interrupt", "label": "Interrupt", "purpose": "Break scroll pattern in 0-1s", "promptGuidance": "Unexpected visual, jump cut, or claim that contradicts expectation." },
+          { "key": "payoff", "label": "Payoff", "purpose": "Deliver value fast", "promptGuidance": "No throat-clearing — get straight to the point." },
+          { "key": "kicker", "label": "Kicker", "purpose": "Loop back or punchline", "promptGuidance": "End on a line that rewards a rewatch or prompts a comment." }
+        ]
+      },
+      {
+        "id": "sf-poc",
+        "name": "Point-of-Contrast",
+        "shortCode": "SF-POC",
+        "description": "Two-sided comparison delivered rapidly — 'this vs that.'",
+        "estimatedLength": { "min": 15, "max": 30, "unit": "seconds" },
+        "sections": [
+          { "key": "setup", "label": "Setup", "purpose": "Frame the comparison", "promptGuidance": "'Most people do X. Here's what actually works.'" },
+          { "key": "contrast", "label": "Contrast", "purpose": "Show the two sides side by side", "promptGuidance": "Fast cuts or split-screen pacing." },
+          { "key": "verdict", "label": "Verdict", "purpose": "State the winner and why", "promptGuidance": "One clear takeaway line." }
+        ]
+      },
+      {
+        "id": "sf-poy",
+        "name": "POV / Roleplay",
+        "shortCode": "SF-POV",
+        "description": "First-person scenario the viewer projects themselves into.",
+        "estimatedLength": { "min": 15, "max": 60, "unit": "seconds" },
+        "sections": [
+          { "key": "scenario", "label": "Scenario Tag", "purpose": "Set the POV frame instantly", "promptGuidance": "'POV: you just found out...' on-screen text plus verbal cue." },
+          { "key": "scene", "label": "Scene", "purpose": "Play out the moment", "promptGuidance": "Keep dialogue tight and relatable." },
+          { "key": "punchline", "label": "Punchline/Twist", "purpose": "Close with payoff or relatable twist", "promptGuidance": "Should be shareable/quotable." }
+        ]
+      },
+      {
+        "id": "sf-rapidfire-tips",
+        "name": "Rapid-Fire Tips",
+        "shortCode": "SF-RFT",
+        "description": "Compressed listicle — 3-5 tips delivered at high pace with no filler.",
+        "estimatedLength": { "min": 20, "max": 60, "unit": "seconds" },
+        "sections": [
+          { "key": "hook", "label": "Hook", "purpose": "Preview the count and value", "promptGuidance": "'3 things I wish I knew before X'" },
+          { "key": "tips", "label": "Tips", "purpose": "One-line tip + one-line why", "promptGuidance": "Repeatable block, 2-4 seconds per tip max.", "repeatable": true },
+          { "key": "close", "label": "Close", "purpose": "Fast CTA", "promptGuidance": "Follow for more / comment for part 2." }
+        ]
+      },
+      {
+        "id": "sf-transformation",
+        "name": "Rapid Transformation",
+        "shortCode": "SF-TRANS",
+        "description": "Before/after shown almost simultaneously for visual proof.",
+        "estimatedLength": { "min": 10, "max": 30, "unit": "seconds" },
+        "sections": [
+          { "key": "before", "label": "Before Flash", "purpose": "Show starting state briefly", "promptGuidance": "1-2 seconds max, establish the problem visually." },
+          { "key": "after", "label": "After Reveal", "purpose": "Cut to transformed state", "promptGuidance": "Hard cut or transition effect for impact." },
+          { "key": "howto", "label": "How Tag", "purpose": "Quick credibility/CTA", "promptGuidance": "On-screen text: 'Comment X for the full process'." }
+        ]
+      },
+      {
+        "id": "sf-storytime",
+        "name": "Storytime Compressed",
+        "shortCode": "SF-STORY",
+        "description": "Full narrative arc compressed into under a minute.",
+        "estimatedLength": { "min": 30, "max": 90, "unit": "seconds" },
+        "sections": [
+          { "key": "hook", "label": "Cliffhanger Hook", "purpose": "Open at the most dramatic point", "promptGuidance": "Start in the middle of the action, not the beginning." },
+          { "key": "rewind", "label": "Quick Rewind", "purpose": "Fill in just enough context", "promptGuidance": "Keep to 2-3 sentences." },
+          { "key": "resolution", "label": "Resolution", "purpose": "Pay off the cliffhanger", "promptGuidance": "Land the ending fast, no lingering." }
+        ]
+      },
+      {
+        "id": "sf-question-hook",
+        "name": "Question Hook",
+        "shortCode": "SF-QH",
+        "description": "Opens with a question the viewer can't resist answering mentally.",
+        "estimatedLength": { "min": 15, "max": 45, "unit": "seconds" },
+        "sections": [
+          { "key": "question", "label": "Question", "purpose": "Provoke instant mental engagement", "promptGuidance": "Should apply to a broad, specific audience segment." },
+          { "key": "reveal", "label": "Reveal", "purpose": "Answer with value", "promptGuidance": "Deliver the insight without padding." },
+          { "key": "engage", "label": "Engagement Prompt", "purpose": "Drive comments", "promptGuidance": "Ask viewers to share their own answer/experience." }
+        ]
+      },
+      {
+        "id": "sf-greenscreen-react",
+        "name": "Green-Screen Reaction/Commentary",
+        "shortCode": "SF-GSR",
+        "description": "React to and comment on external content (news, post, video clip).",
+        "estimatedLength": { "min": 20, "max": 60, "unit": "seconds" },
+        "sections": [
+          { "key": "context", "label": "Context Flash", "purpose": "Show what's being reacted to", "promptGuidance": "Brief on-screen source material intro." },
+          { "key": "take", "label": "Your Take", "purpose": "Deliver opinion/analysis", "promptGuidance": "Be direct and specific — vague takes underperform." },
+          { "key": "close", "label": "Close", "purpose": "Invite disagreement/discussion", "promptGuidance": "Open-ended prompt for comments." }
+        ]
+      },
+      {
+        "id": "sf-checklist-flash",
+        "name": "Checklist Flash",
+        "shortCode": "SF-CHK",
+        "description": "Visual checklist read aloud with on-screen text ticking off items.",
+        "estimatedLength": { "min": 15, "max": 40, "unit": "seconds" },
+        "sections": [
+          { "key": "hook", "label": "Hook", "purpose": "Frame the checklist", "promptGuidance": "'Signs you need to X' or 'Checklist before you Y'" },
+          { "key": "items", "label": "Checklist Items", "purpose": "Rapid-fire items", "promptGuidance": "Repeatable, one short phrase per item.", "repeatable": true },
+          { "key": "tally", "label": "Tally/CTA", "purpose": "Prompt self-count and action", "promptGuidance": "'How many did you check? Let me know below.'" }
+        ]
+      },
+      {
+        "id": "sf-single-insight",
+        "name": "Single Insight Punch",
+        "shortCode": "SF-SI",
+        "description": "One idea, delivered with maximum clarity and no digressions.",
+        "estimatedLength": { "min": 10, "max": 30, "unit": "seconds" },
+        "sections": [
+          { "key": "claim", "label": "Claim", "purpose": "State the insight upfront", "promptGuidance": "Should be counterintuitive or highly specific." },
+          { "key": "proof", "label": "Proof", "purpose": "One piece of quick evidence", "promptGuidance": "A stat, example, or personal result." },
+          { "key": "restate", "label": "Restate", "purpose": "Reinforce for retention/shareability", "promptGuidance": "Rephrase the claim as a memorable line." }
+        ]
+      }
+    ]
+  },
+  "longform": {
+    "description": "Optimized for YouTube long-form, podcasts, webinars — typically 8-40+ minutes, structured for sustained retention and depth",
+    "templates": [
+      {
+        "id": "lf-cold-open-doc",
+        "name": "Cold Open Documentary",
+        "shortCode": "LF-COD",
+        "description": "Opens mid-action before titles/intro, then unfolds a full investigative or narrative arc.",
+        "estimatedLength": { "min": 480, "max": 2400, "unit": "seconds" },
+        "sections": [
+          { "key": "cold-open", "label": "Cold Open", "purpose": "Drop viewer into the most compelling moment", "promptGuidance": "No channel intro yet — pure hook, 15-45 seconds." },
+          { "key": "title-card", "label": "Title/Premise", "purpose": "Establish what the video covers and why it matters", "promptGuidance": "State the promise explicitly." },
+          { "key": "act1", "label": "Act 1: Setup", "purpose": "Establish background and stakes", "promptGuidance": "Introduce key context, people, or timeline." },
+          { "key": "act2", "label": "Act 2: Development", "purpose": "Escalate complexity/tension", "promptGuidance": "Layer in sub-loops and new information to sustain retention.", "repeatable": true },
+          { "key": "act3", "label": "Act 3: Resolution", "purpose": "Resolve the central question", "promptGuidance": "Tie back to the cold open." },
+          { "key": "outro", "label": "Outro/CTA", "purpose": "Reflection and next step", "promptGuidance": "Subscribe/related video prompt." }
+        ]
+      },
+      {
+        "id": "lf-deep-dive-tutorial",
+        "name": "Deep-Dive Tutorial",
+        "shortCode": "LF-DDT",
+        "description": "Comprehensive step-by-step teaching format with context, theory, and practice.",
+        "estimatedLength": { "min": 480, "max": 3600, "unit": "seconds" },
+        "sections": [
+          { "key": "intro", "label": "Intro", "purpose": "State outcome and roadmap", "promptGuidance": "Preview exactly what viewer will be able to do by the end." },
+          { "key": "why", "label": "Why It Matters", "purpose": "Motivate the topic", "promptGuidance": "Brief context on relevance/use cases." },
+          { "key": "concepts", "label": "Core Concepts", "purpose": "Teach necessary background", "promptGuidance": "Break into digestible sub-sections.", "repeatable": true },
+          { "key": "walkthrough", "label": "Step-by-Step Walkthrough", "purpose": "Hands-on execution", "promptGuidance": "Repeatable step blocks with expected results.", "repeatable": true },
+          { "key": "troubleshoot", "label": "Common Pitfalls", "purpose": "Address likely errors", "promptGuidance": "Preempt viewer frustration/comments." },
+          { "key": "recap", "label": "Recap + Next Steps", "purpose": "Reinforce and extend", "promptGuidance": "Summarize and point to related content." }
+        ]
+      },
+      {
+        "id": "lf-video-essay",
+        "name": "Video Essay",
+        "shortCode": "LF-ESSAY",
+        "description": "Argument-driven format building a thesis through evidence and analysis.",
+        "estimatedLength": { "min": 600, "max": 2400, "unit": "seconds" },
+        "sections": [
+          { "key": "thesis", "label": "Thesis Hook", "purpose": "State the central argument or question", "promptGuidance": "Make the claim provocative enough to justify runtime." },
+          { "key": "context", "label": "Context", "purpose": "Ground the audience", "promptGuidance": "Background needed to follow the argument." },
+          { "key": "evidence", "label": "Supporting Points", "purpose": "Build the case", "promptGuidance": "Repeatable — each point with evidence and analysis.", "repeatable": true },
+          { "key": "counterpoint", "label": "Counterpoint/Complication", "purpose": "Add nuance/credibility", "promptGuidance": "Address the strongest opposing view." },
+          { "key": "conclusion", "label": "Conclusion", "purpose": "Land the thesis", "promptGuidance": "Tie back to the hook, leave a resonant final line." }
+        ]
+      },
+      {
+        "id": "lf-interview-podcast",
+        "name": "Interview / Podcast Flow",
+        "shortCode": "LF-INT",
+        "description": "Conversational structure with segment planning for guest-based long-form.",
+        "estimatedLength": { "min": 1200, "max": 5400, "unit": "seconds" },
+        "sections": [
+          { "key": "cold-open", "label": "Cold Open Clip", "purpose": "Best soundbite teased upfront", "promptGuidance": "Pull the most compelling moment from later in the conversation." },
+          { "key": "intro", "label": "Guest Intro", "purpose": "Establish credibility and topic", "promptGuidance": "Concise bio tied to why this conversation matters now." },
+          { "key": "warmup", "label": "Warm-up Questions", "purpose": "Build rapport, ease in", "promptGuidance": "Lower-stakes, personal or origin-story questions." },
+          { "key": "core-topics", "label": "Core Topic Segments", "purpose": "Main substantive discussion", "promptGuidance": "Repeatable topic blocks with planned follow-up angles.", "repeatable": true },
+          { "key": "rapid-fire", "label": "Rapid Fire / Lightning Round", "purpose": "High-energy closer segment", "promptGuidance": "Optional; short punchy Q&A." },
+          { "key": "close", "label": "Close", "purpose": "Where to find guest, CTA", "promptGuidance": "Plug and sign-off." }
+        ]
+      },
+      {
+        "id": "lf-case-study",
+        "name": "Case Study Breakdown",
+        "shortCode": "LF-CASE",
+        "description": "Analyzes a real example (business, project, event) in structured depth.",
+        "estimatedLength": { "min": 600, "max": 1800, "unit": "seconds" },
+        "sections": [
+          { "key": "hook", "label": "Hook", "purpose": "Tease the surprising result", "promptGuidance": "Lead with the outcome, not the setup." },
+          { "key": "background", "label": "Background", "purpose": "Establish subject and context", "promptGuidance": "Who/what/when necessary for understanding." },
+          { "key": "strategy", "label": "Strategy/Approach", "purpose": "Break down what was done", "promptGuidance": "Repeatable — one block per key decision or phase.", "repeatable": true },
+          { "key": "results", "label": "Results", "purpose": "Present outcomes with specifics", "promptGuidance": "Use concrete numbers/evidence where possible." },
+          { "key": "takeaways", "label": "Takeaways", "purpose": "Extract applicable lessons", "promptGuidance": "Make it actionable for the viewer's own situation." }
+        ]
+      },
+      {
+        "id": "lf-vlog-narrative",
+        "name": "Vlog Narrative Arc",
+        "shortCode": "LF-VLOG",
+        "description": "Day-in-the-life or project-based vlog with narrative throughline.",
+        "estimatedLength": { "min": 480, "max": 1800, "unit": "seconds" },
+        "sections": [
+          { "key": "premise", "label": "Premise", "purpose": "Establish the goal/frame of the video", "promptGuidance": "'Today I'm attempting to X' — set the stakes." },
+          { "key": "segments", "label": "Chronological Segments", "purpose": "Show the journey in sequence", "promptGuidance": "Repeatable time/location-based blocks with mini-moments.", "repeatable": true },
+          { "key": "obstacle", "label": "Obstacle/Turning Point", "purpose": "Inject tension or unexpected event", "promptGuidance": "Real or highlighted friction point raises stakes." },
+          { "key": "resolution", "label": "Resolution", "purpose": "Wrap the day/project goal", "promptGuidance": "Show final state relative to premise." },
+          { "key": "reflection", "label": "Reflection/CTA", "purpose": "Personal takeaway and sign-off", "promptGuidance": "Direct-to-camera closing thought." }
+        ]
+      },
+      {
+        "id": "lf-ranked-list",
+        "name": "Ranked/Comparative List",
+        "shortCode": "LF-RANK",
+        "description": "Extended listicle with deep analysis per item, often ranked or tiered.",
+        "estimatedLength": { "min": 600, "max": 2400, "unit": "seconds" },
+        "sections": [
+          { "key": "hook", "label": "Hook", "purpose": "Preview scope and criteria", "promptGuidance": "State ranking criteria upfront for credibility." },
+          { "key": "criteria", "label": "Methodology", "purpose": "Explain how items were evaluated", "promptGuidance": "Builds trust before the list starts." },
+          { "key": "items", "label": "Ranked Items", "purpose": "Deep dive per item", "promptGuidance": "Repeatable — analysis, pros/cons, or score per item.", "repeatable": true },
+          { "key": "verdict", "label": "Final Verdict", "purpose": "Overall winner/recommendation by use case", "promptGuidance": "Segment recommendation by viewer type if relevant." }
+        ]
+      },
+      {
+        "id": "lf-explainer",
+        "name": "Explainer / Educational Deep Dive",
+        "shortCode": "LF-EXPL",
+        "description": "Breaks down a complex topic layer by layer for general audience understanding.",
+        "estimatedLength": { "min": 480, "max": 1800, "unit": "seconds" },
+        "sections": [
+          { "key": "hook", "label": "Hook", "purpose": "Establish why this topic matters now", "promptGuidance": "Connect to a current event or common misconception." },
+          { "key": "foundation", "label": "Foundational Concept", "purpose": "Build shared baseline understanding", "promptGuidance": "Simplify without dumbing down." },
+          { "key": "layers", "label": "Layered Explanation", "purpose": "Progressively add complexity", "promptGuidance": "Repeatable — each layer builds on the last.", "repeatable": true },
+          { "key": "implications", "label": "Implications", "purpose": "Connect to real-world impact", "promptGuidance": "Answer 'so what?' for the viewer." },
+          { "key": "summary", "label": "Summary", "purpose": "Consolidate the full picture", "promptGuidance": "Recap in plain language." }
+        ]
+      },
+      {
+        "id": "lf-review",
+        "name": "In-Depth Review",
+        "shortCode": "LF-REVIEW",
+        "description": "Structured product/service/media review with criteria-based evaluation.",
+        "estimatedLength": { "min": 480, "max": 1500, "unit": "seconds" },
+        "sections": [
+          { "key": "verdict-tease", "label": "Verdict Tease", "purpose": "Hint at final take without fully revealing it", "promptGuidance": "Creates a reason to watch through." },
+          { "key": "overview", "label": "Overview", "purpose": "What it is, context, pricing", "promptGuidance": "Set baseline facts efficiently." },
+          { "key": "criteria-breakdown", "label": "Criteria Breakdown", "purpose": "Evaluate against key dimensions", "promptGuidance": "Repeatable — one block per evaluation criterion.", "repeatable": true },
+          { "key": "comparison", "label": "Comparison", "purpose": "Position against alternatives", "promptGuidance": "Reference direct competitors." },
+          { "key": "verdict", "label": "Final Verdict", "purpose": "Clear recommendation", "promptGuidance": "Who should/shouldn't buy or use it." }
+        ]
+      },
+      {
+        "id": "lf-narrative-doc",
+        "name": "Serialized Narrative Documentary",
+        "shortCode": "LF-SERIAL",
+        "description": "Multi-chapter structure for dense, story-driven long-form (true crime, history, deep investigations).",
+        "estimatedLength": { "min": 900, "max": 3600, "unit": "seconds" },
+        "sections": [
+          { "key": "prologue", "label": "Prologue", "purpose": "Frame the full story's significance", "promptGuidance": "Establish scope and why it deserves this runtime." },
+          { "key": "chapters", "label": "Chapters", "purpose": "Chronological or thematic chapters", "promptGuidance": "Repeatable — each chapter has its own mini arc and cliffhanger transition.", "repeatable": true },
+          { "key": "climax", "label": "Climax", "purpose": "Peak tension/revelation", "promptGuidance": "The point the whole narrative has been building toward." },
+          { "key": "epilogue", "label": "Epilogue", "purpose": "Aftermath and reflection", "promptGuidance": "Close threads, offer final perspective." }
+        ]
+      }
+    ]
+  }
+}

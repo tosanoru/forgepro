@@ -86,7 +86,7 @@ export default function ScriptDetailPage() {
   return (
     <AppShell>
       <PageHeader
-        eyebrow="№ 03 · SCRIPT"
+        eyebrow="№ 03 · AI SCRIPT"
         title={script.title}
         subtitle={`${script.format === "short" ? "Short-form" : "Long-form"}${script.scriptStyle ? ` · ${styles.find((s) => s.id === script.scriptStyle)?.label ?? script.scriptStyle}` : ""} · ${script.topic}`}
         action={

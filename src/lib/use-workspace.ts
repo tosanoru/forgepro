@@ -3,7 +3,11 @@
 import useSWR from "swr";
 import type { WorkspaceMember, WorkspaceRole, WorkspaceSummary } from "@/lib/workspace-types";
 
-const fetcher = (url: string) => fetch(url).then((r) => r.json());
+const fetcher = (url: string) => {
+  const controller = new AbortController();
+  const id = setTimeout(() => controller.abort(), 15000);
+  return fetch(url, { signal: controller.signal }).finally(() => clearTimeout(id)).then((r) => r.json());
+};
 
 interface WorkspaceResponse {
   workspace: WorkspaceSummary | null;
@@ -66,6 +70,42 @@ export function useWorkspace() {
     await mutate();
   }
 
+  async function createWorkspace(name: string, type?: "creator" | "agency" | "org") {
+    const res = await fetch("/api/workspace", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ name, type }),
+    });
+    if (!res.ok) {
+      const text = await res.text();
+      let error = "Failed to create workspace";
+      try {
+        const parsed = JSON.parse(text);
+        error = parsed.error ?? error;
+      } catch {}
+      throw new Error(error);
+    }
+    // Seed SWR cache from POST response to avoid a cookie-timing race
+    // between the Set-Cookie header and the subsequent GET in mutate().
+    try {
+      const body = await res.json();
+      await mutate(body, false);
+    } catch {
+      await mutate();
+    }
+  }
+
+  async function renameWorkspace(name: string) {
+    if (!data?.workspace) throw new Error("No workspace loaded");
+    const res = await fetch(`/api/workspace/${data.workspace.id}`, {
+      method: "PATCH",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ name }),
+    });
+    if (!res.ok) throw new Error((await res.json()).error ?? "Failed to rename workspace");
+    await mutate();
+  }
+
   return {
     workspace: data?.workspace ?? null,
     members: data?.members ?? [],
@@ -77,6 +117,8 @@ export function useWorkspace() {
     invite,
     createClientWorkspace,
     switchWorkspace,
+    createWorkspace,
+    renameWorkspace,
     mutate,
   };
 }

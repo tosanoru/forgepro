@@ -75,7 +75,20 @@ export function useScripts() {
     return finalScript;
   }
 
-  return { scripts: data?.scripts ?? [], loading: isLoading, error, generate, mutate };
+  async function create(values: { title: string; topic?: string; format?: "short" | "long"; scriptStyle?: string; content?: string }): Promise<Script> {
+    if (!workspace) throw new Error("No workspace loaded yet");
+    const res = await fetch("/api/scripts/manual", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ workspaceId: workspace.id, ...values }),
+    });
+    const json = await res.json();
+    if (!res.ok) throw new Error(json.error ?? "Failed to create script");
+    await mutate();
+    return json.script;
+  }
+
+  return { scripts: data?.scripts ?? [], loading: isLoading, error, generate, create, mutate };
 }
 
 export interface ScriptVersion {

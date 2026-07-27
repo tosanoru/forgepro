@@ -75,7 +75,7 @@ function NewScriptForm() {
         onDelta: (delta) => setStreamedContent((prev) => prev + delta),
       });
       toast.success(cardId ? "Script generated and attached to the card" : "Script generated");
-      router.push(`/script/${script.id}`);
+      router.push(`/ai-script/${script.id}`);
     } catch (err) {
       toast.error(err instanceof Error ? err.message : "Failed to generate script");
     } finally {
@@ -216,7 +216,7 @@ function NewScriptForm() {
 export default function NewScriptPage() {
   return (
     <AppShell>
-      <PageHeader eyebrow="№ 03 · NEW SCRIPT" title="Generate a script" subtitle="Pick a format, then a viral script style, then give it a topic." />
+      <PageHeader eyebrow="№ 03 · NEW AI SCRIPT" title="Generate a script" subtitle="Pick a format, then a viral script style, then give it a topic." />
       <Suspense fallback={<div className="h-64" />}>
         <NewScriptForm />
       </Suspense>
