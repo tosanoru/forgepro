@@ -3,15 +3,6 @@
 
 @custom-variant dark (&:is(.dark *));
 
-/*
-  Token architecture (the @theme inline block, the --color-* aliasing
-  pattern, the light/dark split) is ported verbatim from Forge's
-  globals.css — it's solid, reusable structure. Only the actual color
-  values change below, to Creator OS's dark industrial-luxury identity
-  (near-black canvas, acid yellow + electric indigo accents, Syne/DM Mono
-  type) instead of Forge's editorial paper-on-ink palette.
-*/
-
 @theme inline {
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
   --font-display: var(--font-syne), var(--font-inter), ui-sans-serif, system-ui, sans-serif;
@@ -67,9 +58,8 @@
   --color-sidebar-border: var(--sidebar-border);
 }
 
-/* :root = light variant, kept only so the theme toggle has somewhere to go. */
 :root {
-  --radius: 0.5rem;
+  --radius: 0.625rem;
 
   --paper: oklch(0.98 0.005 90);
   --ink: oklch(0.12 0.01 260);
@@ -83,7 +73,7 @@
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.12 0.01 260);
 
-  --primary: oklch(0.5 0.24 275); /* electric indigo */
+  --primary: oklch(0.5 0.2 270);
   --primary-foreground: oklch(0.99 0 0);
 
   --secondary: oklch(0.95 0.008 90);
@@ -92,87 +82,88 @@
   --muted: oklch(0.94 0.008 90);
   --muted-foreground: oklch(0.45 0.01 260);
 
-  --accent: oklch(0.92 0.19 105); /* acid yellow */
+  --accent: oklch(0.92 0.19 105);
   --accent-foreground: oklch(0.16 0.05 100);
 
   --destructive: oklch(0.58 0.24 25);
   --destructive-foreground: oklch(0.99 0 0);
 
-  --border: oklch(0.12 0.01 260 / 12%);
-  --input: oklch(0.12 0.01 260 / 12%);
-  --ring: oklch(0.5 0.24 275);
+  --border: oklch(0.12 0.01 260 / 10%);
+  --input: oklch(0.12 0.01 260 / 10%);
+  --ring: oklch(0.5 0.2 270);
 
   --acid: oklch(0.92 0.19 105);
   --acid-foreground: oklch(0.16 0.05 100);
-  --indigo: oklch(0.5 0.24 275);
+  --indigo: oklch(0.5 0.2 270);
   --indigo-foreground: oklch(0.99 0 0);
 
   --emerald-stat: oklch(0.55 0.16 155);
   --emerald-stat-foreground: oklch(0.99 0 0);
   --amber-stat: oklch(0.78 0.17 80);
   --amber-stat-foreground: oklch(0.18 0.05 80);
-  --indigo-stat: oklch(0.5 0.24 275);
+  --indigo-stat: oklch(0.5 0.2 270);
   --indigo-stat-foreground: oklch(0.99 0 0);
   --rose-stat: oklch(0.58 0.24 25);
   --rose-stat-foreground: oklch(0.99 0 0);
 
   --sidebar: oklch(1 0 0);
   --sidebar-foreground: oklch(0.12 0.01 260);
-  --sidebar-accent: oklch(0.5 0.24 275);
+  --sidebar-accent: oklch(0.5 0.2 270);
   --sidebar-accent-foreground: oklch(0.99 0 0);
-  --sidebar-border: oklch(0.12 0.01 260 / 10%);
+  --sidebar-border: oklch(0.12 0.01 260 / 8%);
 }
 
-/* .dark = the actual brand identity, and the default state (see ThemeToggle.tsx). */
 .dark {
-  --paper: oklch(0.1 0.012 260);
+  --paper: oklch(0.09 0.008 270);
   --ink: oklch(0.97 0.005 90);
 
-  --background: oklch(0.1 0.012 260); /* near-black */
-  --foreground: oklch(0.96 0.005 90);
-  --card: oklch(0.14 0.014 260);
-  --card-foreground: oklch(0.96 0.005 90);
-  --popover: oklch(0.14 0.014 260);
-  --popover-foreground: oklch(0.96 0.005 90);
+  --background: oklch(0.09 0.008 270);
+  --foreground: oklch(0.96 0.006 90);
 
-  --primary: oklch(0.6 0.25 280); /* electric indigo, brighter on dark */
+  --card: oklch(0.135 0.01 270);
+  --card-foreground: oklch(0.96 0.006 90);
+
+  --popover: oklch(0.135 0.01 270);
+  --popover-foreground: oklch(0.96 0.006 90);
+
+  --primary: oklch(0.58 0.18 270);
   --primary-foreground: oklch(0.99 0 0);
 
-  --secondary: oklch(0.2 0.016 260);
-  --secondary-foreground: oklch(0.96 0.005 90);
+  --secondary: oklch(0.18 0.01 270);
+  --secondary-foreground: oklch(0.96 0.006 90);
 
-  --muted: oklch(0.2 0.016 260);
-  --muted-foreground: oklch(0.65 0.01 90);
+  --muted: oklch(0.18 0.01 270);
+  --muted-foreground: oklch(0.55 0.01 90);
 
-  --accent: oklch(0.9 0.2 105); /* acid yellow */
+  --accent: oklch(0.88 0.15 105);
   --accent-foreground: oklch(0.16 0.05 100);
 
-  --destructive: oklch(0.65 0.24 25);
+  --destructive: oklch(0.6 0.2 25);
   --destructive-foreground: oklch(0.99 0 0);
 
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 12%);
-  --ring: oklch(0.6 0.25 280);
+  --border: oklch(1 0 0 / 7%);
+  --input: oklch(1 0 0 / 10%);
+  --ring: oklch(0.58 0.18 270);
 
-  --acid: oklch(0.9 0.2 105);
+  --acid: oklch(0.88 0.15 105);
   --acid-foreground: oklch(0.16 0.05 100);
-  --indigo: oklch(0.6 0.25 280);
+  --indigo: oklch(0.58 0.18 270);
   --indigo-foreground: oklch(0.99 0 0);
 
-  --emerald-stat: oklch(0.62 0.17 155);
+  --emerald-stat: oklch(0.6 0.15 155);
   --emerald-stat-foreground: oklch(0.99 0 0);
-  --amber-stat: oklch(0.78 0.17 80);
+  --amber-stat: oklch(0.75 0.15 80);
   --amber-stat-foreground: oklch(0.18 0.05 80);
-  --indigo-stat: oklch(0.6 0.25 280);
+  --indigo-stat: oklch(0.58 0.18 270);
   --indigo-stat-foreground: oklch(0.99 0 0);
-  --rose-stat: oklch(0.65 0.24 25);
+  --rose-stat: oklch(0.6 0.2 25);
   --rose-stat-foreground: oklch(0.99 0 0);
 
-  --sidebar: oklch(0.07 0.01 260);
-  --sidebar-foreground: oklch(0.94 0.005 90);
-  --sidebar-accent: oklch(0.6 0.25 280);
+  --sidebar: oklch(0.07 0.008 270);
+  --sidebar-foreground: oklch(0.94 0.006 90);
+  --sidebar-accent: oklch(0.58 0.18 270);
   --sidebar-accent-foreground: oklch(0.99 0 0);
-  --sidebar-border: oklch(1 0 0 / 8%);
+  --sidebar-border: oklch(1 0 0 / 6%);
 }
 
 @layer base {
@@ -185,7 +176,7 @@
     color: var(--color-foreground);
     font-family: var(--font-sans);
     font-feature-settings: "ss01", "cv11";
-    background-image: radial-gradient(circle at 1px 1px, color-mix(in oklab, var(--ink) 6%, transparent) 1px, transparent 0);
+    background-image: radial-gradient(circle at 1px 1px, color-mix(in oklab, var(--ink) 4%, transparent) 1px, transparent 0);
     background-size: 28px 28px;
   }
 
@@ -210,7 +201,7 @@
     content: "";
     position: absolute;
     inset: 0;
-    border: 1px solid color-mix(in oklab, var(--ink) 14%, transparent);
+    border: 1px solid color-mix(in oklab, var(--ink) 10%, transparent);
     border-radius: inherit;
     transform: translate(6px, 6px);
     pointer-events: none;
@@ -219,8 +210,17 @@
 
   .grid-paper {
     background-image:
-      linear-gradient(to right, color-mix(in oklab, var(--ink) 5%, transparent) 1px, transparent 1px),
-      linear-gradient(to bottom, color-mix(in oklab, var(--ink) 5%, transparent) 1px, transparent 1px);
+      linear-gradient(to right, color-mix(in oklab, var(--ink) 4%, transparent) 1px, transparent 1px),
+      linear-gradient(to bottom, color-mix(in oklab, var(--ink) 4%, transparent) 1px, transparent 1px);
     background-size: 24px 24px;
+  }
+
+  .card-hover {
+    transition: all 0.2s ease;
+  }
+  .card-hover:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+    border-color: color-mix(in oklab, var(--primary) 30%, transparent);
   }
 }

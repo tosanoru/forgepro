@@ -16,12 +16,6 @@ import Link from "next/link";
 import { CONTENT_STAGES, CONTENT_STAGE_LABELS, daysUntil } from "@/lib/content-types";
 import { STAGE_META } from "@/lib/content-meta";
 
-/**
- * Dashboard. All eight modules from the original brief are live: Content
- * Planning, Video Review + Client Approval, AI Script Writing, Thumbnail
- * Generation, Brand Assets, Revenue, Team, and workspace/auth underneath
- * all of it.
- */
 export default function DashboardPage() {
   const { data: session } = useSession();
   const { workspace, members, children, loading, mutate: mutateWorkspace } = useWorkspace();
@@ -63,100 +57,97 @@ export default function DashboardPage() {
   return (
     <AppShell>
       <PageHeader
-        eyebrow="№ 01 · DISPATCH"
+        eyebrow={workspace?.type ?? "workspace"}
         title="Dashboard"
-        subtitle={loading ? "Loading workspace…" : `${workspace?.type ?? "creator"} workspace`}
+        subtitle={loading ? "Loading workspace\u2026" : session?.user?.name ? `Welcome back, ${session.user.name}` : undefined}
       />
 
-      {session?.user?.name && (
-        <p className="mb-8 text-lg text-muted-foreground">
-          Welcome back,{" "}
-          <span className="rounded bg-primary/15 px-1.5 py-0.5 font-semibold text-primary">
-            {session.user.name}
-          </span>
-          .
-        </p>
-      )}
-
-      <div className="mb-8 grid grid-cols-2 gap-4 sm:grid-cols-4">
-        <Card className="flex flex-col border-0 bg-sky-500">
-          <CardHeader className="pb-2">
-            <CardDescription className="text-sky-100">Videos Published</CardDescription>
+      <div className="mb-10 grid grid-cols-2 gap-3 sm:grid-cols-4 sm:gap-4">
+        <Card className="border-l-2 border-l-emerald-stat">
+          <CardHeader className="pb-1.5">
+            <CardDescription className="flex items-center gap-1.5 text-xs">
+              <div className="h-1.5 w-1.5 rounded-full bg-emerald-stat" />
+              Published
+            </CardDescription>
           </CardHeader>
-          <CardContent className="flex-1">
-            <p className="text-2xl font-bold text-white">{videosPublished}</p>
+          <CardContent>
+            <p className="font-mono text-2xl font-bold tracking-tight">{videosPublished}</p>
           </CardContent>
         </Card>
-        <Card className="flex flex-col border-0 bg-rose-500">
-          <CardHeader className="pb-2">
-            <CardDescription className="text-rose-100">YouTube Subscribers</CardDescription>
+        <Card className="border-l-2 border-l-indigo-stat">
+          <CardHeader className="pb-1.5">
+            <CardDescription className="flex items-center gap-1.5 text-xs">
+              <div className="h-1.5 w-1.5 rounded-full bg-indigo-stat" />
+              Subscribers
+            </CardDescription>
           </CardHeader>
-          <CardContent className="flex-1">
-            <p className="mb-2 text-2xl font-bold text-white">
+          <CardContent>
+            <p className="font-mono text-2xl font-bold tracking-tight">
               {workspace?.youtubeSubscriberCount != null
                 ? workspace.youtubeSubscriberCount.toLocaleString()
-                : "—"}
+                : "\u2014"}
             </p>
-            <div className="flex gap-2">
+            <div className="mt-2 flex gap-1.5">
               <input
                 value={channelInput}
                 onChange={(e) => setChannelInput(e.target.value)}
-                placeholder={workspace?.youtubeChannelId ?? "@handle or UC..."}
-                className="min-w-0 flex-1 rounded bg-white/20 px-2 py-1 text-xs text-white placeholder-white/50 outline-none focus:ring-2 focus:ring-white/40"
+                placeholder={workspace?.youtubeChannelId ?? "@handle or UC\u2026"}
+                className="min-w-0 flex-1 rounded-md border border-input bg-transparent px-2 py-1 text-xs text-foreground placeholder-muted-foreground/50 outline-none transition-colors focus:border-ring focus:ring-0"
                 onKeyDown={(e) => e.key === "Enter" && syncSubscribers()}
               />
               <button
                 onClick={syncSubscribers}
                 disabled={syncingSubs || !channelInput.trim()}
-                className="flex shrink-0 items-center gap-1 rounded bg-white/20 px-2 py-1 text-xs text-white hover:bg-white/30 disabled:opacity-50"
+                className="flex shrink-0 items-center gap-1 rounded-md border border-input px-2 py-1 text-xs text-muted-foreground transition-colors hover:bg-accent hover:text-accent-foreground disabled:opacity-50"
               >
-                {syncingSubs ? (
-                  <RefreshCw className="h-3 w-3 animate-spin" />
-                ) : (
-                  <RefreshCw className="h-3 w-3" />
-                )}
+                {syncingSubs ? <RefreshCw className="h-3 w-3 animate-spin" /> : <RefreshCw className="h-3 w-3" />}
                 Sync
               </button>
             </div>
           </CardContent>
         </Card>
         <Link href="/revenue" className="flex w-full">
-          <Card className="flex w-full flex-col border-0 bg-emerald-500 transition hover:brightness-110">
-            <CardHeader className="pb-2">
-              <CardDescription className="text-emerald-100">Monthly Revenue</CardDescription>
+          <Card className="w-full border-l-2 border-l-amber-stat transition hover:shadow-md">
+            <CardHeader className="pb-1.5">
+              <CardDescription className="flex items-center gap-1.5 text-xs">
+                <div className="h-1.5 w-1.5 rounded-full bg-amber-stat" />
+                Monthly Revenue
+              </CardDescription>
             </CardHeader>
-            <CardContent className="flex-1">
-              <p className="text-2xl font-bold text-white">${(thisMonthCents / 100).toFixed(0)}</p>
+            <CardContent>
+              <p className="font-mono text-2xl font-bold tracking-tight">${(thisMonthCents / 100).toFixed(0)}</p>
             </CardContent>
           </Card>
         </Link>
-        <Card className="flex flex-col border-0 bg-violet-500">
-          <CardHeader className="pb-2">
-            <CardDescription className="text-violet-100">Videos in Review</CardDescription>
+        <Card className="border-l-2 border-l-rose-stat">
+          <CardHeader className="pb-1.5">
+            <CardDescription className="flex items-center gap-1.5 text-xs">
+              <div className="h-1.5 w-1.5 rounded-full bg-rose-stat" />
+              In Review
+            </CardDescription>
           </CardHeader>
-          <CardContent className="flex-1">
-            <p className="text-2xl font-bold text-white">{pendingReview}</p>
+          <CardContent>
+            <p className="font-mono text-2xl font-bold tracking-tight">{pendingReview}</p>
           </CardContent>
         </Card>
       </div>
 
-      <div className="mb-8 grid grid-cols-10 gap-4">
-        <Card className="col-span-10 flex flex-col sm:col-span-7">
-          <CardHeader className="flex flex-row items-center justify-between pb-3">
+      <div className="mb-10 grid grid-cols-10 gap-4">
+        <Card className="col-span-10 sm:col-span-7">
+          <CardHeader className="flex flex-row items-center justify-between pb-4">
             <div>
-              <CardDescription className="font-mono text-[11px] uppercase tracking-[0.25em]">Content Pipeline</CardDescription>
-              <CardTitle>Pipeline Overview</CardTitle>
+              <p className="mb-0.5 font-mono text-[11px] uppercase tracking-[0.2em] text-muted-foreground">Pipeline</p>
+              <CardTitle>Content Pipeline</CardTitle>
             </div>
             <Link
               href="/content"
-              className="flex items-center gap-1 text-xs text-muted-foreground hover:text-foreground"
+              className="flex items-center gap-1 text-xs text-muted-foreground transition-colors hover:text-foreground"
             >
-              Open pipeline
-              <ArrowUpRight className="h-3 w-3" />
+              Open <ArrowUpRight className="h-3 w-3" />
             </Link>
           </CardHeader>
           <CardContent>
-            <div className="divide-x divide-border flex">
+            <div className="flex items-stretch divide-x divide-border">
               {CONTENT_STAGES.map((stage) => {
                 const meta = STAGE_META[stage];
                 const Icon = meta.icon;
@@ -164,14 +155,14 @@ export default function DashboardPage() {
                 return (
                   <Link
                     key={stage}
-                    href={`/content`}
-                    className="flex min-w-0 flex-1 flex-col items-center gap-1.5 px-1 py-2.5 text-center transition hover:bg-muted/50 first:rounded-l-lg last:rounded-r-lg"
+                    href="/content"
+                    className="flex flex-1 flex-col items-center gap-1.5 px-1 py-3 text-center transition-colors hover:bg-muted/50 first:rounded-bl-lg last:rounded-br-lg"
                   >
                     <Icon className="h-4 w-4 text-muted-foreground" />
                     <span className="text-[10px] leading-tight text-muted-foreground">
                       {CONTENT_STAGE_LABELS[stage]}
                     </span>
-                    <span className="text-sm font-bold tabular-nums">{count}</span>
+                    <span className="font-mono text-sm font-bold tabular-nums">{count}</span>
                   </Link>
                 );
               })}
@@ -179,23 +170,23 @@ export default function DashboardPage() {
           </CardContent>
         </Card>
 
-        <Card className="col-span-10 flex flex-col sm:col-span-3">
-          <CardHeader className="pb-3">
-            <CardDescription className="font-mono text-[11px] uppercase tracking-[0.25em]">Due Dates</CardDescription>
-            <CardTitle>Upcoming Deadlines</CardTitle>
+        <Card className="col-span-10 sm:col-span-3">
+          <CardHeader className="pb-4">
+            <p className="mb-0.5 font-mono text-[11px] uppercase tracking-[0.2em] text-muted-foreground">Due Dates</p>
+            <CardTitle>Upcoming</CardTitle>
           </CardHeader>
-          <CardContent className="flex-1">
+          <CardContent>
             {cards
               .filter((c) => c.dueDate != null)
               .sort((a, b) => a.dueDate!.localeCompare(b.dueDate!))
-              .slice(0, 3)
+              .slice(0, 4)
               .map((card) => {
                 const days = daysUntil(card.dueDate!);
                 return (
                   <Link
                     key={card.id}
-                    href={`/content`}
-                    className="mb-3 flex items-center gap-3 rounded-lg border p-3 transition hover:bg-muted/30"
+                    href="/content"
+                    className="mb-2 flex items-center gap-3 rounded-lg border border-border p-3 transition-colors last:mb-0 hover:bg-muted/30"
                   >
                     <div className="min-w-0 flex-1">
                       <p className="truncate text-sm font-medium">{card.name}</p>
@@ -204,11 +195,11 @@ export default function DashboardPage() {
                       </span>
                     </div>
                     <span
-                      className={`shrink-0 text-xs font-medium ${
+                      className={`shrink-0 font-mono text-xs font-medium ${
                         days < 0
-                          ? "text-red-400"
+                          ? "text-destructive"
                           : days <= 2
-                            ? "text-amber-400"
+                            ? "text-amber-stat"
                             : "text-muted-foreground"
                       }`}
                     >
@@ -222,112 +213,115 @@ export default function DashboardPage() {
                 );
               })}
             {cards.filter((c) => c.dueDate != null).length === 0 && (
-              <p className="text-sm text-muted-foreground">No upcoming deadlines</p>
+              <p className="py-6 text-center text-sm text-muted-foreground">No upcoming deadlines</p>
             )}
           </CardContent>
         </Card>
       </div>
 
-      <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-        <Link href="/content">
-          <Card className="transition hover:border-primary/40">
-            <CardHeader>
-              <div className="flex items-center gap-2">
-                <LayoutGrid className="h-4 w-4 text-primary" />
-                <CardTitle>Content Board</CardTitle>
-              </div>
-              <CardDescription>{cards.length} {cards.length === 1 ? "card" : "cards"}</CardDescription>
-            </CardHeader>
-          </Card>
-        </Link>
-
-        <Link href="/videos">
-          <Card className="transition hover:border-primary/40">
-            <CardHeader>
-              <div className="flex items-center gap-2">
-                <Video className="h-4 w-4 text-primary" />
-                <CardTitle>Videos</CardTitle>
-              </div>
-              <CardDescription>
-                {videos.length} total{pendingReview > 0 ? ` · ${pendingReview} awaiting review` : ""}
-              </CardDescription>
-            </CardHeader>
-          </Card>
-        </Link>
-
-        <Link href="/ai-script">
-          <Card className="transition hover:border-primary/40">
-            <CardHeader>
-              <div className="flex items-center gap-2">
-                <Sparkles className="h-4 w-4 text-primary" />
-                <CardTitle>AI Scripts</CardTitle>
-              </div>
-              <CardDescription>{scripts.length} {scripts.length === 1 ? "script" : "scripts"}</CardDescription>
-            </CardHeader>
-          </Card>
-        </Link>
-
-        <Link href="/assets">
-          <Card className="transition hover:border-primary/40">
-            <CardHeader>
-              <div className="flex items-center gap-2">
-                <FolderOpen className="h-4 w-4 text-primary" />
-                <CardTitle>Brand Assets</CardTitle>
-              </div>
-              <CardDescription>{assets.length} {assets.length === 1 ? "file" : "files"}</CardDescription>
-            </CardHeader>
-          </Card>
-        </Link>
-
-        <Link href="/revenue">
-          <Card className="transition hover:border-primary/40">
-            <CardHeader>
-              <div className="flex items-center gap-2">
-                <DollarSign className="h-4 w-4 text-primary" />
-                <CardTitle>Revenue</CardTitle>
-              </div>
-              <CardDescription>${(thisMonthCents / 100).toFixed(0)} this month</CardDescription>
-            </CardHeader>
-          </Card>
-        </Link>
-
-        <Link href="/thumbnails">
-          <Card className="transition hover:border-primary/40">
-            <CardHeader>
-              <div className="flex items-center gap-2">
-                <Image className="h-4 w-4 text-primary" />
-                <CardTitle>Thumbnails</CardTitle>
-              </div>
-              <CardDescription>{thumbnails.length} generated</CardDescription>
-            </CardHeader>
-          </Card>
-        </Link>
-
-        <Link href="/team">
-          <Card className="transition hover:border-primary/40">
-            <CardHeader>
-              <div className="flex items-center gap-2">
-                <Users className="h-4 w-4 text-primary" />
-                <CardTitle>Team</CardTitle>
-              </div>
-              <CardDescription>{members.length} {members.length === 1 ? "member" : "members"}</CardDescription>
-            </CardHeader>
-          </Card>
-        </Link>
-
-        {workspace?.type === "agency" && (
-          <Link href="/team">
-            <Card className="transition hover:border-primary/40">
+      <div>
+        <p className="mb-4 font-mono text-[11px] uppercase tracking-[0.2em] text-muted-foreground">Modules</p>
+        <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4">
+          <Link href="/content">
+            <Card className="card-hover">
               <CardHeader>
-                <div className="flex items-center gap-2">
-                  <Building2 className="h-4 w-4 text-primary" />
-                  <CardTitle>Client workspaces</CardTitle>
+                <div className="mb-2 flex h-8 w-8 items-center justify-center rounded-lg border border-border bg-secondary">
+                  <LayoutGrid className="h-4 w-4 text-foreground" />
                 </div>
-                <CardDescription>{children.length} active</CardDescription>
+                <CardTitle className="text-sm">Content Board</CardTitle>
+                <CardDescription>{cards.length} {cards.length === 1 ? "card" : "cards"}</CardDescription>
               </CardHeader>
             </Card>
           </Link>
-        )}
+
+          <Link href="/videos">
+            <Card className="card-hover">
+              <CardHeader>
+                <div className="mb-2 flex h-8 w-8 items-center justify-center rounded-lg border border-border bg-secondary">
+                  <Video className="h-4 w-4 text-foreground" />
+                </div>
+                <CardTitle className="text-sm">Videos</CardTitle>
+                <CardDescription>
+                  {videos.length} total{pendingReview > 0 ? ` \u00B7 ${pendingReview} to review` : ""}
+                </CardDescription>
+              </CardHeader>
+            </Card>
+          </Link>
+
+          <Link href="/ai-script">
+            <Card className="card-hover">
+              <CardHeader>
+                <div className="mb-2 flex h-8 w-8 items-center justify-center rounded-lg border border-border bg-secondary">
+                  <Sparkles className="h-4 w-4 text-foreground" />
+                </div>
+                <CardTitle className="text-sm">AI Scripts</CardTitle>
+                <CardDescription>{scripts.length} {scripts.length === 1 ? "script" : "scripts"}</CardDescription>
+              </CardHeader>
+            </Card>
+          </Link>
+
+          <Link href="/assets">
+            <Card className="card-hover">
+              <CardHeader>
+                <div className="mb-2 flex h-8 w-8 items-center justify-center rounded-lg border border-border bg-secondary">
+                  <FolderOpen className="h-4 w-4 text-foreground" />
+                </div>
+                <CardTitle className="text-sm">Brand Assets</CardTitle>
+                <CardDescription>{assets.length} {assets.length === 1 ? "file" : "files"}</CardDescription>
+              </CardHeader>
+            </Card>
+          </Link>
+
+          <Link href="/revenue">
+            <Card className="card-hover">
+              <CardHeader>
+                <div className="mb-2 flex h-8 w-8 items-center justify-center rounded-lg border border-border bg-secondary">
+                  <DollarSign className="h-4 w-4 text-foreground" />
+                </div>
+                <CardTitle className="text-sm">Revenue</CardTitle>
+                <CardDescription>${(thisMonthCents / 100).toFixed(0)} this month</CardDescription>
+              </CardHeader>
+            </Card>
+          </Link>
+
+          <Link href="/thumbnails">
+            <Card className="card-hover">
+              <CardHeader>
+                <div className="mb-2 flex h-8 w-8 items-center justify-center rounded-lg border border-border bg-secondary">
+                  <Image className="h-4 w-4 text-foreground" />
+                </div>
+                <CardTitle className="text-sm">Thumbnails</CardTitle>
+                <CardDescription>{thumbnails.length} generated</CardDescription>
+              </CardHeader>
+            </Card>
+          </Link>
+
+          <Link href="/team">
+            <Card className="card-hover">
+              <CardHeader>
+                <div className="mb-2 flex h-8 w-8 items-center justify-center rounded-lg border border-border bg-secondary">
+                  <Users className="h-4 w-4 text-foreground" />
+                </div>
+                <CardTitle className="text-sm">Team</CardTitle>
+                <CardDescription>{members.length} {members.length === 1 ? "member" : "members"}</CardDescription>
+              </CardHeader>
+            </Card>
+          </Link>
+
+          {workspace?.type === "agency" && (
+            <Link href="/team">
+              <Card className="card-hover">
+                <CardHeader>
+                  <div className="mb-2 flex h-8 w-8 items-center justify-center rounded-lg border border-border bg-secondary">
+                    <Building2 className="h-4 w-4 text-foreground" />
+                  </div>
+                  <CardTitle className="text-sm">Client Workspaces</CardTitle>
+                  <CardDescription>{children.length} active</CardDescription>
+                </CardHeader>
+              </Card>
+            </Link>
+          )}
+        </div>
       </div>
     </AppShell>
   );

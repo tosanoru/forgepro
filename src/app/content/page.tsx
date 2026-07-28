@@ -284,9 +284,14 @@ export default function ContentPlanningPage() {
               <Button
                 variant="outline"
                 onClick={async () => {
-                  await deleteCard(detailCard.id);
-                  setDetailId(null);
-                  toast.success("Removed from board");
+                  try {
+                    await deleteCard(detailCard.id);
+                    setDetailId(null);
+                    toast.success("Removed from board");
+                  } catch {
+                    setDetailId(null);
+                    toast("Card was already removed");
+                  }
                 }}
                 className="w-full text-rose-stat hover:text-rose-stat"
               >
