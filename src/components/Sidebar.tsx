@@ -5,7 +5,7 @@ import { useState } from "react";
 import { usePathname, useRouter } from "next/navigation";
 import { signOut } from "next-auth/react";
 import useSWR from "swr";
-import { LayoutDashboard, Users, Building2, Sparkles, Settings, Video, LayoutGrid, FolderOpen, DollarSign, Image, Loader2, Compass, CreditCard, ShieldCheck, LogOut, User, TrendingUp, Flag, Rocket, Plus, PenLine } from "lucide-react";
+import { LayoutDashboard, Users, Building2, Sparkles, Settings, Video, LayoutGrid, FolderOpen, DollarSign, Image, Loader2, Compass, CreditCard, ShieldCheck, LogOut, User, TrendingUp, Flag, Rocket, Plus, PenLine, MessageSquare } from "lucide-react";
 import { useWorkspace } from "@/lib/use-workspace";
 import {
   DropdownMenu,
@@ -60,6 +60,7 @@ const NAV_GROUPS = [
     label: "Account",
     items: [
       { href: "/team", label: "Team", icon: Users },
+      { href: "/messages", label: "Messages", icon: MessageSquare },
       { href: "/settings", label: "AI Settings", icon: Settings },
       { href: "/settings/profile", label: "Profile", icon: User },
       { href: "/settings/billing", label: "Billing", icon: CreditCard },

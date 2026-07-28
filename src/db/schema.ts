@@ -775,3 +775,68 @@ export const scriptVersions = pgTable(
   },
   (t) => [index("script_version_script_idx").on(t.scriptId)],
 );
+
+// ---------------------------------------------------------------------------
+// Internal Team Messaging — workspace-scoped conversations between members.
+// Conversations auto-create on first message between two or more members.
+// No real-time push in v1 (SWR polling covers updates).
+// ---------------------------------------------------------------------------
+
+export const conversations = pgTable(
+  "conversation",
+  {
+    id: text("id")
+      .primaryKey()
+      .$defaultFn(() => crypto.randomUUID()),
+    workspaceId: text("workspaceId")
+      .notNull()
+      .references(() => workspaces.id, { onDelete: "cascade" }),
+    subject: text("subject"),
+    createdBy: text("createdBy")
+      .notNull()
+      .references(() => users.id, { onDelete: "cascade" }),
+    lastMessageAt: timestamp("lastMessageAt").notNull().defaultNow(),
+    createdAt: timestamp("createdAt").notNull().defaultNow(),
+  },
+  (t) => [
+    index("conversation_workspace_idx").on(t.workspaceId),
+    index("conversation_last_msg_idx").on(t.lastMessageAt),
+  ],
+);
+
+export const conversationParticipants = pgTable(
+  "conversation_participant",
+  {
+    conversationId: text("conversationId")
+      .notNull()
+      .references(() => conversations.id, { onDelete: "cascade" }),
+    userId: text("userId")
+      .notNull()
+      .references(() => users.id, { onDelete: "cascade" }),
+    lastReadAt: timestamp("lastReadAt"),
+    joinedAt: timestamp("joinedAt").notNull().defaultNow(),
+  },
+  (t) => [
+    primaryKey({ columns: [t.conversationId, t.userId] }),
+  ],
+);
+
+export const messages = pgTable(
+  "message",
+  {
+    id: text("id")
+      .primaryKey()
+      .$defaultFn(() => crypto.randomUUID()),
+    conversationId: text("conversationId")
+      .notNull()
+      .references(() => conversations.id, { onDelete: "cascade" }),
+    senderId: text("senderId")
+      .notNull()
+      .references(() => users.id, { onDelete: "cascade" }),
+    content: text("content").notNull(),
+    createdAt: timestamp("createdAt").notNull().defaultNow(),
+  },
+  (t) => [
+    index("message_conversation_idx").on(t.conversationId),
+  ],
+);
