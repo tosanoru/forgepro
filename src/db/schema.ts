@@ -840,3 +840,239 @@ export const messages = pgTable(
     index("message_conversation_idx").on(t.conversationId),
   ],
 );
+
+// ---------------------------------------------------------------------------
+// Academy — from forge2-academy-phase-spec.md. Turn courses (starting with
+// Content Production Fundamentals) into a navigable, trackable in-app
+// experience. Designed generically so any future course (color grading,
+// thumbnail design, channel growth) drops into the same schema without new
+// tables. Course content ships text-only (`content_md`); `video_url`/
+// `video_provider` are nullable so a video can be attached later with a
+// single UPDATE, never resetting progress.
+// ---------------------------------------------------------------------------
+
+type CourseLevel = "beginner" | "intermediate" | "advanced";
+type CourseStatus = "draft" | "published" | "archived";
+type LessonVideoProvider = "mux" | "youtube_unlisted" | "vimeo" | "s3";
+
+export const courses = pgTable(
+  "course",
+  {
+    id: text("id")
+      .primaryKey()
+      .$defaultFn(() => crypto.randomUUID()),
+    slug: text("slug").notNull().unique(), // e.g. 'content-production-fundamentals'
+    title: text("title").notNull(),
+    description: text("description").notNull().default(""),
+    level: text("level").$type<CourseLevel>().notNull().default("beginner"),
+    estimatedMinutes: integer("estimated_minutes").notNull().default(0),
+    coverImageUrl: text("cover_image_url"),
+    status: text("status").$type<CourseStatus>().notNull().default("published"),
+    createdBy: text("createdBy")
+      .notNull()
+      .references(() => users.id, { onDelete: "cascade" }),
+    createdAt: timestamp("createdAt").notNull().defaultNow(),
+    updatedAt: timestamp("updatedAt").notNull().defaultNow(),
+  },
+);
+
+export const modules = pgTable(
+  "modules",
+  {
+    id: text("id")
+      .primaryKey()
+      .$defaultFn(() => crypto.randomUUID()),
+    courseId: text("courseId")
+      .notNull()
+      .references(() => courses.id, { onDelete: "cascade" }),
+    title: text("title").notNull(),
+    order: integer("order").notNull().default(0), // display sequence; quoted identifier (reserved word)
+    createdAt: timestamp("createdAt").notNull().defaultNow(),
+  },
+  (t) => [
+    index("module_course_idx").on(t.courseId),
+    uniqueIndex("module_course_order_unique").on(t.courseId, t.order),
+  ],
+);
+
+export const lessons = pgTable(
+  "lesson",
+  {
+    id: text("id")
+      .primaryKey()
+      .$defaultFn(() => crypto.randomUUID()),
+    moduleId: text("moduleId")
+      .notNull()
+      .references(() => modules.id, { onDelete: "cascade" }),
+    title: text("title").notNull(),
+    lessonNumber: text("lesson_number").notNull(), // '1.1', '1.2' — preserves source numbering
+    contentMd: text("content_md").notNull().default(""),
+    videoUrl: text("video_url"), // null = text-only lesson; set later, progress is never reset
+    videoProvider: text("video_provider").$type<LessonVideoProvider>(),
+    videoDurationSeconds: integer("video_duration_seconds"),
+    actionItem: text("action_item").notNull().default(""), // the "Do This Now" line
+    estimatedMinutes: integer("estimated_minutes").notNull().default(0),
+    order: integer("order").notNull().default(0), // quoted identifier (reserved word)
+    createdAt: timestamp("createdAt").notNull().defaultNow(),
+  },
+  (t) => [
+    index("lesson_module_idx").on(t.moduleId),
+    uniqueIndex("lesson_module_order_unique").on(t.moduleId, t.order),
+  ],
+);
+
+/**
+ * Small, easily-cleared queue of "video added" notices. Populated for every
+ * user with `in_progress` or `completed` status on a lesson at the moment
+ * its `video_url` first goes from null -> set (new learners see the video
+ * normally, no notice needed). `seen` flips true on view. Kept as its own
+ * table instead of a mutable flag on `lessons` so every reader doesn't have
+ * to interpret lesson-level state they don't care about.
+ */
+export const lessonVideoNotifications = pgTable(
+  "lesson_video_notification",
+  {
+    id: text("id")
+      .primaryKey()
+      .$defaultFn(() => crypto.randomUUID()),
+    lessonId: text("lessonId")
+      .notNull()
+      .references(() => lessons.id, { onDelete: "cascade" }),
+    userId: text("userId")
+      .notNull()
+      .references(() => users.id, { onDelete: "cascade" }),
+    workspaceId: text("workspaceId")
+      .notNull()
+      .references(() => workspaces.id, { onDelete: "cascade" }),
+    seen: boolean("seen").notNull().default(false),
+    createdAt: timestamp("createdAt").notNull().defaultNow(),
+  },
+  (t) => [
+    uniqueIndex("lesson_video_notification_unique").on(t.lessonId, t.userId, t.workspaceId),
+  ],
+);
+
+export const badges = pgTable(
+  "badge",
+  {
+    id: text("id")
+      .primaryKey()
+      .$defaultFn(() => crypto.randomUUID()),
+    slug: text("slug").notNull().unique(), // e.g. 'content-production-fundamentals-complete'
+    title: text("title").notNull(), // e.g. 'Production Fundamentals'
+    description: text("description").notNull().default(""),
+    iconUrl: text("icon_url"), // rendered from the shared badge template (base frame + glyph), not a one-off
+    courseId: text("courseId").references((): AnyPgColumn => courses.id, { onDelete: "cascade" }), // nullable for future non-course badges
+    createdAt: timestamp("createdAt").notNull().defaultNow(),
+  },
+);
+
+export const userBadges = pgTable(
+  "user_badge",
+  {
+    id: text("id")
+      .primaryKey()
+      .$defaultFn(() => crypto.randomUUID()),
+    userId: text("userId")
+      .notNull()
+      .references(() => users.id, { onDelete: "cascade" }),
+    workspaceId: text("workspaceId")
+      .notNull()
+      .references(() => workspaces.id, { onDelete: "cascade" }),
+    badgeId: text("badgeId")
+      .notNull()
+      .references(() => badges.id, { onDelete: "cascade" }),
+    awardedAt: timestamp("awardedAt").notNull().defaultNow(),
+  },
+  (t) => [uniqueIndex("user_badge_unique").on(t.userId, t.workspaceId, t.badgeId)],
+);
+
+/**
+ * Admin-allocated access — not open-by-default even within a workspace.
+ * A user only sees a course if a row exists for them with revoked_at IS
+ * NULL. Admins/owners always have implicit access without a row; this table
+ * only governs non-admin members. Revoking access clears progress (see the
+ * DELETE handler) but leaves any earned badge untouched.
+ */
+export const courseAccess = pgTable(
+  "course_access",
+  {
+    id: text("id")
+      .primaryKey()
+      .$defaultFn(() => crypto.randomUUID()),
+    courseId: text("courseId")
+      .notNull()
+      .references(() => courses.id, { onDelete: "cascade" }),
+    workspaceId: text("workspaceId")
+      .notNull()
+      .references(() => workspaces.id, { onDelete: "cascade" }),
+    userId: text("userId")
+      .notNull()
+      .references(() => users.id, { onDelete: "cascade" }),
+    grantedBy: text("grantedBy")
+      .notNull()
+      .references(() => users.id, { onDelete: "cascade" }),
+    revokedAt: timestamp("revokedAt"), // soft revoke, keeps history instead of deleting the row
+    grantedAt: timestamp("grantedAt").notNull().defaultNow(),
+  },
+  (t) => [uniqueIndex("course_access_unique").on(t.courseId, t.workspaceId, t.userId)],
+);
+
+type LessonProgressStatus = "not_started" | "in_progress" | "completed";
+
+export const userProgress = pgTable(
+  "user_progress",
+  {
+    id: text("id")
+      .primaryKey()
+      .$defaultFn(() => crypto.randomUUID()),
+    userId: text("userId")
+      .notNull()
+      .references(() => users.id, { onDelete: "cascade" }),
+    // Progress is per-workspace, not just per-user — Forge 2 users can
+    // belong to multiple workspaces and each has its own course state.
+    workspaceId: text("workspaceId")
+      .notNull()
+      .references(() => workspaces.id, { onDelete: "cascade" }),
+    lessonId: text("lessonId")
+      .notNull()
+      .references(() => lessons.id, { onDelete: "cascade" }),
+    status: text("status").$type<LessonProgressStatus>().notNull().default("not_started"),
+    actionItemCompleted: boolean("action_item_completed").notNull().default(false),
+    completedAt: timestamp("completedAt"),
+    updatedAt: timestamp("updatedAt").notNull().defaultNow(),
+  },
+  (t) => [
+    uniqueIndex("user_progress_unique").on(t.userId, t.workspaceId, t.lessonId),
+    index("user_progress_lesson_idx").on(t.lessonId),
+  ],
+);
+
+/**
+ * Tracks who's actively working through a course — distinct from per-lesson
+ * progress, lets you show "3 people on your team are taking this course".
+ */
+export const courseEnrollments = pgTable(
+  "course_enrollment",
+  {
+    id: text("id")
+      .primaryKey()
+      .$defaultFn(() => crypto.randomUUID()),
+    courseId: text("courseId")
+      .notNull()
+      .references(() => courses.id, { onDelete: "cascade" }),
+    userId: text("userId")
+      .notNull()
+      .references(() => users.id, { onDelete: "cascade" }),
+    workspaceId: text("workspaceId")
+      .notNull()
+      .references(() => workspaces.id, { onDelete: "cascade" }),
+    enrolledAt: timestamp("enrolledAt").notNull().defaultNow(),
+    lastActivityAt: timestamp("lastActivityAt").notNull().defaultNow(),
+    completedAt: timestamp("completedAt"),
+  },
+  (t) => [
+    uniqueIndex("course_enrollment_unique").on(t.courseId, t.userId, t.workspaceId),
+    index("course_enrollment_course_idx").on(t.courseId),
+  ],
+);

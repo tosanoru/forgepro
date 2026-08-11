@@ -5,7 +5,7 @@ import { useState } from "react";
 import { usePathname, useRouter } from "next/navigation";
 import { signOut } from "next-auth/react";
 import useSWR from "swr";
-import { LayoutDashboard, Users, Building2, Sparkles, Settings, Video, LayoutGrid, FolderOpen, DollarSign, Image, Loader2, Compass, CreditCard, ShieldCheck, LogOut, User, TrendingUp, Flag, Rocket, Plus, PenLine, MessageSquare, ChevronsUpDown } from "lucide-react";
+import { LayoutDashboard, Users, Building2, Sparkles, Settings, Video, LayoutGrid, FolderOpen, DollarSign, Image, Loader2, Compass, CreditCard, ShieldCheck, LogOut, User, TrendingUp, Flag, Rocket, Plus, PenLine, MessageSquare, ChevronsUpDown, GraduationCap, BarChart2 } from "lucide-react";
 import { useWorkspace } from "@/lib/use-workspace";
 import {
   DropdownMenu,
@@ -28,8 +28,12 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { toast } from "sonner";
+import type { LucideIcon } from "lucide-react";
 
-const NAV_GROUPS = [
+const NAV_GROUPS: {
+  label: string;
+  items: { href: string; label: string; icon: LucideIcon; adminOnly?: boolean }[];
+}[] = [
   {
     label: "Create",
     items: [
@@ -57,11 +61,17 @@ const NAV_GROUPS = [
     ],
   },
   {
+    label: "Learn",
+    items: [{ href: "/academy", label: "Academy", icon: GraduationCap }],
+  },
+  {
     label: "Account",
     items: [
       { href: "/team", label: "Team", icon: Users },
       { href: "/messages", label: "Messages", icon: MessageSquare },
       { href: "/settings", label: "AI Settings", icon: Settings },
+      { href: "/settings/academy", label: "Academy Access", icon: GraduationCap },
+      { href: "/settings/academy/team-progress", label: "Team Progress", icon: BarChart2, adminOnly: true },
       { href: "/settings/profile", label: "Profile", icon: User },
       { href: "/settings/billing", label: "Billing", icon: CreditCard },
     ],
@@ -71,7 +81,7 @@ const NAV_GROUPS = [
 export function Sidebar() {
   const pathname = usePathname();
   const router = useRouter();
-  const { workspace, allWorkspaces, switchWorkspace, createWorkspace, renameWorkspace } = useWorkspace();
+  const { workspace, allWorkspaces, switchWorkspace, createWorkspace, renameWorkspace, role } = useWorkspace();
   const [switching, setSwitching] = useState(false);
   const [renameOpen, setRenameOpen] = useState(false);
   const [createOpen, setCreateOpen] = useState(false);
@@ -239,6 +249,7 @@ export function Sidebar() {
             </div>
             <div className="space-y-0.5">
               {group.items.map((item) => {
+                if (item.adminOnly && role !== "owner" && role !== "admin") return null;
                 const active = isActive(item.href);
                 const Icon = item.icon;
                 return (
@@ -279,8 +290,7 @@ export function Sidebar() {
               Super Admin
             </Link>
           </div>
-        )}
-      </nav>
+        )}      </nav>
 
       <div className="border-t border-sidebar-border px-3 py-3">
         <button
