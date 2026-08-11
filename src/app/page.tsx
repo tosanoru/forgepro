@@ -291,9 +291,9 @@ export default function DashboardPage() {
       <div>
         <p className="mb-4 font-mono text-[11px] uppercase tracking-[0.2em] text-muted-foreground">Modules</p>
         <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4">
-          <Link href="/content">
-            <Card className="card-hover">
-              <CardHeader>
+          <Link href="/content" className="flex">
+            <Card className="card-hover h-full w-full">
+              <CardHeader className="pb-5">
                 <div className="mb-2 flex h-8 w-8 items-center justify-center rounded-lg border border-border bg-secondary">
                   <LayoutGrid className="h-4 w-4 text-foreground" />
                 </div>
@@ -303,9 +303,9 @@ export default function DashboardPage() {
             </Card>
           </Link>
 
-          <Link href="/videos">
-            <Card className="card-hover">
-              <CardHeader>
+          <Link href="/videos" className="flex">
+            <Card className="card-hover h-full w-full">
+              <CardHeader className="pb-5">
                 <div className="mb-2 flex h-8 w-8 items-center justify-center rounded-lg border border-border bg-secondary">
                   <Video className="h-4 w-4 text-foreground" />
                 </div>
@@ -317,9 +317,9 @@ export default function DashboardPage() {
             </Card>
           </Link>
 
-          <Link href="/ai-script">
-            <Card className="card-hover">
-              <CardHeader>
+          <Link href="/ai-script" className="flex">
+            <Card className="card-hover h-full w-full">
+              <CardHeader className="pb-5">
                 <div className="mb-2 flex h-8 w-8 items-center justify-center rounded-lg border border-border bg-secondary">
                   <Sparkles className="h-4 w-4 text-foreground" />
                 </div>
@@ -329,9 +329,9 @@ export default function DashboardPage() {
             </Card>
           </Link>
 
-          <Link href="/assets">
-            <Card className="card-hover">
-              <CardHeader>
+          <Link href="/assets" className="flex">
+            <Card className="card-hover h-full w-full">
+              <CardHeader className="pb-5">
                 <div className="mb-2 flex h-8 w-8 items-center justify-center rounded-lg border border-border bg-secondary">
                   <FolderOpen className="h-4 w-4 text-foreground" />
                 </div>
@@ -341,9 +341,9 @@ export default function DashboardPage() {
             </Card>
           </Link>
 
-          <Link href="/revenue">
-            <Card className="card-hover">
-              <CardHeader>
+          <Link href="/revenue" className="flex">
+            <Card className="card-hover h-full w-full">
+              <CardHeader className="pb-5">
                 <div className="mb-2 flex h-8 w-8 items-center justify-center rounded-lg border border-border bg-secondary">
                   <DollarSign className="h-4 w-4 text-foreground" />
                 </div>
@@ -353,9 +353,9 @@ export default function DashboardPage() {
             </Card>
           </Link>
 
-          <Link href="/thumbnails">
-            <Card className="card-hover">
-              <CardHeader>
+          <Link href="/thumbnails" className="flex">
+            <Card className="card-hover h-full w-full">
+              <CardHeader className="pb-5">
                 <div className="mb-2 flex h-8 w-8 items-center justify-center rounded-lg border border-border bg-secondary">
                   <Image className="h-4 w-4 text-foreground" />
                 </div>
@@ -365,9 +365,9 @@ export default function DashboardPage() {
             </Card>
           </Link>
 
-          <Link href="/team">
-            <Card className="card-hover">
-              <CardHeader>
+          <Link href="/team" className="flex">
+            <Card className="card-hover h-full w-full">
+              <CardHeader className="pb-5">
                 <div className="mb-2 flex h-8 w-8 items-center justify-center rounded-lg border border-border bg-secondary">
                   <Users className="h-4 w-4 text-foreground" />
                 </div>
@@ -378,9 +378,9 @@ export default function DashboardPage() {
           </Link>
 
           {workspace?.type === "agency" && (
-            <Link href="/team">
-              <Card className="card-hover">
-                <CardHeader>
+            <Link href="/team" className="flex">
+              <Card className="card-hover h-full w-full">
+                <CardHeader className="pb-5">
                   <div className="mb-2 flex h-8 w-8 items-center justify-center rounded-lg border border-border bg-secondary">
                     <Building2 className="h-4 w-4 text-foreground" />
                   </div>
