@@ -52,7 +52,7 @@ type-checked feature can still be completely dead on arrival.
 
 ## What's in this pass
 
-- **Auth**: Auth.js v5, credentials + Google OAuth, Edge/Node split (`auth.config.ts`
+- **Auth**: Auth.js v5, credentials-only (email + password, bcrypt), Edge/Node split (`auth.config.ts`
   vs `auth.ts`) — ported verbatim from Forge, zero changes. It didn't need any.
 - **Workspace model**: recursive (`parentWorkspaceId` self-FK on `workspace`) instead
   of Forge's flat single-workspace-per-user model. See `src/db/schema.ts` and
@@ -619,7 +619,7 @@ separation broke.
 
 ```bash
 npm install
-cp .env.example .env.local   # DATABASE_URL, AUTH_SECRET, Google OAuth, ENCRYPTION_KEY,
+cp .env.example .env.local   # DATABASE_URL, AUTH_SECRET, ENCRYPTION_KEY,
                               # MUX_TOKEN_ID/SECRET/WEBHOOK_SECRET, R2_* credentials,
                               # CRON_SECRET (revenue sync + Niche Finder pipeline),
                               # YOUTUBE_API_KEY (Niche Finder), STRIPE_SECRET_KEY /

@@ -1,5 +1,4 @@
 import NextAuth from "next-auth";
-import Google from "next-auth/providers/google";
 import Credentials from "next-auth/providers/credentials";
 import { DrizzleAdapter } from "@auth/drizzle-adapter";
 import bcrypt from "bcryptjs";
@@ -15,10 +14,6 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
   // database sessions for it, since it can't verify the credential itself).
   session: { strategy: "jwt" },
   providers: [
-    Google({
-      clientId: process.env.AUTH_GOOGLE_ID,
-      clientSecret: process.env.AUTH_GOOGLE_SECRET,
-    }),
     Credentials({
       credentials: {
         email: { label: "Email", type: "email" },

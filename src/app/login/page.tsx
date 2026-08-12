@@ -53,12 +53,6 @@ export default function LoginPage() {
     }
   };
 
-  const google = async () => {
-    setBusy(true);
-    await signIn("google", { callbackUrl: "/" });
-    // Browser redirects to Google; execution stops here on success.
-  };
-
   return (
     <div className="min-h-screen bg-background text-foreground flex items-center justify-center p-6">
       <div className="w-full max-w-md border-2 border-foreground bg-card p-8 stamp">
@@ -72,23 +66,7 @@ export default function LoginPage() {
           Forge 2 · plan, review, ship
         </p>
 
-        <Button
-          type="button"
-          variant="outline"
-          onClick={google}
-          disabled={busy}
-          className="mt-6 w-full"
-        >
-          Continue with Google
-        </Button>
-
-        <div className="my-5 flex items-center gap-3">
-          <div className="h-px flex-1 bg-border" />
-          <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-muted-foreground">or</span>
-          <div className="h-px flex-1 bg-border" />
-        </div>
-
-        <form onSubmit={submit} className="space-y-4">
+        <form onSubmit={submit} className="mt-6 space-y-4">
           {mode === "signup" && (
             <div className="space-y-2">
               <Label htmlFor="name">Display name</Label>

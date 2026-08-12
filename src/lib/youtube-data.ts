@@ -35,7 +35,7 @@ async function recordYoutubeQuotaUsage(units: number): Promise<void> {
  * analytics" call the rest of this codebase already made for Forge's
  * original stats feature and for deliberately not building YouTube
  * Analytics revenue integration (see CLAUDE.md / Revenue Dashboard).
- * Separate from AUTH_GOOGLE_ID/SECRET, which are for login.
+ * Separate from the (removed) Google OAuth login flow.
  */
 function apiKey(): string {
   const key = process.env.YOUTUBE_API_KEY;

@@ -109,7 +109,7 @@ src/
 ```
 
 ## Environment Variables
-`.env.local` requires: `DATABASE_URL`, `AUTH_SECRET`, Google OAuth credentials, `ENCRYPTION_KEY`, `MUX_TOKEN_ID`/`SECRET`/`WEBHOOK_SECRET`, `R2_*`, `CRON_SECRET`, `YOUTUBE_API_KEY`, Stripe platform billing keys + price IDs. Optional: `RESEND_API_KEY`/`FROM_EMAIL`, `ANTHROPIC_API_KEY`.
+`.env.local` requires: `DATABASE_URL`, `AUTH_SECRET`, `ENCRYPTION_KEY`, `MUX_TOKEN_ID`/`SECRET`/`WEBHOOK_SECRET`, `R2_*`, `CRON_SECRET`, `YOUTUBE_API_KEY`, Stripe platform billing keys + price IDs. Optional: `RESEND_API_KEY`/`FROM_EMAIL`, `ANTHROPIC_API_KEY`.
 
 ## Existing Instruction Files
 - `CLAUDE.md` — detailed narrative handoff document (669 lines). Useful for deep context on build history, design decisions, and placeholder gaps.
