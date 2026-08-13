@@ -136,9 +136,19 @@ export function Sidebar() {
     }
   };
 
+  // Longest-prefix-match: a nav item is active when the current pathname is
+  // at or under its href, but only if no sibling nav item claims a deeper
+  // prefix. This keeps real child routes (e.g. /videos/[id], /academy/[slug],
+  // /niche-finder/[id]) highlighting their parent, while preventing sibling
+  // routes sharing a prefix (e.g. /settings vs /settings/academy vs
+  // /settings/academy/team-progress) from all highlighting at once.
   function isActive(href: string) {
     if (href === "/") return pathname === "/";
-    return pathname.startsWith(href);
+    if (!(pathname === href || pathname.startsWith(href + "/"))) return false;
+    const candidates = NAV_GROUPS.flatMap((group) => group.items.map((item) => item.href))
+      .filter((h) => h !== "/" && (pathname === h || pathname.startsWith(h + "/")));
+    const best = candidates.sort((a, b) => b.length - a.length)[0];
+    return best === href;
   }
 
   return (
