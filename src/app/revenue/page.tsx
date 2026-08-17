@@ -289,7 +289,7 @@ export default function RevenuePage() {
         <DialogContent>
           <DialogHeader>
             <DialogTitle>Log revenue</DialogTitle>
-            <DialogDescription>For anything that doesn't come through Stripe — AdSense, sponsorships, one-off deals.</DialogDescription>
+            <DialogDescription>For anything that doesn&apos;t come through Stripe — AdSense, sponsorships, one-off deals.</DialogDescription>
           </DialogHeader>
           <form onSubmit={submitEntry} className="space-y-4">
             <div className="space-y-1.5">

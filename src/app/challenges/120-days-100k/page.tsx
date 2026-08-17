@@ -346,11 +346,11 @@ export default function Challenge120DaysPage() {
   const [activeTab, setActiveTab] = useState<number>(1);
   const [showCelebration, setShowCelebration] = useState(false);
   const [expandedChunks, setExpandedChunks] = useState<Set<string>>(() => new Set(["1-0"]));
-  const [now, setNow] = useState(Date.now());
+  const [now, setNow] = useState(() => Date.now());
 
   useEffect(() => {
     if (activeTab > 1 && !monthIsComplete(activeTab - 1)) {
-      setActiveTab(1);
+      queueMicrotask(() => setActiveTab(1));
     }
   }, [done, activeTab]);
 
@@ -384,7 +384,7 @@ export default function Challenge120DaysPage() {
 
   useEffect(() => {
     if (completedCount === totalQuests && !showCelebration) {
-      setShowCelebration(true);
+      queueMicrotask(() => setShowCelebration(true));
     }
   }, [completedCount, totalQuests, showCelebration]);
 
@@ -398,7 +398,9 @@ export default function Challenge120DaysPage() {
         changed = true;
       }
     }
-    if (changed) setCompletedAt(next);
+    if (changed) {
+      queueMicrotask(() => setCompletedAt(next));
+    }
   }, [done, completedAt]);
 
   /* ─── day lock logic ─── */
@@ -438,14 +440,23 @@ export default function Challenge120DaysPage() {
     [isDayLocked, inputs],
   );
 
-  const monthQuests = (monthIdx: number) => QUESTS.filter((q) => q.month === monthIdx);
-  const monthDone = (monthIdx: number) => monthQuests(monthIdx).filter((q) => done.has(q.id)).length;
-  const monthTotal = (monthIdx: number) => monthQuests(monthIdx).length;
-  const monthIsComplete = (monthIdx: number) => monthDone(monthIdx) === monthTotal(monthIdx);
-  const monthXp = (monthIdx: number) =>
-    monthQuests(monthIdx)
+  function monthQuests(monthIdx: number) {
+    return QUESTS.filter((q) => q.month === monthIdx);
+  }
+  function monthDone(monthIdx: number) {
+    return monthQuests(monthIdx).filter((q) => done.has(q.id)).length;
+  }
+  function monthTotal(monthIdx: number) {
+    return monthQuests(monthIdx).length;
+  }
+  function monthIsComplete(monthIdx: number) {
+    return monthDone(monthIdx) === monthTotal(monthIdx);
+  }
+  function monthXp(monthIdx: number) {
+    return monthQuests(monthIdx)
       .filter((q) => done.has(q.id))
       .reduce((s, q) => s + q.xp, 0);
+  }
 
   /* ─── Reset ──────────────────────────────────────── */
   const [showResetConfirm, setShowResetConfirm] = useState(false);

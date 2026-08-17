@@ -74,7 +74,7 @@ function BillingContent() {
     <div className="space-y-8">
       {checkoutResult === "success" && (
         <div className="flex items-center gap-2 rounded border border-emerald-stat/30 bg-emerald-stat/5 p-3 text-sm text-emerald-stat">
-          <Check className="h-4 w-4" /> Payment received — your plan updates within a few seconds of Stripe's webhook arriving.
+          <Check className="h-4 w-4" /> Payment received — your plan updates within a few seconds of Stripe&apos;s webhook arriving.
         </div>
       )}
 

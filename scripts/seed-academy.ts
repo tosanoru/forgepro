@@ -187,12 +187,12 @@ async function main() {
   console.log(`  ✓ Course: ${parsed.title} (~${Math.round(totalMinutes / 60)}h total)`);
 
   let lessonCount = 0;
-  for (const module of parsed.modules) {
+  for (const modData of parsed.modules) {
     const [mod] = await db
       .insert(schema.modules)
-      .values({ courseId: course.id, title: module.title, order: module.order })
+      .values({ courseId: course.id, title: modData.title, order: modData.order })
       .returning();
-    for (const lesson of module.lessons) {
+    for (const lesson of modData.lessons) {
       await db.insert(schema.lessons).values({
         moduleId: mod.id,
         title: lesson.title,
@@ -205,7 +205,7 @@ async function main() {
       });
       lessonCount++;
     }
-    console.log(`  ✓ Module ${module.order}: ${module.title} (${module.lessons.length} lessons)`);
+    console.log(`  ✓ Module ${modData.order}: ${modData.title} (${modData.lessons.length} lessons)`);
   }
 
   await db.insert(schema.badges).values({

@@ -30,8 +30,12 @@ export default function VideoDetailPage() {
   const [posting, setPosting] = useState(false);
   const [creatingLink, setCreatingLink] = useState(false);
   const [copiedToken, setCopiedToken] = useState<string | null>(null);
+  const [currentTime, setCurrentTime] = useState(0);
 
-  const currentTime = () => playerRef.current?.currentTime ?? 0;
+  const handleTimeUpdate = () => {
+    setCurrentTime(playerRef.current?.currentTime ?? 0);
+  };
+
   const seekTo = (t: number) => {
     if (playerRef.current) playerRef.current.currentTime = t;
   };
@@ -40,7 +44,7 @@ export default function VideoDetailPage() {
     if (!draft.trim()) return;
     setPosting(true);
     try {
-      await addComment(currentTime(), draft.trim());
+      await addComment(currentTime, draft.trim());
       setDraft("");
     } catch (err) {
       toast.error(err instanceof Error ? err.message : "Failed to add comment");
@@ -112,6 +116,7 @@ export default function VideoDetailPage() {
               playbackId={video.muxPlaybackId}
               streamType="on-demand"
               className="w-full aspect-video overflow-hidden rounded"
+              onTimeUpdate={handleTimeUpdate}
             />
           ) : (
             <div className="flex aspect-video items-center justify-center border border-dashed border-border text-sm text-muted-foreground">
@@ -199,13 +204,13 @@ export default function VideoDetailPage() {
 
             <div className="space-y-2 border-t border-border pt-4">
               <Textarea
-                placeholder={`Comment at ${formatTime(currentTime())}…`}
+                placeholder={`Comment at ${formatTime(currentTime)}…`}
                 value={draft}
                 onChange={(e) => setDraft(e.target.value)}
                 rows={3}
               />
               <Button onClick={submitComment} disabled={posting || !draft.trim()} size="sm" className="w-full">
-                <MessageSquarePlus className="h-4 w-4" /> Comment at {formatTime(currentTime())}
+                <MessageSquarePlus className="h-4 w-4" /> Comment at {formatTime(currentTime)}
               </Button>
             </div>
           </CardContent>

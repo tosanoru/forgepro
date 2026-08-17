@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useParams } from "next/navigation";
 import { AppShell, PageHeader } from "@/components/AppShell";
 import { useScript, useScriptVersions } from "@/lib/use-scripts";
@@ -10,7 +10,7 @@ import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
-import { Loader2, Save, History, RotateCcw, Film, Eye, Pencil } from "lucide-react";
+import { Loader2, Save, History, RotateCcw, Eye, Pencil } from "lucide-react";
 import { toast } from "sonner";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
@@ -29,14 +29,16 @@ export default function ScriptDetailPage() {
   const { versions, restore } = useScriptVersions(params.id);
   const [content, setContent] = useState("");
   const [saving, setSaving] = useState(false);
+  const [loadedScriptId, setLoadedScriptId] = useState<string | null>(null);
+
+  if (script && loadedScriptId !== script.id) {
+    setLoadedScriptId(script.id);
+    setContent(script.content);
+  }
   const [dirty, setDirty] = useState(false);
   const [preview, setPreview] = useState(true);
   const [historyOpen, setHistoryOpen] = useState(false);
   const [restoringId, setRestoringId] = useState<string | null>(null);
-
-  useEffect(() => {
-    if (script) setContent(script.content);
-  }, [script]);
 
   const save = async () => {
     setSaving(true);

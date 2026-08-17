@@ -96,7 +96,7 @@ export async function POST(req: Request) {
     return NextResponse.json({ workspace: ws, members, role, allWorkspaces, children: [] }, { status: 201 });
   } catch (err) {
     const message = err instanceof Error ? err.message : "Internal Server Error";
-    const detail = err instanceof Error && "detail" in err ? (err as any).detail : "";
+    const detail = err instanceof Error && "detail" in err ? (err as Error & { detail?: string }).detail : "";
     const stack = err instanceof Error ? err.stack : "";
     console.error("POST /api/workspace failed:", { message, detail, stack });
     return NextResponse.json({ error: `${message}${detail ? `: ${detail}` : ""}` }, { status: 500 });

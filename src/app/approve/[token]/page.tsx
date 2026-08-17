@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import { useParams } from "next/navigation";
 import useSWR from "swr";
 import MuxPlayer from "@mux/mux-player-react";
@@ -35,14 +35,10 @@ export default function ApprovalPage() {
   const { token } = useParams<{ token: string }>();
   const { data, error, isLoading } = useSWR(`/api/approval/${token}`, fetcher);
   const [guestName, setGuestName] = useState("");
-  const [selectedVideoId, setSelectedVideoId] = useState<string | null>(null);
   const playerRef = useRef<HTMLVideoElement>(null);
+  const [currentTime, setCurrentTime] = useState(0);
 
-  const video = data?.videos?.find((v: { id: string }) => v.id === selectedVideoId) ?? data?.videos?.[0];
-
-  useEffect(() => {
-    if (data?.videos?.[0] && !selectedVideoId) setSelectedVideoId(data.videos[0].id);
-  }, [data, selectedVideoId]);
+  const video = data?.videos?.[0];
 
   const { data: commentsData, mutate: mutateComments } = useSWR(
     video ? `/api/approval/${token}/comments?videoId=${video.id}` : null,
@@ -53,9 +49,12 @@ export default function ApprovalPage() {
   const [posting, setPosting] = useState(false);
   const [deciding, setDeciding] = useState(false);
 
-  const currentTime = () => playerRef.current?.currentTime ?? 0;
   const seekTo = (t: number) => {
     if (playerRef.current) playerRef.current.currentTime = t;
+  };
+
+  const handleTimeUpdate = () => {
+    setCurrentTime(playerRef.current?.currentTime ?? 0);
   };
 
   const submitComment = async () => {
@@ -65,7 +64,7 @@ export default function ApprovalPage() {
       const res = await fetch(`/api/approval/${token}/comments`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ videoId: video.id, timestampSeconds: currentTime(), content: draft.trim(), guestName }),
+        body: JSON.stringify({ videoId: video.id, timestampSeconds: currentTime, content: draft.trim(), guestName }),
       });
       const json = await res.json();
       if (!res.ok) throw new Error(json.error);
@@ -128,6 +127,7 @@ export default function ApprovalPage() {
             playbackId={video.muxPlaybackId}
             streamType="on-demand"
             className="w-full aspect-video overflow-hidden rounded"
+            onTimeUpdate={handleTimeUpdate}
           />
         ) : (
           <div className="flex aspect-video items-center justify-center border border-dashed border-border text-sm text-muted-foreground">
@@ -170,13 +170,13 @@ export default function ApprovalPage() {
               <Input placeholder="Your name (shown with your comments)" value={guestName} onChange={(e) => setGuestName(e.target.value)} />
             )}
             <Textarea
-              placeholder={`Comment at ${formatTime(currentTime())}…`}
+              placeholder={`Comment at ${formatTime(currentTime)}…`}
               value={draft}
               onChange={(e) => setDraft(e.target.value)}
               rows={3}
             />
             <Button onClick={submitComment} disabled={posting || !draft.trim()} size="sm">
-              <MessageSquarePlus className="h-4 w-4" /> Comment at {formatTime(currentTime())}
+              <MessageSquarePlus className="h-4 w-4" /> Comment at {formatTime(currentTime)}
             </Button>
           </div>
         </div>

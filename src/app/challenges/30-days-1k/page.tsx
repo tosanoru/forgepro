@@ -201,7 +201,7 @@ export default function Challenge30DaysPage() {
   const [inputs, setInputs] = useState<Record<string, string>>(loadInputs);
   const [expandedWeek, setExpandedWeek] = useState<number>(1);
   const [showCelebration, setShowCelebration] = useState(false);
-  const [now, setNow] = useState(Date.now());
+  const [now, setNow] = useState(() => Date.now());
 
   const completedCount = done.size;
   const totalQuests = QUESTS.length;
@@ -238,7 +238,7 @@ export default function Challenge30DaysPage() {
 
   useEffect(() => {
     if (completedCount === totalQuests && !showCelebration) {
-      setShowCelebration(true);
+      queueMicrotask(() => setShowCelebration(true));
     }
   }, [completedCount, totalQuests, showCelebration]);
 
@@ -252,7 +252,9 @@ export default function Challenge30DaysPage() {
         changed = true;
       }
     }
-    if (changed) setCompletedAt(next);
+    if (changed) {
+      queueMicrotask(() => setCompletedAt(next));
+    }
   }, [done, completedAt]);
 
   /* ─── day lock logic ─── */

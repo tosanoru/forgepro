@@ -2,7 +2,6 @@
 
 import useSWR from "swr";
 import useSWRMutation from "swr/mutation";
-import { useCallback } from "react";
 
 const fetcher = (url: string) =>
   fetch(url)

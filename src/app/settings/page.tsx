@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { AppShell, PageHeader } from "@/components/AppShell";
 import { useWorkspace } from "@/lib/use-workspace";
 import { useAiSettings } from "@/lib/use-scripts";
@@ -34,12 +34,12 @@ export default function SettingsPage() {
   const [model, setModel] = useState("");
   const [saving, setSaving] = useState(false);
 
-  useEffect(() => {
-    if (settings) {
-      setProvider(settings.provider);
-      setModel(settings.model);
-    }
-  }, [settings]);
+  const [prevSettings, setPrevSettings] = useState(settings);
+  if (settings && prevSettings !== settings) {
+    setPrevSettings(settings);
+    setProvider(settings.provider);
+    setModel(settings.model);
+  }
 
   const canEdit = role === "owner" || role === "admin";
   const active = PROVIDERS.find((p) => p.value === provider) ?? PROVIDERS[0];

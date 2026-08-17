@@ -157,8 +157,16 @@ export function useAiSettings() {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(params),
     });
-    const json = await res.json();
-    if (!res.ok) throw new Error(json.error ?? "Failed to save AI settings");
+    const text = await res.text();
+    let json: unknown = null;
+    if (text) {
+      try {
+        json = JSON.parse(text);
+      } catch {
+        json = null;
+      }
+    }
+    if (!res.ok) throw new Error((json as { error?: string } | null)?.error ?? `Failed to save AI settings (${res.status})`);
     await mutate();
     return json;
   }

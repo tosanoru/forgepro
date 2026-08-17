@@ -30,7 +30,7 @@ import {
   Sparkles,
 } from "lucide-react";
 import { useParams } from "next/navigation";
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useMemo, useState } from "react";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import { toast } from "sonner";
@@ -67,19 +67,14 @@ export default function AcademyCoursePage() {
 
   const continueLessonId = progressData?.continueLessonId ?? null;
 
-  useEffect(() => {
-    if (!allLessons.length || selectedLessonId) return;
-    const next =
-      (continueLessonId && allLessons.some((l) => l.id === continueLessonId) ? continueLessonId : null) ??
-      allLessons[0].id;
-    setSelectedLessonId(next);
-  }, [allLessons, continueLessonId, selectedLessonId]);
+  const activeLessonId =
+    selectedLessonId ??
+    (continueLessonId && allLessons.some((l) => l.id === continueLessonId) ? continueLessonId : null) ??
+    allLessons[0]?.id;
 
-  const { data: lessonData } = useAcademyLesson(slug, selectedLessonId ?? undefined);
+  const { data: lessonData } = useAcademyLesson(slug, activeLessonId);
 
-  const { trigger: triggerProgress, isMutating: progressSaving } = useLessonProgress(
-    selectedLessonId ?? undefined,
-  );
+  const { trigger: triggerProgress, isMutating: progressSaving } = useLessonProgress(activeLessonId);
 
   const [enrolling, setEnrolling] = useState(false);
 
@@ -104,7 +99,7 @@ export default function AcademyCoursePage() {
 
   const saveProgress = useCallback(
     async (payload: { status?: "in_progress" | "completed"; actionItemCompleted?: boolean }) => {
-      if (!selectedLessonId) return;
+      if (!activeLessonId) return;
       try {
         const res = await triggerProgress(payload);
         const badge = res?.badgeAwarded as { slug: string; title: string } | undefined;
@@ -117,7 +112,7 @@ export default function AcademyCoursePage() {
         toast.error(err instanceof Error ? err.message : "Failed to save progress");
       }
     },
-    [selectedLessonId, triggerProgress],
+    [activeLessonId, triggerProgress],
   );
 
   const markComplete = useCallback(() => saveProgress({ status: "completed" }), [saveProgress]);
@@ -199,7 +194,7 @@ export default function AcademyCoursePage() {
                   </p>
                   <div className="space-y-0.5">
                     {m.lessons.map((l) => {
-                      const active = l.id === selectedLessonId;
+                      const active = l.id === activeLessonId;
                       const done = l.progress?.status === "completed";
                       return (
                         <button

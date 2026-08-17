@@ -11,7 +11,7 @@ import { toast } from "sonner";
 
 export default function LoginPage() {
   const router = useRouter();
-  const { status } = useSession();
+  const { status, update } = useSession();
   const [mode, setMode] = useState<"signin" | "signup">("signin");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -37,11 +37,13 @@ export default function LoginPage() {
 
         const result = await signIn("credentials", { email, password, redirect: false });
         if (result?.error) throw new Error("Account created — sign in failed, try again");
+        await update();
         toast.success("Welcome to Forge 2.");
         router.push("/");
       } else {
         const result = await signIn("credentials", { email, password, redirect: false });
         if (result?.error) throw new Error("Invalid email or password");
+        await update();
         toast.success("Welcome back.");
         router.push("/");
       }
